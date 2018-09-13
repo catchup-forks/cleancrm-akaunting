@@ -9,8 +9,6 @@ class ViewComposerServiceProvider extends ServiceProvider
 {
     /**
      * Register bindings in the container.
-     *
-     * @return void
      */
     public function boot()
     {
@@ -46,7 +44,7 @@ class ViewComposerServiceProvider extends ServiceProvider
 
         // Add recurring
         View::composer(
-            ['partials.form.recurring',], 'App\Http\ViewComposers\Recurring'
+            ['partials.form.recurring'], 'App\Http\ViewComposers\Recurring'
         );
 
         // Add logo
@@ -57,11 +55,8 @@ class ViewComposerServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
     public function register()
     {
-        //
     }
 }

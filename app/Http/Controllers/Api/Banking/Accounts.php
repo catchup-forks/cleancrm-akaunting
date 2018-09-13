@@ -27,7 +27,8 @@ class Accounts extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param  Account  $account
+     * @param Account $account
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function show(Account $account)
@@ -39,6 +40,7 @@ class Accounts extends ApiController
      * Store a newly created resource in storage.
      *
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function store(Request $request)
@@ -53,6 +55,7 @@ class Accounts extends ApiController
      *
      * @param  $account
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function update(Account $account, Request $request)
@@ -65,7 +68,8 @@ class Accounts extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Account  $account
+     * @param Account $account
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function destroy(Account $account)

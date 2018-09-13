@@ -6,8 +6,6 @@ class AddCategoryColumnInvoicesBills extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -20,19 +18,17 @@ class AddCategoryColumnInvoicesBills extends Migration
         });
     }
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		Schema::table('invoices', function ($table) {
-			$table->dropColumn('category_id');
-		});
+    /**
+     * Reverse the migrations.
+     */
+    public function down()
+    {
+        Schema::table('invoices', function ($table) {
+            $table->dropColumn('category_id');
+        });
 
-		Schema::table('bills', function ($table) {
-			$table->dropColumn('category_id');
-		});
-	}
+        Schema::table('bills', function ($table) {
+            $table->dropColumn('category_id');
+        });
+    }
 }

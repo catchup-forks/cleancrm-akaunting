@@ -1,11 +1,10 @@
 <?php
 
 return [
-
-    'allow_login'           => 'Permitir Acesso?',
-    'user_created'          => 'Utilizador criado',
+    'allow_login' => 'Permitir Acesso?',
+    'user_created' => 'Utilizador criado',
 
     'error' => [
-        'email'             => 'Este e-mail já foi registado.'
-    ]
+        'email' => 'Este e-mail já foi registado.',
+    ],
 ];

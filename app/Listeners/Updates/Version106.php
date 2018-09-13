@@ -15,7 +15,6 @@ class Version106 extends Listener
      * Handle the event.
      *
      * @param  $event
-     * @return void
      */
     public function handle(UpdateFinished $event)
     {
@@ -25,6 +24,6 @@ class Version106 extends Listener
         }
 
         // Moved to app directory
-        File::deleteDirectory(app_path('Http' . DIRECTORY_SEPARATOR .'Transformers'));
+        File::deleteDirectory(app_path('Http'.DIRECTORY_SEPARATOR.'Transformers'));
     }
 }

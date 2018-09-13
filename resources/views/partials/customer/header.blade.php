@@ -4,9 +4,11 @@
     <!-- Logo -->
     <a href="{{ url('customers') }}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><img src="{{ !empty($company->company_logo) ? Storage::url($company->company_logo) : asset('public/img/company.png') }}" class="logo-image-mini" width="25"  alt="{{ $company->company_name }}"></span>
+        <span class="logo-mini"><img src="{{ !empty($company->company_logo) ? Storage::url($company->company_logo) : asset('img/company.png') }}"
+                class="logo-image-mini" width="25" alt="{{ $company->company_name }}"></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><img src="{{ !empty($company->company_logo) ? Storage::url($company->company_logo) : asset('public/img/company.png') }}" width="25"  alt="{{ $company->company_name }}"> <b>{{ str_limit($company->company_name, 15) }}</b></span>
+        <span class="logo-lg"><img src="{{ !empty($company->company_logo) ? Storage::url($company->company_logo) : asset('img/company.png') }}"
+                width="25" alt="{{ $company->company_name }}"> <b>{{ str_limit($company->company_name, 15) }}</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -30,14 +32,17 @@
                         @endif
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">{{ trans_choice('header.notifications.counter', $notifications, ['count' => $notifications]) }}</li>
+                        <li class="header">{{ trans_choice('header.notifications.counter', $notifications, ['count' =>
+                            $notifications]) }}</li>
                         <li>
                             <!-- inner menu: contains the actual data -->
                             <ul class="menu">
                                 @if (count($invoices))
                                 <li>
                                     <a href="{{ url('customers/profile/read-invoices') }}">
-                                        <i class="fa fa-money text-red"></i> {{ trans_choice('header.notifications.overdue_invoices', count($invoices), ['count' => count($invoices)]) }}
+                                        <i class="fa fa-money text-red"></i> {{
+                                        trans_choice('header.notifications.overdue_invoices', count($invoices),
+                                        ['count' => count($invoices)]) }}
                                     </a>
                                 </li>
                                 @endif
@@ -63,21 +68,21 @@
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         @if ($user->picture)
-                            <img src="{{ Storage::url($user->picture->id) }}" class="user-image" alt="User Image">
+                        <img src="{{ Storage::url($user->picture->id) }}" class="user-image" alt="User Image">
                         @else
-                            <i class="fa fa-user-o"></i>
+                        <i class="fa fa-user-o"></i>
                         @endif
                         @if (!empty($user->name))
-                            <span class="hidden-xs">{{ $user->name }}</span>
+                        <span class="hidden-xs">{{ $user->name }}</span>
                         @endif
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
                             @if ($user->picture)
-                                <img src="{{ Storage::url($user->picture->id) }}" class="img-circle" alt="User Image">
+                            <img src="{{ Storage::url($user->picture->id) }}" class="img-circle" alt="User Image">
                             @else
-                                <i class="fa fa-4 fa-user-o" style="color: #fff; font-size: 7em;"></i>
+                            <i class="fa fa-4 fa-user-o" style="color: #fff; font-size: 7em;"></i>
                             @endif
                             <p>
                                 @if (!empty($user->name))
@@ -90,11 +95,13 @@
                         <li class="user-footer">
                             @permission('update-customers-profile')
                             <div class="pull-left">
-                                <a href="{{ url('customers/profile/edit') }}" class="btn btn-default btn-flat">{{ trans('auth.profile') }}</a>
+                                <a href="{{ url('customers/profile/edit') }}" class="btn btn-default btn-flat">{{
+                                    trans('auth.profile') }}</a>
                             </div>
                             @endpermission
                             <div class="pull-right">
-                                <a href="{{ url('customers/logout') }}" class="btn btn-default btn-flat">{{ trans('auth.logout') }}</a>
+                                <a href="{{ url('customers/logout') }}" class="btn btn-default btn-flat">{{
+                                    trans('auth.logout') }}</a>
                             </div>
                         </li>
                     </ul>

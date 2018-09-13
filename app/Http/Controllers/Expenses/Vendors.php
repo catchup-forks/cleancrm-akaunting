@@ -35,7 +35,7 @@ class Vendors extends Controller
     /**
      * Show the form for viewing the specified resource.
      *
-     * @param  Vendor  $vendor
+     * @param Vendor $vendor
      *
      * @return Response
      */
@@ -119,7 +119,7 @@ class Vendors extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param Request $request
      *
      * @return Response
      */
@@ -144,7 +144,7 @@ class Vendors extends Controller
     /**
      * Duplicate the specified resource.
      *
-     * @param  Vendor  $vendor
+     * @param Vendor $vendor
      *
      * @return Response
      */
@@ -156,13 +156,13 @@ class Vendors extends Controller
 
         flash($message)->success();
 
-        return redirect('expenses/vendors/' . $clone->id . '/edit');
+        return redirect('expenses/vendors/'.$clone->id.'/edit');
     }
 
     /**
      * Import the specified resource.
      *
-     * @param  ImportFile  $import
+     * @param ImportFile $import
      *
      * @return Response
      */
@@ -182,7 +182,7 @@ class Vendors extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Vendor  $vendor
+     * @param Vendor $vendor
      *
      * @return Response
      */
@@ -196,8 +196,8 @@ class Vendors extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Vendor  $vendor
-     * @param  Request  $request
+     * @param Vendor  $vendor
+     * @param Request $request
      *
      * @return Response
      */
@@ -222,7 +222,7 @@ class Vendors extends Controller
     /**
      * Enable the specified resource.
      *
-     * @param  Vendor  $vendor
+     * @param Vendor $vendor
      *
      * @return Response
      */
@@ -241,7 +241,7 @@ class Vendors extends Controller
     /**
      * Disable the specified resource.
      *
-     * @param  Vendor  $vendor
+     * @param Vendor $vendor
      *
      * @return Response
      */
@@ -260,7 +260,7 @@ class Vendors extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Vendor  $vendor
+     * @param Vendor $vendor
      *
      * @return Response
      */
@@ -293,10 +293,10 @@ class Vendors extends Controller
      */
     public function export()
     {
-        \Excel::create('vendors', function($excel) {
-            $excel->sheet('vendors', function($sheet) {
+        \Excel::create('vendors', function ($excel) {
+            $excel->sheet('vendors', function ($sheet) {
                 $sheet->fromModel(Vendor::filter(request()->input())->get()->makeHidden([
-                    'id', 'company_id', 'created_at', 'updated_at', 'deleted_at'
+                    'id', 'company_id', 'created_at', 'updated_at', 'deleted_at',
                 ]));
             });
         })->download('xlsx');
@@ -309,7 +309,7 @@ class Vendors extends Controller
         if (empty($vendor_id)) {
             return response()->json([]);
         }
-        
+
         $vendor = Vendor::find($vendor_id);
 
         if (empty($vendor)) {
@@ -345,10 +345,10 @@ class Vendors extends Controller
     /**
      * Generate a pagination collection.
      *
-     * @param array|Collection      $items
-     * @param int   $perPage
-     * @param int   $page
-     * @param array $options
+     * @param array|Collection $items
+     * @param int              $perPage
+     * @param int              $page
+     * @param array            $options
      *
      * @return LengthAwarePaginator
      */

@@ -25,7 +25,7 @@ class Payments extends Controller
      */
     public function index()
     {
-        $payments = Payment::with(['vendor', 'account', 'category'])->isNotTransfer()->collect(['paid_at'=> 'desc']);
+        $payments = Payment::with(['vendor', 'account', 'category'])->isNotTransfer()->collect(['paid_at' => 'desc']);
 
         $vendors = collect(Vendor::enabled()->orderBy('name')->pluck('name', 'id'))
             ->prepend(trans('general.all_type', ['type' => trans_choice('general.vendors', 2)]), '');
@@ -78,7 +78,7 @@ class Payments extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param Request $request
      *
      * @return Response
      */
@@ -106,7 +106,7 @@ class Payments extends Controller
     /**
      * Duplicate the specified resource.
      *
-     * @param  Payment  $payment
+     * @param Payment $payment
      *
      * @return Response
      */
@@ -118,13 +118,13 @@ class Payments extends Controller
 
         flash($message)->success();
 
-        return redirect('expenses/payments/' . $clone->id . '/edit');
+        return redirect('expenses/payments/'.$clone->id.'/edit');
     }
 
     /**
      * Import the specified resource.
      *
-     * @param  ImportFile  $import
+     * @param ImportFile $import
      *
      * @return Response
      */
@@ -144,7 +144,7 @@ class Payments extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Payment  $payment
+     * @param Payment $payment
      *
      * @return Response
      */
@@ -170,8 +170,8 @@ class Payments extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Payment  $payment
-     * @param  Request  $request
+     * @param Payment $payment
+     * @param Request $request
      *
      * @return Response
      */
@@ -199,7 +199,7 @@ class Payments extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Payment  $payment
+     * @param Payment $payment
      *
      * @return Response
      */
@@ -227,10 +227,10 @@ class Payments extends Controller
      */
     public function export()
     {
-        \Excel::create('payments', function($excel) {
-            $excel->sheet('payments', function($sheet) {
+        \Excel::create('payments', function ($excel) {
+            $excel->sheet('payments', function ($sheet) {
                 $sheet->fromModel(Payment::filter(request()->input())->get()->makeHidden([
-                    'id', 'company_id', 'parent_id', 'created_at', 'updated_at', 'deleted_at'
+                    'id', 'company_id', 'parent_id', 'created_at', 'updated_at', 'deleted_at',
                 ]));
             });
         })->download('xlsx');

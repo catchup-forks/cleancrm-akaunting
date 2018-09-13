@@ -27,7 +27,7 @@ class Company extends FormRequest
             'domain' => 'required|string',
             'company_name' => 'required|string',
             'company_email' => 'required|email',
-            'company_logo' => 'mimes:' . setting('general.file_types') . '|between:0,' . setting('general.file_size') * 1024,
+            'company_logo' => 'mimes:'.setting('general.file_types').'|between:0,'.setting('general.file_size') * 1024,
             'default_currency' => 'required|string',
         ];
     }

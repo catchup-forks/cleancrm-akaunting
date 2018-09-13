@@ -10,16 +10,14 @@ class ValidationServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
     public function boot()
     {
         $currency_code = null;
 
-        Validator::extend('currency', function ($attribute, $value, $parameters, $validator) use(&$currency_code) {
+        Validator::extend('currency', function ($attribute, $value, $parameters, $validator) use (&$currency_code) {
             $status = false;
-            
+
             if (!is_string($value) || (strlen($value) != 3)) {
                 return $status;
             }
@@ -56,11 +54,8 @@ class ValidationServiceProvider extends ServiceProvider
 
     /**
      * Register any application services.
-     *
-     * @return void
      */
     public function register()
     {
-        //
     }
 }

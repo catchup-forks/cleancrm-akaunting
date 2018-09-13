@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Modules;
 use App\Http\Controllers\Controller;
 use App\Traits\Modules;
 use App\Models\Module\Module;
-use Illuminate\Routing\Route;
 use Illuminate\Http\Request;
 
 class Tiles extends Controller
@@ -94,7 +93,7 @@ class Tiles extends Controller
         $data = [
             'query' => [
                 'keyword' => $keyword,
-            ]
+            ],
         ];
 
         $title = trans('modules.search');

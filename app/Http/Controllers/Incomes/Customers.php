@@ -19,7 +19,6 @@ use Illuminate\Support\Collection;
 
 class Customers extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +34,7 @@ class Customers extends Controller
     /**
      * Show the form for viewing the specified resource.
      *
-     * @param  Customer  $customer
+     * @param Customer $customer
      *
      * @return Response
      */
@@ -119,7 +118,7 @@ class Customers extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param Request $request
      *
      * @return Response
      */
@@ -164,7 +163,7 @@ class Customers extends Controller
     /**
      * Duplicate the specified resource.
      *
-     * @param  Customer  $customer
+     * @param Customer $customer
      *
      * @return Response
      */
@@ -176,13 +175,13 @@ class Customers extends Controller
 
         flash($message)->success();
 
-        return redirect('incomes/customers/' . $clone->id . '/edit');
+        return redirect('incomes/customers/'.$clone->id.'/edit');
     }
 
     /**
      * Import the specified resource.
      *
-     * @param  ImportFile  $import
+     * @param ImportFile $import
      *
      * @return Response
      */
@@ -202,7 +201,7 @@ class Customers extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Customer  $customer
+     * @param Customer $customer
      *
      * @return Response
      */
@@ -216,8 +215,8 @@ class Customers extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Customer  $customer
-     * @param  Request  $request
+     * @param Customer $customer
+     * @param Request  $request
      *
      * @return Response
      */
@@ -258,7 +257,7 @@ class Customers extends Controller
     /**
      * Enable the specified resource.
      *
-     * @param  Customer  $customer
+     * @param Customer $customer
      *
      * @return Response
      */
@@ -277,7 +276,7 @@ class Customers extends Controller
     /**
      * Disable the specified resource.
      *
-     * @param  Customer  $customer
+     * @param Customer $customer
      *
      * @return Response
      */
@@ -296,7 +295,7 @@ class Customers extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Customer  $customer
+     * @param Customer $customer
      *
      * @return Response
      */
@@ -329,10 +328,10 @@ class Customers extends Controller
      */
     public function export()
     {
-        \Excel::create('customers', function($excel) {
-            $excel->sheet('customers', function($sheet) {
+        \Excel::create('customers', function ($excel) {
+            $excel->sheet('customers', function ($sheet) {
                 $sheet->fromModel(Customer::filter(request()->input())->get()->makeHidden([
-                    'id', 'company_id', 'created_at', 'updated_at', 'deleted_at'
+                    'id', 'company_id', 'created_at', 'updated_at', 'deleted_at',
                 ]));
             });
         })->download('xlsx');
@@ -403,7 +402,7 @@ class Customers extends Controller
         }
 
         $json = [
-            'html' => $html
+            'html' => $html,
         ];
 
         return response()->json($json);
@@ -412,10 +411,10 @@ class Customers extends Controller
     /**
      * Generate a pagination collection.
      *
-     * @param array|Collection      $items
-     * @param int   $perPage
-     * @param int   $page
-     * @param array $options
+     * @param array|Collection $items
+     * @param int              $perPage
+     * @param int              $page
+     * @param array            $options
      *
      * @return LengthAwarePaginator
      */

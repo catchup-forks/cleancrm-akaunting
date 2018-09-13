@@ -27,7 +27,8 @@ class Currencies extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param  Currency  $currency
+     * @param Currency $currency
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function show(Currency $currency)
@@ -39,6 +40,7 @@ class Currencies extends ApiController
      * Store a newly created resource in storage.
      *
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function store(Request $request)
@@ -53,6 +55,7 @@ class Currencies extends ApiController
      *
      * @param  $currency
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function update(Currency $currency, Request $request)
@@ -65,7 +68,8 @@ class Currencies extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Currency  $currency
+     * @param Currency $currency
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function destroy(Currency $currency)

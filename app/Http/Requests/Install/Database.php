@@ -26,7 +26,7 @@ class Database extends Request
         return [
             'hostname' => 'required',
             'username' => 'required',
-            'database' => 'required'
+            'database' => 'required',
         ];
     }
 }

@@ -4,14 +4,14 @@
             <h3 class="box-title"><a href="{{ url('apps/' . $module->slug) }}">{{ $module->name }}</a></h3>
 
             @if (isset($installed[$module->slug]))
-                @php $color = 'bg-green'; @endphp
+            @php $color = 'bg-green'; @endphp
 
-                @if (!$installed[$module->slug])
-                    @php $color = 'bg-yellow'; @endphp
-                @endif
-                <span class="module-installed">
-                    <small class="label {{ $color }}">{{ trans('modules.badge.installed') }}</small>
-                </span>
+            @if (!$installed[$module->slug])
+            @php $color = 'bg-yellow'; @endphp
+            @endif
+            <span class="module-installed">
+                <small class="label {{ $color }}">{{ trans('modules.badge.installed') }}</small>
+            </span>
             @endif
             <!-- /.box-tools -->
         </div>
@@ -20,9 +20,9 @@
         <div class="box-body text-center">
             <a href="{{ url('apps/' . $module->slug) }}">
                 @foreach ($module->files as $file)
-                    @if (($file->media_type == 'image') && ($file->pivot->zone == 'thumbnail'))
-                        <img src="{{ $file->path_string }}" alt="{{ $module->name }}" class="item-image">
-                    @endif
+                @if (($file->media_type == 'image') && ($file->pivot->zone == 'thumbnail'))
+                <img src="{{ $file->path_string }}" alt="{{ $module->name }}" class="item-image">
+                @endif
                 @endforeach
             </a>
         </div>
@@ -34,14 +34,14 @@
             </div>
             <div class="pull-right">
                 @if ($module->price == '0.0000')
-                    {{ trans('modules.free') }}
+                {{ trans('modules.free') }}
                 @else
-                    @if (isset($module->special_price))
-                        <del>{{ $module->price }}</del>
-                        {{ $module->special_price }}
-                    @else
-                        {{ $module->price }}
-                    @endif
+                @if (isset($module->special_price))
+                <del>{{ $module->price }}</del>
+                {{ $module->special_price }}
+                @else
+                {{ $module->price }}
+                @endif
                 @endif
             </div>
         </div>

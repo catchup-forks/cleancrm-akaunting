@@ -71,7 +71,7 @@ class InvoicePayments extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param Request $request
      *
      * @return Response
      */
@@ -86,7 +86,7 @@ class InvoicePayments extends Controller
 
         $total_amount = $invoice->amount;
 
-        $default_amount = (double) $request['amount'];
+        $default_amount = (float) $request['amount'];
 
         if ($invoice->currency_code == $request['currency_code']) {
             $amount = $default_amount;
@@ -94,11 +94,11 @@ class InvoicePayments extends Controller
             $default_amount_model = new InvoicePayment();
 
             $default_amount_model->default_currency_code = $invoice->currency_code;
-            $default_amount_model->amount                = $default_amount;
-            $default_amount_model->currency_code         = $request['currency_code'];
-            $default_amount_model->currency_rate         = $currencies[$request['currency_code']];
+            $default_amount_model->amount = $default_amount;
+            $default_amount_model->currency_code = $request['currency_code'];
+            $default_amount_model->currency_rate = $currencies[$request['currency_code']];
 
-            $default_amount = (double) $default_amount_model->getDivideConvertedAmount();
+            $default_amount = (float) $default_amount_model->getDivideConvertedAmount();
 
             $convert_amount = new InvoicePayment();
 
@@ -107,7 +107,7 @@ class InvoicePayments extends Controller
             $convert_amount->currency_code = $invoice->currency_code;
             $convert_amount->currency_rate = $currencies[$invoice->currency_code];
 
-            $amount = (double) $convert_amount->getDynamicConvertedAmount();
+            $amount = (float) $convert_amount->getDynamicConvertedAmount();
         }
 
         if ($invoice->payments()->count()) {
@@ -117,7 +117,7 @@ class InvoicePayments extends Controller
         // For amount cover integer
         $multiplier = 1;
 
-        for ($i = 0; $i < $currency->precision; $i++) {
+        for ($i = 0; $i < $currency->precision; ++$i) {
             $multiplier *= 10;
         }
 
@@ -131,11 +131,11 @@ class InvoicePayments extends Controller
                 $error_amount_model = new InvoicePayment();
 
                 $error_amount_model->default_currency_code = $request['currency_code'];
-                $error_amount_model->amount                = $error_amount;
-                $error_amount_model->currency_code         = $invoice->currency_code;
-                $error_amount_model->currency_rate         = $currencies[$invoice->currency_code];
+                $error_amount_model->amount = $error_amount;
+                $error_amount_model->currency_code = $invoice->currency_code;
+                $error_amount_model->currency_rate = $currencies[$invoice->currency_code];
 
-                $error_amount = (double) $error_amount_model->getDivideConvertedAmount();
+                $error_amount = (float) $error_amount_model->getDivideConvertedAmount();
 
                 $convert_amount = new InvoicePayment();
 
@@ -144,16 +144,16 @@ class InvoicePayments extends Controller
                 $convert_amount->currency_code = $request['currency_code'];
                 $convert_amount->currency_rate = $currencies[$request['currency_code']];
 
-                $error_amount = (double) $convert_amount->getDynamicConvertedAmount();
+                $error_amount = (float) $convert_amount->getDynamicConvertedAmount();
             }
 
-            $message = trans('messages.error.over_payment', ['amount' => money($error_amount, $request['currency_code'],true)]);
+            $message = trans('messages.error.over_payment', ['amount' => money($error_amount, $request['currency_code'], true)]);
 
             return response()->json([
                 'success' => false,
                 'error' => true,
                 'data' => [
-                    'amount' => $error_amount
+                    'amount' => $error_amount,
                 ],
                 'message' => $message,
                 'html' => 'null',
@@ -167,16 +167,16 @@ class InvoicePayments extends Controller
         $invoice->save();
 
         $invoice_payment_request = [
-            'company_id'     => $request['company_id'],
-            'invoice_id'     => $request['invoice_id'],
-            'account_id'     => $request['account_id'],
-            'paid_at'        => $request['paid_at'],
-            'amount'         => $request['amount'],
-            'currency_code'  => $request['currency_code'],
-            'currency_rate'  => $request['currency_rate'],
-            'description'    => $request['description'],
+            'company_id' => $request['company_id'],
+            'invoice_id' => $request['invoice_id'],
+            'account_id' => $request['account_id'],
+            'paid_at' => $request['paid_at'],
+            'amount' => $request['amount'],
+            'currency_code' => $request['currency_code'],
+            'currency_rate' => $request['currency_rate'],
+            'description' => $request['description'],
             'payment_method' => $request['payment_method'],
-            'reference'      => $request['reference']
+            'reference' => $request['reference'],
         ];
 
         $invoice_payment = InvoicePayment::create($invoice_payment_request);
@@ -193,7 +193,7 @@ class InvoicePayments extends Controller
 
         $desc_amount = money((float) $request['amount'], (string) $request['currency_code'], true)->format();
 
-        $request['description'] = $desc_amount . ' ' . trans_choice('general.payments', 1);
+        $request['description'] = $desc_amount.' '.trans_choice('general.payments', 1);
 
         InvoiceHistory::create($request->input());
 
@@ -220,7 +220,7 @@ class InvoicePayments extends Controller
                 $default_amount = $item->amount;
 
                 if ($invoice->currency_code == $item->currency_code) {
-                    $amount = (double) $default_amount;
+                    $amount = (float) $default_amount;
                 } else {
                     $default_amount_model = new InvoicePayment();
 
@@ -229,7 +229,7 @@ class InvoicePayments extends Controller
                     $default_amount_model->currency_code = $item->currency_code;
                     $default_amount_model->currency_rate = $_currencies[$item->currency_code];
 
-                    $default_amount = (double) $default_amount_model->getDivideConvertedAmount();
+                    $default_amount = (float) $default_amount_model->getDivideConvertedAmount();
 
                     $convert_amount = new InvoicePayment();
 
@@ -238,7 +238,7 @@ class InvoicePayments extends Controller
                     $convert_amount->currency_code = $invoice->currency_code;
                     $convert_amount->currency_rate = $_currencies[$invoice->currency_code];
 
-                    $amount = (double) $convert_amount->getDynamicConvertedAmount();
+                    $amount = (float) $convert_amount->getDynamicConvertedAmount();
                 }
 
                 $paid += $amount;

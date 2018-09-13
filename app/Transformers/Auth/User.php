@@ -15,6 +15,7 @@ class User extends TransformerAbstract
 
     /**
      * @param Model $model
+     *
      * @return array
      */
     public function transform(Model $model)
@@ -30,6 +31,7 @@ class User extends TransformerAbstract
 
     /**
      * @param Model $model
+     *
      * @return \League\Fractal\Resource\Collection
      */
     public function includeCompanies(Model $model)
@@ -39,6 +41,7 @@ class User extends TransformerAbstract
 
     /**
      * @param Model $model
+     *
      * @return \League\Fractal\Resource\Collection
      */
     public function includeRoles(Model $model)

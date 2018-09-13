@@ -27,7 +27,8 @@ class Permissions extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param  Permission  $permission
+     * @param Permission $permission
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function show(Permission $permission)
@@ -39,6 +40,7 @@ class Permissions extends ApiController
      * Store a newly created resource in storage.
      *
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function store(Request $request)
@@ -53,6 +55,7 @@ class Permissions extends ApiController
      *
      * @param  $permission
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function update(Permission $permission, Request $request)
@@ -65,7 +68,8 @@ class Permissions extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Permission  $permission
+     * @param Permission $permission
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function destroy(Permission $permission)

@@ -24,6 +24,7 @@ class InvoicePayments extends BaseController
      * Display a listing of the resource.
      *
      * @param  $invoice_id
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function index($invoice_id)
@@ -38,6 +39,7 @@ class InvoicePayments extends BaseController
      *
      * @param  $invoice_id
      * @param  $id
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function show($invoice_id, $id)
@@ -52,6 +54,7 @@ class InvoicePayments extends BaseController
      *
      * @param  $invoice_id
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function store($invoice_id, Request $request)
@@ -101,11 +104,11 @@ class InvoicePayments extends BaseController
 
         $desc_date = Date::parse($request['paid_at'])->format($this->getCompanyDateFormat());
         $desc_amount = money((float) $request['amount'], $request['currency_code'], true)->format();
-        $request['description'] = $desc_date . ' ' . $desc_amount;
+        $request['description'] = $desc_date.' '.$desc_amount;
 
         InvoiceHistory::create($request->input());
 
-        return $this->response->created(url('api/invoices/' . $invoice_id . '/payments' . $invoice_payment->id));
+        return $this->response->created(url('api/invoices/'.$invoice_id.'/payments'.$invoice_payment->id));
     }
 
     /**
@@ -113,6 +116,7 @@ class InvoicePayments extends BaseController
      *
      * @param  $invoice_id
      * @param  $id
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function destroy($invoice_id, $id)

@@ -35,7 +35,7 @@ class Currency extends Request
 
         return [
             'name' => 'required|string',
-            'code' => 'required|string|unique:currencies,NULL,' . $id . ',id,company_id,' . $company_id . ',deleted_at,NULL',
+            'code' => 'required|string|unique:currencies,NULL,'.$id.',id,company_id,'.$company_id.',deleted_at,NULL',
             'rate' => 'required',
             'enabled' => 'integer|boolean',
             'default_currency' => 'boolean',

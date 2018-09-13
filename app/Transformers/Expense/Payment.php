@@ -3,7 +3,6 @@
 namespace App\Transformers\Expense;
 
 use App\Transformers\Banking\Account;
-use App\Transformers\Expense\Vendor;
 use App\Transformers\Setting\Category;
 use App\Transformers\Setting\Currency;
 use App\Models\Expense\Payment as Model;
@@ -17,7 +16,8 @@ class Payment extends TransformerAbstract
     protected $defaultIncludes = ['account', 'category', 'currency', 'vendor'];
 
     /**
-     * @param  Model $model
+     * @param Model $model
+     *
      * @return array
      */
     public function transform(Model $model)
@@ -42,7 +42,8 @@ class Payment extends TransformerAbstract
     }
 
     /**
-     * @param  Model $model
+     * @param Model $model
+     *
      * @return \League\Fractal\Resource\Item
      */
     public function includeAccount(Model $model)
@@ -51,7 +52,8 @@ class Payment extends TransformerAbstract
     }
 
     /**
-     * @param  Model $model
+     * @param Model $model
+     *
      * @return \League\Fractal\Resource\Item
      */
     public function includeCategory(Model $model)
@@ -60,7 +62,8 @@ class Payment extends TransformerAbstract
     }
 
     /**
-     * @param  Model $model
+     * @param Model $model
+     *
      * @return \League\Fractal\Resource\Item
      */
     public function includeCurrency(Model $model)
@@ -69,7 +72,8 @@ class Payment extends TransformerAbstract
     }
 
     /**
-     * @param  Model $model
+     * @param Model $model
+     *
      * @return mixed
      */
     public function includeVendor(Model $model)

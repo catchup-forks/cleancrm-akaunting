@@ -9,12 +9,15 @@
         {!! Form::open(['url' => 'customers/transactions', 'role' => 'form', 'method' => 'GET']) !!}
         <div class="pull-left">
             <span class="title-filter hidden-xs">{{ trans('general.search') }}:</span>
-            {!! Form::text('search', request('search'), ['class' => 'form-control input-filter input-sm', 'placeholder' => trans('general.search_placeholder')]) !!}
-            {!! Form::button('<span class="fa fa-filter"></span> &nbsp;' . trans('general.filter'), ['type' => 'submit', 'class' => 'btn btn-sm btn-default btn-filter']) !!}
+            {!! Form::text('search', request('search'), ['class' => 'form-control input-filter input-sm', 'placeholder'
+            => trans('general.search_placeholder')]) !!}
+            {!! Form::button('<span class="fa fa-filter"></span> &nbsp;' . trans('general.filter'), ['type' =>
+            'submit', 'class' => 'btn btn-sm btn-default btn-filter']) !!}
         </div>
         <div class="pull-right">
             <span class="title-filter hidden-xs">{{ trans('general.show') }}:</span>
-            {!! Form::select('limit', $limits, request('limit', setting('general.list_limit', '25')), ['class' => 'form-control input-filter input-sm', 'onchange' => 'this.form.submit()']) !!}
+            {!! Form::select('limit', $limits, request('limit', setting('general.list_limit', '25')), ['class' =>
+            'form-control input-filter input-sm', 'onchange' => 'this.form.submit()']) !!}
         </div>
         {!! Form::close() !!}
     </div>
@@ -33,7 +36,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($transactions as $item)
+                    @foreach($transactions as $item)
                     <tr>
                         <td>{{ Date::parse($item->date)->format($date_format) }}</td>
                         <td>{{ $item->account }}</td>
@@ -42,7 +45,7 @@
                         <td>{{ $item->description }}</td>
                         <td>@money($item->amount, $item->currency_code, true)</td>
                     </tr>
-                @endforeach
+                    @endforeach
                 </tbody>
             </table>
         </div>

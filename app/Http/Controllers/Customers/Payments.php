@@ -6,14 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\Income\Revenue as Payment;
 use App\Models\Setting\Category;
 use App\Models\Banking\Account;
-
 use App\Utilities\Modules;
-
 use Auth;
 
 class Payments extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +34,7 @@ class Payments extends Controller
     /**
      * Show the form for viewing the specified resource.
      *
-     * @param  Payment  $payment
+     * @param Payment $payment
      *
      * @return Response
      */

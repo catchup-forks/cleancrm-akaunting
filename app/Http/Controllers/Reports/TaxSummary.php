@@ -5,10 +5,8 @@ namespace App\Http\Controllers\Reports;
 use App\Http\Controllers\Controller;
 use App\Models\Expense\Bill;
 use App\Models\Expense\BillPayment;
-use App\Models\Expense\BillTotal;
 use App\Models\Income\Invoice;
 use App\Models\Income\InvoicePayment;
-use App\Models\Income\InvoiceTotal;
 use App\Models\Setting\Tax;
 use App\Traits\Currencies;
 use Date;
@@ -39,8 +37,8 @@ class TaxSummary extends Controller
         }
 
         // Dates
-        for ($j = 1; $j <= 12; $j++) {
-            $dates[$j] = Date::parse($year . '-' . $j)->format('M');
+        for ($j = 1; $j <= 12; ++$j) {
+            $dates[$j] = Date::parse($year.'-'.$j)->format('M');
 
             foreach ($taxes as $tax_name) {
                 $incomes[$tax_name][$dates[$j]] = [

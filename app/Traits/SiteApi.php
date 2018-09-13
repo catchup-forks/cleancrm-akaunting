@@ -7,7 +7,6 @@ use GuzzleHttp\Exception\RequestException;
 
 trait SiteApi
 {
-
     protected static function getRemote($url, $data = array())
     {
         $base = 'https://akaunting.com/api/';
@@ -15,10 +14,10 @@ trait SiteApi
         $client = new Client(['verify' => false, 'base_uri' => $base]);
 
         $headers['headers'] = array(
-            'Authorization' => 'Bearer ' . setting('general.api_token'),
-            'Accept'        => 'application/json',
-            'Referer'       => env('APP_URL'),
-            'Akaunting'     => version('short')
+            'Authorization' => 'Bearer '.setting('general.api_token'),
+            'Accept' => 'application/json',
+            'Referer' => env('APP_URL'),
+            'Akaunting' => version('short'),
         );
 
         $data['http_errors'] = false;

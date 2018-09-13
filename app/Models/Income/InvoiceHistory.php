@@ -7,7 +7,6 @@ use App\Traits\Currencies;
 
 class InvoiceHistory extends Model
 {
-
     use Currencies;
 
     protected $table = 'invoice_histories';

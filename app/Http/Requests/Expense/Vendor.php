@@ -36,7 +36,7 @@ class Vendor extends Request
         }
 
         if (!empty($this->request->get('email'))) {
-            $email = 'email|unique:vendors,NULL,' . $id . ',id,company_id,' . $company_id . ',deleted_at,NULL';
+            $email = 'email|unique:vendors,NULL,'.$id.',id,company_id,'.$company_id.',deleted_at,NULL';
         }
 
         return [

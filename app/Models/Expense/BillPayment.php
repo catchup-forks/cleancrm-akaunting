@@ -6,7 +6,6 @@ use App\Models\Model;
 use App\Traits\Currencies;
 use App\Traits\DateTime;
 use App\Traits\Media;
-use Date;
 
 class BillPayment extends Model
 {
@@ -56,29 +55,28 @@ class BillPayment extends Model
     /**
      * Convert amount to double.
      *
-     * @param  string  $value
-     * @return void
+     * @param string $value
      */
     public function setAmountAttribute($value)
     {
-        $this->attributes['amount'] = (double) $value;
+        $this->attributes['amount'] = (float) $value;
     }
 
     /**
      * Convert currency rate to double.
      *
-     * @param  string  $value
-     * @return void
+     * @param string $value
      */
     public function setCurrencyRateAttribute($value)
     {
-        $this->attributes['currency_rate'] = (double) $value;
+        $this->attributes['currency_rate'] = (float) $value;
     }
 
     /**
      * Scope paid invoice.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopePaid($query)

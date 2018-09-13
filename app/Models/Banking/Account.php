@@ -38,10 +38,10 @@ class Account extends Model
      * @var array
      */
     protected $searchableColumns = [
-        'name'         => 10,
-        'number'       => 10,
-        'bank_name'    => 10,
-        'bank_phone'   => 5,
+        'name' => 10,
+        'number' => 10,
+        'bank_name' => 10,
+        'bank_phone' => 5,
         'bank_address' => 2,
     ];
 
@@ -73,12 +73,11 @@ class Account extends Model
     /**
      * Convert opening balance to double.
      *
-     * @param  string  $value
-     * @return void
+     * @param string $value
      */
     public function setOpeningBalanceAttribute($value)
     {
-        $this->attributes['opening_balance'] = (double) $value;
+        $this->attributes['opening_balance'] = (float) $value;
     }
 
     /**

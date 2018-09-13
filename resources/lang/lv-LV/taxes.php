@@ -1,8 +1,6 @@
 <?php
 
 return [
-
-    'rate'                  => 'Likme',
-    'rate_percent'          => 'Likme (%)',
-
+    'rate' => 'Likme',
+    'rate_percent' => 'Likme (%)',
 ];

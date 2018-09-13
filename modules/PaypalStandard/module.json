@@ -15,8 +15,7 @@
         "start.php"
     ],
     "requires": [],
-    "settings": [
-        {
+    "settings": [{
             "type": "textGroup",
             "name": "name",
             "title": "general.name",

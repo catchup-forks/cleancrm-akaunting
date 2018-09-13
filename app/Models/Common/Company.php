@@ -181,7 +181,7 @@ class Company extends Eloquent
             return $this->provideFilter();
         }
 
-        $class = '\App\Filters\\' . ucfirst($folder) .'\\' . ucfirst($file);
+        $class = '\App\Filters\\'.ucfirst($folder).'\\'.ucfirst($file);
 
         return $this->provideFilter($class);
     }
@@ -208,7 +208,8 @@ class Company extends Eloquent
      * Scope to only include companies of a given enabled value.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param mixed $value
+     * @param mixed                                 $value
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeEnabled($query, $value = 1)
@@ -217,7 +218,7 @@ class Company extends Eloquent
     }
 
     /**
-     * Sort by company name
+     * Sort by company name.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @param $direction
@@ -233,7 +234,7 @@ class Company extends Eloquent
     }
 
     /**
-     * Sort by company email
+     * Sort by company email.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @param $direction

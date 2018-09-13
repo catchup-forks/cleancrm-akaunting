@@ -10,7 +10,6 @@ use App\Traits\Media;
 use App\Traits\Recurring;
 use Bkwld\Cloner\Cloneable;
 use Sofa\Eloquence\Eloquence;
-use Date;
 
 class Invoice extends Model
 {
@@ -39,7 +38,7 @@ class Invoice extends Model
      *
      * @var array
      */
-    public $sortable = ['invoice_number', 'customer_name', 'amount', 'status' , 'invoiced_at', 'due_at', 'invoice_status_code'];
+    public $sortable = ['invoice_number', 'customer_name', 'amount', 'status', 'invoiced_at', 'due_at', 'invoice_status_code'];
 
     /**
      * Searchable rules.
@@ -47,13 +46,13 @@ class Invoice extends Model
      * @var array
      */
     protected $searchableColumns = [
-        'invoice_number'   => 10,
-        'order_number'     => 10,
-        'customer_name'    => 10,
-        'customer_email'   => 5,
-        'customer_phone'   => 2,
+        'invoice_number' => 10,
+        'order_number' => 10,
+        'customer_name' => 10,
+        'customer_email' => 5,
+        'customer_phone' => 2,
         'customer_address' => 1,
-        'notes'            => 2,
+        'notes' => 2,
     ];
 
     /**
@@ -142,23 +141,21 @@ class Invoice extends Model
     /**
      * Convert amount to double.
      *
-     * @param  string  $value
-     * @return void
+     * @param string $value
      */
     public function setAmountAttribute($value)
     {
-        $this->attributes['amount'] = (double) $value;
+        $this->attributes['amount'] = (float) $value;
     }
 
     /**
      * Convert currency rate to double.
      *
-     * @param  string  $value
-     * @return void
+     * @param string $value
      */
     public function setCurrencyRateAttribute($value)
     {
-        $this->attributes['currency_rate'] = (double) $value;
+        $this->attributes['currency_rate'] = (float) $value;
     }
 
     /**

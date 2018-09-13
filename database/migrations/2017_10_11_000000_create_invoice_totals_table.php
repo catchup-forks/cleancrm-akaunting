@@ -13,8 +13,6 @@ class CreateInvoiceTotalsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
@@ -65,7 +63,7 @@ class CreateInvoiceTotalsTable extends Migration
                         } else {
                             $taxes[$invoice_item->tax_id] = [
                                 'name' => $tax_object->name,
-                                'amount' => $invoice_item->tax
+                                'amount' => $invoice_item->tax,
                             ];
                         }
                     }
@@ -106,7 +104,7 @@ class CreateInvoiceTotalsTable extends Migration
 
                         InvoiceTotal::create($invoice_tax_total);
 
-                        $sort_order++;
+                        ++$sort_order;
                     }
                 }
 
@@ -129,8 +127,6 @@ class CreateInvoiceTotalsTable extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down()
     {

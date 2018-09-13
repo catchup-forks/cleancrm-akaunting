@@ -41,7 +41,7 @@ class Customer extends Request
         }
 
         if (!empty($this->request->get('email'))) {
-            $email = 'email|unique:customers,NULL,' . $id . ',id,company_id,' . $company_id . ',deleted_at,NULL';
+            $email = 'email|unique:customers,NULL,'.$id.',id,company_id,'.$company_id.',deleted_at,NULL';
         }
 
         return [
@@ -49,7 +49,7 @@ class Customer extends Request
             'name' => 'required|string',
             'email' => $email,
             'currency_code' => 'required|string|currency',
-            'password' => $required . 'confirmed',
+            'password' => $required.'confirmed',
             'enabled' => 'integer|boolean',
         ];
     }

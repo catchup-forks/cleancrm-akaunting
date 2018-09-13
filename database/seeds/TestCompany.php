@@ -13,8 +13,6 @@ class TestCompany extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
     public function run()
     {
@@ -42,11 +40,11 @@ class TestCompany extends Seeder
             Company::create($row);
         }
 
-        Setting::setExtraColumns(['company_id' => '1']);
+        Setting::setExtraColumns(['company_id' => '5']);
         Setting::set('general.company_name', 'Test Inc.');
         Setting::set('general.company_email', 'info@test.com');
         Setting::set('general.company_address', 'New Street 1254');
-        Setting::set('general.default_currency', 'USD');
+        Setting::set('general.default_currency', 'EUR');
         Setting::set('general.default_account', '1');
         Setting::set('general.default_payment_method', 'offlinepayment.cash.1');
         Setting::save();

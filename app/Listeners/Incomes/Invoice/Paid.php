@@ -3,11 +3,8 @@
 namespace App\Listeners\Incomes\Invoice;
 
 use App\Events\InvoicePaid;
-
-use App\Models\Income\Invoice;
 use App\Models\Income\InvoicePayment;
 use App\Models\Income\InvoiceHistory;
-
 use App\Traits\DateTime;
 use Date;
 
@@ -19,7 +16,6 @@ class Paid
      * Handle the event.
      *
      * @param  $event
-     * @return void
      */
     public function handle(InvoicePaid $event)
     {
@@ -63,7 +59,7 @@ class Paid
 
         $desc_amount = money((float) $request['amount'], $request['currency_code'], true)->format();
 
-        $request['description'] = $desc_date . ' ' . $desc_amount;
+        $request['description'] = $desc_date.' '.$desc_amount;
 
         InvoiceHistory::create($request->input());
 

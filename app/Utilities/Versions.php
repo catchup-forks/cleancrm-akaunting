@@ -68,7 +68,7 @@ class Versions
         $data = array();
 
         // Check core first
-        $url = 'core/version/' . $info['akaunting'] . '/' . $info['php'] . '/' . $info['mysql'] . '/' . $info['companies'];
+        $url = 'core/version/'.$info['akaunting'].'/'.$info['php'].'/'.$info['mysql'].'/'.$info['companies'];
 
         $data['core'] = static::getLatestVersion($url);
 
@@ -77,7 +77,7 @@ class Versions
             $alias = $module->get('alias');
             $version = $module->get('version');
 
-            $url = 'apps/' . $alias . '/version/' . $version . '/' . $info['akaunting'];
+            $url = 'apps/'.$alias.'/version/'.$version.'/'.$info['akaunting'];
 
             $data[$alias] = static::getLatestVersion($url);
         }

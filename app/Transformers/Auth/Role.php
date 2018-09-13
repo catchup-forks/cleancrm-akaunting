@@ -14,6 +14,7 @@ class Role extends TransformerAbstract
 
     /**
      * @param Model $model
+     *
      * @return array
      */
     public function transform(Model $model)
@@ -29,6 +30,7 @@ class Role extends TransformerAbstract
 
     /**
      * @param Model $model
+     *
      * @return \League\Fractal\Resource\Collection
      */
     public function includePermissions(Model $model)

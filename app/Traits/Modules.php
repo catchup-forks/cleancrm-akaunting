@@ -15,13 +15,12 @@ use Date;
 
 trait Modules
 {
-
     public function checkToken($token)
     {
         $data = [
             'form_params' => [
                 'token' => $token,
-            ]
+            ],
         ];
 
         $response = $this->getRemote('token/check', 'POST', $data);
@@ -48,7 +47,7 @@ trait Modules
 
     public function getModule($alias)
     {
-        $response = $this->getRemote('apps/' . $alias);
+        $response = $this->getRemote('apps/'.$alias);
 
         if ($response && ($response->getStatusCode() == 200)) {
             return json_decode($response->getBody())->data;
@@ -70,7 +69,7 @@ trait Modules
 
     public function getModulesByCategory($alias)
     {
-        $response = $this->getRemote('apps/categories/' . $alias);
+        $response = $this->getRemote('apps/categories/'.$alias);
 
         if ($response && ($response->getStatusCode() == 200)) {
             return json_decode($response->getBody())->data;
@@ -94,7 +93,7 @@ trait Modules
     {
         $company_id = session('company_id');
 
-        $cache = 'installed.' . $company_id . '.module';
+        $cache = 'installed.'.$company_id.'.module';
 
         $installed = Cache::get($cache);
 
@@ -187,10 +186,10 @@ trait Modules
         if ($response && ($response->getStatusCode() == 200)) {
             $file = $response->getBody()->getContents();
 
-            $path = 'temp-' . md5(mt_rand());
-            $temp_path = storage_path('app/temp') . '/' . $path;
+            $path = 'temp-'.md5(mt_rand());
+            $temp_path = storage_path('app/temp').'/'.$path;
 
-            $file_path = $temp_path . '/upload.zip';
+            $file_path = $temp_path.'/upload.zip';
 
             // Create tmp directory
             if (!File::isDirectory($temp_path)) {
@@ -205,7 +204,7 @@ trait Modules
             }
 
             $data = [
-                'path' => $path
+                'path' => $path,
             ];
 
             return [
@@ -224,9 +223,9 @@ trait Modules
 
     public function unzipModule($path)
     {
-        $temp_path = storage_path('app/temp') . '/' . $path;
+        $temp_path = storage_path('app/temp').'/'.$path;
 
-        $file = $temp_path . '/upload.zip';
+        $file = $temp_path.'/upload.zip';
 
         // Unzip the file
         $zip = new ZipArchive();
@@ -245,7 +244,7 @@ trait Modules
         File::delete($file);
 
         $data = [
-            'path' => $path
+            'path' => $path,
         ];
 
         return [
@@ -257,18 +256,18 @@ trait Modules
 
     public function installModule($path)
     {
-        $temp_path = storage_path('app/temp') . '/' . $path;
+        $temp_path = storage_path('app/temp').'/'.$path;
 
-        $modules_path = base_path() . '/modules';
+        $modules_path = base_path().'/modules';
 
         // Create modules directory
         if (!File::isDirectory($modules_path)) {
             File::makeDirectory($modules_path);
         }
 
-        $module = json_decode(file_get_contents($temp_path . '/module.json'));
+        $module = json_decode(file_get_contents($temp_path.'/module.json'));
 
-        $module_path = $modules_path . '/' . $module->name;
+        $module_path = $modules_path.'/'.$module->name;
 
         // Create module directory
         if (!File::isDirectory($module_path)) {
@@ -282,14 +281,14 @@ trait Modules
         Artisan::call('cache:clear');
 
         $data = [
-            'path'  => $path,
+            'path' => $path,
             'name' => $module->name,
-            'alias' => $module->alias
+            'alias' => $module->alias,
         ];
 
         return [
             'success' => true,
-            'installed' => url("apps/post/" . $module->alias),
+            'installed' => url('apps/post/'.$module->alias),
             'errors' => false,
             'data' => $data,
         ];
@@ -312,7 +311,7 @@ trait Modules
         return [
             'success' => true,
             'errors' => false,
-            'data'   => $data
+            'data' => $data,
         ];
     }
 
@@ -333,7 +332,7 @@ trait Modules
         return [
             'success' => true,
             'errors' => false,
-            'data'   => $data
+            'data' => $data,
         ];
     }
 
@@ -354,7 +353,7 @@ trait Modules
         return [
             'success' => true,
             'errors' => false,
-            'data'   => $data
+            'data' => $data,
         ];
     }
 
@@ -417,10 +416,10 @@ trait Modules
         $client = new Client(['verify' => false, 'base_uri' => $base]);
 
         $headers['headers'] = [
-            'Authorization' => 'Bearer ' . setting('general.api_token'),
-            'Accept'        => 'application/json',
-            'Referer'       => env('APP_URL'),
-            'Akaunting'     => version('short'),
+            'Authorization' => 'Bearer '.setting('general.api_token'),
+            'Accept' => 'application/json',
+            'Referer' => env('APP_URL'),
+            'Akaunting' => version('short'),
         ];
 
         $data['http_errors'] = false;

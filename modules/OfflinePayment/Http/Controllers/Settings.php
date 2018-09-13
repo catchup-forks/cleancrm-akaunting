@@ -3,7 +3,6 @@
 namespace Modules\OfflinePayment\Http\Controllers;
 
 use Artisan;
-
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use Modules\OfflinePayment\Http\Requests\Setting as Request;
@@ -27,7 +26,7 @@ class Settings extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request $request
+     * @param Request $request
      *
      * @return Response
      */
@@ -43,7 +42,7 @@ class Settings extends Controller
 
                 $method = explode('.', $request['method']);
 
-                $methods[$key]['code'] = 'offlinepayment.' . $request['code'] . '.' . $method[2];
+                $methods[$key]['code'] = 'offlinepayment.'.$request['code'].'.'.$method[2];
                 $methods[$key]['name'] = $request['name'];
                 $methods[$key]['customer'] = $request['customer'];
                 $methods[$key]['order'] = $request['order'];
@@ -51,11 +50,11 @@ class Settings extends Controller
             }
         } else {
             $methods[] = array(
-                'code' => 'offlinepayment.' . $request['code'] . '.' . (count($methods) + 1),
+                'code' => 'offlinepayment.'.$request['code'].'.'.(count($methods) + 1),
                 'name' => $request['name'],
                 'customer' => $request['customer'],
                 'order' => $request['order'],
-                'description' => $request['description']
+                'description' => $request['description'],
             );
         }
 
@@ -72,7 +71,7 @@ class Settings extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  GRequest  $request
+     * @param GRequest $request
      *
      * @return Response
      */
@@ -104,14 +103,14 @@ class Settings extends Controller
         return response()->json([
             'errors' => false,
             'success' => true,
-            'data'    => $data
+            'data' => $data,
         ]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  DRequest  $request
+     * @param DRequest $request
      *
      * @return Response
      */

@@ -26,7 +26,7 @@ class Setting extends Request
         return [
             'company_name' => 'required|string',
             'company_email' => 'required|email',
-            'company_logo' => 'mimes:' . setting('general.file_types', 'pdf,jpeg,jpg,png'),
+            'company_logo' => 'mimes:'.setting('general.file_types', 'pdf,jpeg,jpg,png'),
         ];
     }
 }

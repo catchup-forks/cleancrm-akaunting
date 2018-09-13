@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Install;
 
-use Artisan;
 use App\Http\Requests\Install\Database as Request;
 use App\Utilities\Installer;
 use Illuminate\Routing\Controller;
@@ -22,14 +21,14 @@ class Database extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request $request
+     * @param Request $request
      *
      * @return Response
      */
     public function store(Request $request)
     {
         $host = $request['hostname'];
-        $port     = env('DB_PORT', '3306');
+        $port = env('DB_PORT', '3306');
         $database = $request['database'];
         $username = $request['username'];
         $password = $request['password'];

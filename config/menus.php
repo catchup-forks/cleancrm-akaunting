@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     'styles' => [
         'navbar' => \Nwidart\Menus\Presenters\Bootstrap\NavbarPresenter::class,
         'navbar-right' => \Nwidart\Menus\Presenters\Bootstrap\NavbarRightPresenter::class,
@@ -14,5 +13,4 @@ return [
     ],
 
     'ordering' => true,
-
 ];

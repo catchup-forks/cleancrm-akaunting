@@ -9,7 +9,6 @@ use App\Traits\Media;
 use App\Traits\Recurring;
 use Bkwld\Cloner\Cloneable;
 use Sofa\Eloquence\Eloquence;
-use Date;
 
 class Bill extends Model
 {
@@ -46,13 +45,13 @@ class Bill extends Model
      * @var array
      */
     protected $searchableColumns = [
-        'bill_number'    => 10,
-        'order_number'   => 10,
-        'vendor_name'    => 10,
-        'vendor_email'   => 5,
-        'vendor_phone'   => 2,
+        'bill_number' => 10,
+        'order_number' => 10,
+        'vendor_name' => 10,
+        'vendor_email' => 5,
+        'vendor_phone' => 2,
         'vendor_address' => 1,
-        'notes'          => 2,
+        'notes' => 2,
     ];
 
     /**
@@ -140,23 +139,21 @@ class Bill extends Model
     /**
      * Convert amount to double.
      *
-     * @param  string  $value
-     * @return void
+     * @param string $value
      */
     public function setAmountAttribute($value)
     {
-        $this->attributes['amount'] = (double) $value;
+        $this->attributes['amount'] = (float) $value;
     }
 
     /**
      * Convert currency rate to double.
      *
-     * @param  string  $value
-     * @return void
+     * @param string $value
      */
     public function setCurrencyRateAttribute($value)
     {
-        $this->attributes['currency_rate'] = (double) $value;
+        $this->attributes['currency_rate'] = (float) $value;
     }
 
     /**

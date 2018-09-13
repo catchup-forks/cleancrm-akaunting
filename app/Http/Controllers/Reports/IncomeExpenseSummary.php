@@ -37,16 +37,16 @@ class IncomeExpenseSummary extends Controller
         }
 
         // Dates
-        for ($j = 1; $j <= 12; $j++) {
-            $dates[$j] = Date::parse($year . '-' . $j)->format('F');
+        for ($j = 1; $j <= 12; ++$j) {
+            $dates[$j] = Date::parse($year.'-'.$j)->format('F');
 
-            $profit_graph[Date::parse($year . '-' . $j)->format('F-Y')] = 0;
+            $profit_graph[Date::parse($year.'-'.$j)->format('F-Y')] = 0;
 
             // Totals
             $totals[$dates[$j]] = array(
                 'amount' => 0,
                 'currency_code' => setting('general.default_currency'),
-                'currency_rate' => 1
+                'currency_rate' => 1,
             );
 
             foreach ($income_categories as $category_id => $category_name) {
@@ -55,7 +55,7 @@ class IncomeExpenseSummary extends Controller
                     'name' => $category_name,
                     'amount' => 0,
                     'currency_code' => setting('general.default_currency'),
-                    'currency_rate' => 1
+                    'currency_rate' => 1,
                 );
             }
 
@@ -65,7 +65,7 @@ class IncomeExpenseSummary extends Controller
                     'name' => $category_name,
                     'amount' => 0,
                     'currency_code' => setting('general.default_currency'),
-                    'currency_rate' => 1
+                    'currency_rate' => 1,
                 );
             }
         }
@@ -107,7 +107,7 @@ class IncomeExpenseSummary extends Controller
                 $this->setAmount($profit_graph, $totals, $compares, $bills, 'bill', 'billed_at');
                 break;
         }
-        
+
         // Payments
         if ($status != 'upcoming') {
             $payments = Payment::monthsOfYear('paid_at')->isNotTransfer()->get();

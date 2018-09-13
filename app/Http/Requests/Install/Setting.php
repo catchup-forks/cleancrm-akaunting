@@ -27,7 +27,7 @@ class Setting extends Request
             'company_name' => 'required',
             'company_email' => 'required',
             'user_email' => 'required',
-            'user_password' => 'required'
+            'user_password' => 'required',
         ];
     }
 }

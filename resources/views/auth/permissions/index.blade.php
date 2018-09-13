@@ -4,7 +4,8 @@
 
 @permission('update-auth-permissions')
 @section('new_button')
-<span class="new-button"><a href="{{ url('auth/permissions/create') }}" class="btn btn-success btn-sm"><span class="fa fa-plus"></span> &nbsp;{{ trans('general.add_new') }}</a></span>
+<span class="new-button"><a href="{{ url('auth/permissions/create') }}" class="btn btn-success btn-sm"><span class="fa fa-plus"></span>
+        &nbsp;{{ trans('general.add_new') }}</a></span>
 @endsection
 @endpermission
 
@@ -15,12 +16,15 @@
         {!! Form::open(['url' => 'auth/permissions', 'role' => 'form', 'method' => 'GET']) !!}
         <div class="pull-left">
             <span class="title-filter hidden-xs">{{ trans('general.search') }}:</span>
-            {!! Form::text('search', request('search'), ['class' => 'form-control input-filter input-sm', 'placeholder' => trans('general.search_placeholder')]) !!}
-            {!! Form::button('<span class="fa fa-filter"></span> &nbsp;' . trans('general.filter'), ['type' => 'submit', 'class' => 'btn btn-sm btn-default btn-filter']) !!}
+            {!! Form::text('search', request('search'), ['class' => 'form-control input-filter input-sm', 'placeholder'
+            => trans('general.search_placeholder')]) !!}
+            {!! Form::button('<span class="fa fa-filter"></span> &nbsp;' . trans('general.filter'), ['type' =>
+            'submit', 'class' => 'btn btn-sm btn-default btn-filter']) !!}
         </div>
         <div class="pull-right">
             <span class="title-filter hidden-xs">{{ trans('general.show') }}:</span>
-            {!! Form::select('limit', $limits, request('limit', setting('general.list_limit', '25')), ['class' => 'form-control input-filter input-sm', 'onchange' => 'this.form.submit()']) !!}
+            {!! Form::select('limit', $limits, request('limit', setting('general.list_limit', '25')), ['class' =>
+            'form-control input-filter input-sm', 'onchange' => 'this.form.submit()']) !!}
         </div>
         {!! Form::close() !!}
     </div>
@@ -36,18 +40,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($permissions as $item)
+                    @foreach($permissions as $item)
                     <tr>
                         <td><a href="{{ url('auth/permissions/' . $item->id . '/edit') }}">{{ $item->display_name }}</a></td>
                         <td>{{ $item->name }}</td>
                         <td class="hidden-xs">{{ $item->description }}</td>
                         <td class="text-center">
                             <div class="btn-group">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" data-toggle-position="left" aria-expanded="false">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                                    data-toggle-position="left" aria-expanded="false">
                                     <i class="fa fa-ellipsis-h"></i>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right">
-                                    <li><a href="{{ url('auth/permissions/' . $item->id . '/edit') }}">{{ trans('general.edit') }}</a></li>
+                                    <li><a href="{{ url('auth/permissions/' . $item->id . '/edit') }}">{{
+                                            trans('general.edit') }}</a></li>
                                     @permission('delete-auth-permissions')
                                     <li>{!! Form::deleteLink($item, 'auth/permissions') !!}</li>
                                     @endpermission
@@ -55,7 +61,7 @@
                             </div>
                         </td>
                     </tr>
-                @endforeach
+                    @endforeach
                 </tbody>
             </table>
         </div>

@@ -9,20 +9,20 @@
     <title>Akaunting</title>
 
     <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="{{ asset('vendor/almasaeed2010/adminlte/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('public/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="{{ asset('public/css/ionicons.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/ionicons.min.css') }}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('vendor/almasaeed2010/adminlte/dist/css/AdminLTE.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/adminlte/css/AdminLTE.min.css') }}">
     <!-- AdminLTE Skins -->
-    <link rel="stylesheet" href="{{ asset('vendor/almasaeed2010/adminlte/dist/css/skins/skin-green-light.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/adminlte/css/skins/skin-green-light.min.css') }}">
     <!-- App style -->
-    <link rel="stylesheet" href="{{ asset('public/css/install.css?v=' . version('short')) }}">
-    <link rel="stylesheet" href="{{ asset('public/css/akaunting-green.css?v=' . version('short')) }}">
-    
-    <link rel="shortcut icon" href="{{ asset('public/img/favicon.ico') }}">
+    <link rel="stylesheet" href="{{ asset('css/install.css?v=' . version('short')) }}">
+    <link rel="stylesheet" href="{{ asset('css/akaunting-green.css?v=' . version('short')) }}">
+
+    <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
 
     @stack('css')
 
@@ -36,15 +36,15 @@
     <![endif]-->
 
     <!-- jQuery 2.2.3 -->
-    <script src="{{ asset('vendor/almasaeed2010/adminlte/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
+    <script src="{{ asset('vendor/jQuery/jquery-2.2.3.min.js') }}"></script>
     <!-- Bootstrap 3.3.6 -->
-    <script src="{{ asset('vendor/almasaeed2010/adminlte/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
     <!-- SlimScroll -->
-    <script src="{{ asset('vendor/almasaeed2010/adminlte/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
+    <script src="{{ asset('vendor/slimScroll/jquery.slimscroll.min.js') }}"></script>
     <!-- AdminLTE App -->
-    <script src="{{ asset('vendor/almasaeed2010/adminlte/dist/js/app.min.js') }}"></script>
+    <script src="{{ asset('vendor/adminlte/js/app.min.js') }}"></script>
 
-    <script src="{{ asset('public/js/app.js?v=' . version('short')) }}"></script>
+    <script src="{{ asset('js/app.js?v=' . version('short')) }}"></script>
 
     @stack('js')
 

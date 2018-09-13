@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Default settings for charts.
@@ -94,7 +93,7 @@ return [
 
         'chartjs' => [
             'scripts' => [
-                env('APP_URL') . '/public/js/chartjs/Chart.min.js',
+                env('APP_URL').'/js/chartjs/Chart.min.js',
             ],
         ],
 

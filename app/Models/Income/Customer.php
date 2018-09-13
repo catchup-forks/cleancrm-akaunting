@@ -33,9 +33,9 @@ class Customer extends Model
      * @var array
      */
     protected $searchableColumns = [
-        'name'    => 10,
-        'email'   => 5,
-        'phone'   => 2,
+        'name' => 10,
+        'email' => 5,
+        'phone' => 2,
         'website' => 2,
         'address' => 1,
     ];

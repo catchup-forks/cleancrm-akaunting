@@ -20,7 +20,6 @@ class Version119 extends Listener
      * Handle the event.
      *
      * @param  $event
-     * @return void
      */
     public function handle(UpdateFinished $event)
     {
@@ -62,14 +61,14 @@ class Version119 extends Listener
         $data = [];
 
         $migrations = [
-            '\App\Models\Auth\User'             => 'picture',
-            '\App\Models\Common\Item'             => 'picture',
-            '\App\Models\Expense\Bill'          => 'attachment',
-            '\App\Models\Expense\BillPayment'   => 'attachment',
-            '\App\Models\Expense\Payment'       => 'attachment',
-            '\App\Models\Income\Invoice'        => 'attachment',
+            '\App\Models\Auth\User' => 'picture',
+            '\App\Models\Common\Item' => 'picture',
+            '\App\Models\Expense\Bill' => 'attachment',
+            '\App\Models\Expense\BillPayment' => 'attachment',
+            '\App\Models\Expense\Payment' => 'attachment',
+            '\App\Models\Income\Invoice' => 'attachment',
             '\App\Models\Income\InvoicePayment' => 'attachment',
-            '\App\Models\Income\Revenue'        => 'attachment',
+            '\App\Models\Income\Revenue' => 'attachment',
         ];
 
         foreach ($migrations as $model => $name) {
@@ -100,8 +99,8 @@ class Version119 extends Listener
 
                 $path = end($path);
 
-                if (!empty($item->company_id) && (strpos($path, $item->company_id . '/') === false)) {
-                    $path = $item->company_id . '/' . $path;
+                if (!empty($item->company_id) && (strpos($path, $item->company_id.'/') === false)) {
+                    $path = $item->company_id.'/'.$path;
                 }
 
                 if (!empty($path) && Storage::exists($path)) {
@@ -133,8 +132,8 @@ class Version119 extends Listener
 
                 $path = end($path);
 
-                if (!empty($item->company_id) && (strpos($path, $item->company_id . '/') === false)) {
-                    $path = $item->company_id . '/' . $path;
+                if (!empty($item->company_id) && (strpos($path, $item->company_id.'/') === false)) {
+                    $path = $item->company_id.'/'.$path;
                 }
 
                 if (!empty($path) && Storage::exists($path)) {

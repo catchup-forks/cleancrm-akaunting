@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Password Reset Language Lines
@@ -17,6 +16,5 @@ return [
     'reset' => 'Passordet ble endret.',
     'sent' => 'Vi har sendt deg en lenke på e-post, som du kan klikke på for å endre passord.',
     'token' => 'Nullstillingskode for passord er ugyldig.',
-    'user' => "Vi finner ingen bruker med denne e-postadressen.",
-
+    'user' => 'Vi finner ingen bruker med denne e-postadressen.',
 ];

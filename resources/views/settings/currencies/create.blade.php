@@ -3,8 +3,8 @@
 @section('title', trans('general.title.new', ['type' => trans_choice('general.currencies', 1)]))
 
 @section('content')
-    <!-- Default box -->
-    <div class="box box-success">
+<!-- Default box -->
+<div class="box box-success">
     {!! Form::open(['url' => 'settings/currencies', 'role' => 'form']) !!}
 
     <div class="box-body">
@@ -18,7 +18,8 @@
 
         {{ Form::textGroup('symbol', trans('currencies.symbol.symbol'), 'font') }}
 
-        {{ Form::selectGroup('symbol_first', trans('currencies.symbol.position'), 'text-width', ['1' => trans('currencies.symbol.before'), '0' => trans('currencies.symbol.after')]) }}
+        {{ Form::selectGroup('symbol_first', trans('currencies.symbol.position'), 'text-width', ['1' =>
+        trans('currencies.symbol.before'), '0' => trans('currencies.symbol.after')]) }}
 
         {{ Form::textGroup('decimal_mark', trans('currencies.decimal_mark'), 'columns') }}
 
@@ -36,41 +37,43 @@
     <!-- /.box-footer -->
 
     {!! Form::close() !!}
-    </div>
+</div>
 @endsection
 
 @push('scripts')
-    <script type="text/javascript">
-        var text_yes = '{{ trans('general.yes') }}';
-        var text_no = '{{ trans('general.no') }}';
+<script type="text/javascript">
+    var text_yes = '{{ trans('
+    general.yes ') }}';
+    var text_no = '{{ trans('
+    general.no ') }}';
 
-        $(document).ready(function(){
-            $('#enabled_1').trigger('click');
+    $(document).ready(function () {
+        $('#enabled_1').trigger('click');
 
-            $('#name').focus();
+        $('#name').focus();
 
-            $("#code").select2({
-                placeholder: "{{ trans('general.form.select.field', ['field' => trans('currencies.code')]) }}"
-            });
+        $("#code").select2({
+            placeholder: "{{ trans('general.form.select.field', ['field' => trans('currencies.code')]) }}"
+        });
 
-            $('#code').change(function() {
-                $.ajax({
-                    url: '{{ url("settings/currencies/config") }}',
-                    type: 'GET',
-                    dataType: 'JSON',
-                    data: 'code=' + $(this).val(),
-                    success: function(data) {
-                        $('#precision').val(data.precision);
-                        $('#symbol').val(data.symbol);
-                        $('#symbol_first').val(data.symbol_first);
-                        $('#decimal_mark').val(data.decimal_mark);
-                        $('#thousands_separator').val(data.thousands_separator);
+        $('#code').change(function () {
+            $.ajax({
+                url: '{{ url("settings/currencies/config") }}',
+                type: 'GET',
+                dataType: 'JSON',
+                data: 'code=' + $(this).val(),
+                success: function (data) {
+                    $('#precision').val(data.precision);
+                    $('#symbol').val(data.symbol);
+                    $('#symbol_first').val(data.symbol_first);
+                    $('#decimal_mark').val(data.decimal_mark);
+                    $('#thousands_separator').val(data.thousands_separator);
 
-                        // This event Select2 Stylesheet
-                        $('#symbol_first').trigger('change');
-                    }
-                });
+                    // This event Select2 Stylesheet
+                    $('#symbol_first').trigger('change');
+                }
             });
         });
-    </script>
+    });
+</script>
 @endpush

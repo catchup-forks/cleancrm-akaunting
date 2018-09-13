@@ -1,11 +1,10 @@
 <?php
 
 return [
-
-    'allow_login'           => 'Tillad login?',
-    'user_created'          => 'Bruger oprettet',
+    'allow_login' => 'Tillad login?',
+    'user_created' => 'Bruger oprettet',
 
     'error' => [
-        'email'             => 'Denne mail er allerede registreret.'
-    ]
+        'email' => 'Denne mail er allerede registreret.',
+    ],
 ];

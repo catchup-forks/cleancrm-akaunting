@@ -3,5 +3,5 @@
 @section('title', trans('reports.summary.expense'))
 
 @section('content')
-    @include('reports.expense_summary.body')
+@include('reports.expense_summary.body')
 @endsection

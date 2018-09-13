@@ -27,7 +27,8 @@ class Customers extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param  int|string  $id
+     * @param int|string $id
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function show($id)
@@ -46,6 +47,7 @@ class Customers extends ApiController
      * Store a newly created resource in storage.
      *
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function store(Request $request)
@@ -60,6 +62,7 @@ class Customers extends ApiController
      *
      * @param  $customer
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function update(Customer $customer, Request $request)
@@ -72,7 +75,8 @@ class Customers extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Customer  $customer
+     * @param Customer $customer
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function destroy(Customer $customer)

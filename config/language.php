@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Enable All Language Routes
@@ -10,7 +9,7 @@ return [
     | This option enable language route.
     |
     */
-    'route'         => true,
+    'route' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -21,7 +20,7 @@ return [
     | to url('/')
     |
     */
-    'home'          => true,
+    'home' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -31,7 +30,7 @@ return [
     | This option the language of carbon library.
     |
     */
-    'carbon'        => true,
+    'carbon' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -41,7 +40,7 @@ return [
     | This option the language of jenssegers/date library.
     |
     */
-    'date'          => true,
+    'date' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +51,7 @@ return [
     | browser language.
     |
     */
-    'auto'          => true,
+    'auto' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -62,7 +61,7 @@ return [
     | This option indicates the prefix for language routes.
     |
     */
-    'prefix'        => 'languages',
+    'prefix' => 'languages',
 
     /*
     |--------------------------------------------------------------------------
@@ -72,7 +71,7 @@ return [
     | This option indicates the middleware to change language.
     |
     */
-    'middleware'    => 'Akaunting\Language\Middleware\SetLocale',
+    'middleware' => 'Akaunting\Language\Middleware\SetLocale',
 
     /*
     |--------------------------------------------------------------------------
@@ -82,7 +81,7 @@ return [
     | This option indicates the controller to be used.
     |
     */
-    'controller'    => 'Akaunting\Language\Controllers\Language',
+    'controller' => 'Akaunting\Language\Controllers\Language',
 
     /*
     |--------------------------------------------------------------------------
@@ -93,7 +92,7 @@ return [
     |
     */
 
-    'flags'         => ['width' => '22px', 'ul_class' => 'menu', 'li_class' => '', 'img_class' => ''],
+    'flags' => ['width' => '22px', 'ul_class' => 'menu', 'li_class' => '', 'img_class' => ''],
 
     /*
     |--------------------------------------------------------------------------
@@ -104,7 +103,7 @@ return [
     |
     */
 
-    'mode'          => ['code' => 'long', 'name' => 'native'],
+    'mode' => ['code' => 'long', 'name' => 'native'],
 
     /*
     |--------------------------------------------------------------------------
@@ -115,7 +114,7 @@ return [
     |
     */
 
-    'allowed'       => ['ar-SA', 'bg-BG', 'cs-CZ', 'da-DK', 'de-DE', 'el-GR', 'en-GB', 'es-ES', 'es-MX', 'fa-IR', 'fr-FR', 'he-IL', 'hr-HR', 'id-ID', 'it-IT', 'lv-LV', 'nb-NO', 'nl-NL', 'pt-BR', 'pt-PT', 'ro-RO', 'ru-RU', 'sq-AL', 'sv-SE', 'th-TH', 'tr-TR', 'uk-UA', 'vi-VN', 'zh-TW'],
+    'allowed' => ['ar-SA', 'bg-BG', 'cs-CZ', 'da-DK', 'de-DE', 'el-GR', 'en-GB', 'es-ES', 'es-MX', 'fa-IR', 'fr-FR', 'he-IL', 'hr-HR', 'id-ID', 'it-IT', 'lv-LV', 'nb-NO', 'nl-NL', 'pt-BR', 'pt-PT', 'ro-RO', 'ru-RU', 'sq-AL', 'sv-SE', 'th-TH', 'tr-TR', 'uk-UA', 'vi-VN', 'zh-TW'],
 
     /*
     |--------------------------------------------------------------------------

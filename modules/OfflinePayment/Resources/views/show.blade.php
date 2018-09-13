@@ -7,25 +7,32 @@
 @endif
 <div class="buttons">
     <div class="pull-right">
-        <input type="button" value="{{ trans('offlinepayment::offlinepayment.confirm') }}" id="button-confirm" class="btn btn-success" data-loading-text="{{ trans('offlinepayment::offlinepayment.loading') }}" />
+        <input type="button" value="{{ trans('offlinepayment::offlinepayment.confirm') }}" id="button-confirm" class="btn btn-success"
+            data-loading-text="{{ trans('offlinepayment::offlinepayment.loading') }}" />
     </div>
 </div>
-<script type="text/javascript"><!--
-    $('#button-confirm').on('click', function() {
+<script type="text/javascript">
+    <!--
+    $('#button-confirm').on('click', function () {
         $.ajax({
             url: '{{ url("customers/invoices/" . $invoice->id . "/offlinepayment/confirm") }}',
             type: 'POST',
             dataType: 'JSON',
-            data: {payment_method: '{{ $gateway['code'] }}'},
+            data: {
+                payment_method: '{{ $gateway['
+                code '] }}'
+            },
             cache: false,
-            headers: { 'X-CSRF-TOKEN': '{{ csrf_token() }}' },
-            beforeSend: function() {
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            beforeSend: function () {
                 $('#button-confirm').button('loading');
             },
-            complete: function() {
+            complete: function () {
                 $('#button-confirm').button('reset');
             },
-            success: function(data) {
+            success: function (data) {
                 if (data['error']) {
                     alert(data['error']);
                 }
@@ -36,4 +43,5 @@
             }
         });
     });
-    //--></script>
+    //-->
+</script>

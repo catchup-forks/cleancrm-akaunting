@@ -27,7 +27,8 @@ class Payments extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param  Payment  $payment
+     * @param Payment $payment
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function show(Payment $payment)
@@ -39,6 +40,7 @@ class Payments extends ApiController
      * Store a newly created resource in storage.
      *
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function store(Request $request)
@@ -53,6 +55,7 @@ class Payments extends ApiController
      *
      * @param  $payment
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function update(Payment $payment, Request $request)
@@ -65,7 +68,8 @@ class Payments extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Payment  $payment
+     * @param Payment $payment
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function destroy(Payment $payment)

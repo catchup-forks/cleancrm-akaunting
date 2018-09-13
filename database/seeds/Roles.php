@@ -11,8 +11,6 @@ class Roles extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return  void
      */
     public function run()
     {
@@ -110,7 +108,7 @@ class Roles extends Seeder
             'c' => 'create',
             'r' => 'read',
             'u' => 'update',
-            'd' => 'delete'
+            'd' => 'delete',
         ];
 
         return $rows;
@@ -124,11 +122,11 @@ class Roles extends Seeder
             // Create a new role
             $role = Role::create([
                 'name' => $key,
-                'display_name' => ucwords(str_replace("_", " ", $key)),
-                'description' => ucwords(str_replace("_", " ", $key))
+                'display_name' => ucwords(str_replace('_', ' ', $key)),
+                'description' => ucwords(str_replace('_', ' ', $key)),
             ]);
 
-            $this->command->info('Creating Role '. strtoupper($key));
+            $this->command->info('Creating Role '.strtoupper($key));
 
             // Reading role permission modules
             foreach ($modules as $module => $value) {
@@ -137,20 +135,20 @@ class Roles extends Seeder
                 foreach ($permissions as $p => $perm) {
                     $permissionValue = $mapPermission->get($perm);
 
-                    $moduleName = ucwords(str_replace("-", " ", $module));
+                    $moduleName = ucwords(str_replace('-', ' ', $module));
 
                     $permission = Permission::firstOrCreate([
-                        'name' => $permissionValue . '-' . $module,
-                        'display_name' => ucfirst($permissionValue) . ' ' . $moduleName,
-                        'description' => ucfirst($permissionValue) . ' ' . $moduleName,
+                        'name' => $permissionValue.'-'.$module,
+                        'display_name' => ucfirst($permissionValue).' '.$moduleName,
+                        'description' => ucfirst($permissionValue).' '.$moduleName,
                     ]);
 
-                    $this->command->info('Creating Permission to '.$permissionValue.' for '. $moduleName);
+                    $this->command->info('Creating Permission to '.$permissionValue.' for '.$moduleName);
 
                     if (!$role->hasPermission($permission->name)) {
                         $role->attachPermission($permission);
                     } else {
-                        $this->command->info($key . ': ' . $p . ' ' . $permissionValue . ' already exist');
+                        $this->command->info($key.': '.$p.' '.$permissionValue.' already exist');
                     }
                 }
             }

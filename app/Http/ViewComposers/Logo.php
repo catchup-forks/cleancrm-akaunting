@@ -10,17 +10,16 @@ use Storage;
 
 class Logo
 {
-
     /**
      * Bind data to the view.
      *
-     * @param  View  $view
-     * @return void
+     * @param View $view
      */
     public function compose(View $view)
     {
         $logo = '';
 
+        /*
         $media_id = setting('general.company_logo');
 
         if (setting('general.invoice_logo')) {
@@ -36,7 +35,7 @@ class Logo
                 return $logo;
             }
         } else {
-            $path = asset('public/img/company.png');
+            $path = asset('img/company.png');
         }
 
         $image = Image::make($path)->encode()->getEncoded();
@@ -47,8 +46,9 @@ class Logo
 
         $extension = File::extension($path);
 
-        $logo = 'data:image/' . $extension . ';base64,' . base64_encode($image);
+        $logo = 'data:image/'.$extension.';base64,'.base64_encode($image);
+        */
 
-        $view->with(['logo' => $logo]);
+        $view->with(['logo' => '']);
     }
 }

@@ -18,14 +18,12 @@ class Model extends Eloquent
 
     /**
      * The "booting" method of the model.
-     *
-     * @return void
      */
     protected static function boot()
     {
         parent::boot();
 
-        static::addGlobalScope(new Company);
+        static::addGlobalScope(new Company());
     }
 
     /**
@@ -58,7 +56,7 @@ class Model extends Eloquent
             return $this->provideFilter();
         }
 
-        $class = '\App\Filters\\' . ucfirst($folder) . '\\' . ucfirst($file);
+        $class = '\App\Filters\\'.ucfirst($folder).'\\'.ucfirst($file);
 
         return $this->provideFilter($class);
     }
@@ -73,7 +71,7 @@ class Model extends Eloquent
      */
     public function scopeCompanyId($query, $company_id)
     {
-        return $query->where($this->table . '.company_id', '=', $company_id);
+        return $query->where($this->table.'.company_id', '=', $company_id);
     }
 
     /**
@@ -98,6 +96,7 @@ class Model extends Eloquent
      * Scope to only include active models.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeEnabled($query)
@@ -109,6 +108,7 @@ class Model extends Eloquent
      * Scope to only include passive models.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeDisabled($query)

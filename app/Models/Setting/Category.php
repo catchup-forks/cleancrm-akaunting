@@ -51,7 +51,8 @@ class Category extends Model
      * Scope to only include categories of a given type.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param mixed $type
+     * @param mixed                                 $type
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeType($query, $type)
@@ -63,6 +64,7 @@ class Category extends Model
      * Scope transfer category.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeTransfer($query)

@@ -31,9 +31,9 @@ class Role extends FormRequest
         }
 
         return [
-            'name' => 'required|string|unique:roles,name,' . $id,
+            'name' => 'required|string|unique:roles,name,'.$id,
             'display_name' => 'required|string',
-            'permissions' => 'required'
+            'permissions' => 'required',
         ];
     }
 }

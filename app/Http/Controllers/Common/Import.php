@@ -11,11 +11,12 @@ class Import extends Controller
      *
      * @param  $group
      * @param  $type
+     *
      * @return Response
      */
     public function create($group, $type)
     {
-        $path = $group . '/' . $type;
+        $path = $group.'/'.$type;
 
         return view('common.import.create', compact('group', 'type', 'path'));
     }

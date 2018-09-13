@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Password Reset Language Lines
@@ -17,6 +16,5 @@ return [
     'reset' => 'La password è stata reimpostata!',
     'sent' => 'Promemoria della password inviato!',
     'token' => 'Questo token per la reimpostazione della password non è valido.',
-    'user' => "Non esiste un utente associato a questo indirizzo e-mail.",
-
+    'user' => 'Non esiste un utente associato a questo indirizzo e-mail.',
 ];

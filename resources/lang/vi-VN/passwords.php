@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Password Reset Language Lines
@@ -17,6 +16,5 @@ return [
     'reset' => 'Mật khẩu mới đã được cập nhật!',
     'sent' => 'Hướng dẫn cấp lại mật khẩu đã được gửi!',
     'token' => 'Mã khôi phục mật khẩu không hợp lệ.',
-    'user' => "Không tìm thấy người dùng với địa chỉ email này.",
-
+    'user' => 'Không tìm thấy người dùng với địa chỉ email này.',
 ];

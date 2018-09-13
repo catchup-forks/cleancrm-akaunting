@@ -29,7 +29,8 @@ class Transfers extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param  Transfer  $transfer
+     * @param Transfer $transfer
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function show(Transfer $transfer)
@@ -41,6 +42,7 @@ class Transfers extends ApiController
      * Store a newly created resource in storage.
      *
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function store(Request $request)
@@ -55,6 +57,7 @@ class Transfers extends ApiController
      *
      * @param  $transfer
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function update(Transfer $transfer, Request $request)
@@ -67,7 +70,8 @@ class Transfers extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Transfer  $transfer
+     * @param Transfer $transfer
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function destroy(Transfer $transfer)

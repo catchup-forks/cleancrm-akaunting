@@ -64,7 +64,7 @@ class Item extends Controller
                 $character = '&';
             }
 
-            $module->action_url .= $character . http_build_query($parameters);
+            $module->action_url .= $character.http_build_query($parameters);
         }
 
         return view('modules.item.show', compact('module', 'about', 'installed', 'enable'));
@@ -90,19 +90,19 @@ class Item extends Controller
         // Download
         $json['step'][] = [
             'text' => trans('modules.installation.download', ['module' => $name]),
-            'url'  => url('apps/download')
+            'url' => url('apps/download'),
         ];
 
         // Unzip
         $json['step'][] = [
             'text' => trans('modules.installation.unzip', ['module' => $name]),
-            'url'  => url('apps/unzip')
+            'url' => url('apps/unzip'),
         ];
 
         // Download
         $json['step'][] = [
             'text' => trans('modules.installation.install', ['module' => $name]),
-            'url'  => url('apps/install')
+            'url' => url('apps/install'),
         ];
 
         return response()->json($json);
@@ -123,7 +123,7 @@ class Item extends Controller
 
         $version = $request['version'];
 
-        $path .= '/' . $version . '/' . version('short') . '/' . setting('general.api_token');
+        $path .= '/'.$version.'/'.version('short').'/'.setting('general.api_token');
 
         $json = $this->downloadModule($path);
 
@@ -196,7 +196,7 @@ class Item extends Controller
 
         flash($message)->success();
 
-        return redirect('apps/' . $alias)->send();
+        return redirect('apps/'.$alias)->send();
     }
 
     public function update($alias)
@@ -221,7 +221,7 @@ class Item extends Controller
 
         flash($message)->success();
 
-        return redirect('apps/' . $alias)->send();
+        return redirect('apps/'.$alias)->send();
     }
 
     public function enable($alias)
@@ -250,7 +250,7 @@ class Item extends Controller
 
         flash($message)->success();
 
-        return redirect('apps/' . $alias)->send();
+        return redirect('apps/'.$alias)->send();
     }
 
     public function disable($alias)
@@ -279,7 +279,7 @@ class Item extends Controller
 
         flash($message)->success();
 
-        return redirect('apps/' . $alias)->send();
+        return redirect('apps/'.$alias)->send();
     }
 
     /**
@@ -288,6 +288,7 @@ class Item extends Controller
      * @param  $alias
      * @param  $old
      * @param  $new
+     *
      * @return Response
      */
     public function post($alias)
@@ -300,6 +301,6 @@ class Item extends Controller
 
         flash($message)->success();
 
-        return redirect('apps/' . $alias);
+        return redirect('apps/'.$alias);
     }
 }

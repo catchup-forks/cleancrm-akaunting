@@ -19,6 +19,7 @@ trait Media
 
     /**
      * Relationship for all attached media.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\MorphToMany
      */
     public function media()

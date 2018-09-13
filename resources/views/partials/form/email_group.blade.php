@@ -4,7 +4,8 @@
     {!! Form::label($name, $text, ['class' => 'control-label']) !!}
     <div class="input-group">
         <div class="input-group-addon"><i class="fa fa-{{ $icon }}"></i></div>
-        {!! Form::email($name, $value, array_merge(['class' => 'form-control', 'placeholder' => trans('general.form.enter', ['field' => $text])], $attributes)) !!}
+        {!! Form::email($name, $value, array_merge(['class' => 'form-control', 'placeholder' =>
+        trans('general.form.enter', ['field' => $text])], $attributes)) !!}
     </div>
     {!! $errors->first($name, '<p class="help-block">:message</p>') !!}
 </div>

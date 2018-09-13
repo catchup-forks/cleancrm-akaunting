@@ -10,8 +10,9 @@ class DateFormat
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
+     * @param \Illuminate\Http\Request $request
+     * @param \Closure                 $next
+     *
      * @return mixed
      */
     public function handle($request, Closure $next)
@@ -25,7 +26,7 @@ class DateFormat
             if (!empty($paid_at)) {
                 $paid_at = Date::parse($paid_at)->format('Y-m-d');
 
-                $date_time = $paid_at . ' ' . Date::now()->format('H:i:s');
+                $date_time = $paid_at.' '.Date::now()->format('H:i:s');
 
                 $request->request->set('paid_at', $date_time);
             }
@@ -33,7 +34,7 @@ class DateFormat
             if (!empty($due_at)) {
                 $due_at = Date::parse($due_at)->format('Y-m-d');
 
-                $date_time = $due_at . ' ' . Date::now()->format('H:i:s');
+                $date_time = $due_at.' '.Date::now()->format('H:i:s');
 
                 $request->request->set('due_at', $date_time);
             }
@@ -41,7 +42,7 @@ class DateFormat
             if (!empty($billed_at)) {
                 $billed_at = Date::parse($billed_at)->format('Y-m-d');
 
-                $date_time = $billed_at . ' ' . Date::now()->format('H:i:s');
+                $date_time = $billed_at.' '.Date::now()->format('H:i:s');
 
                 $request->request->set('billed_at', $date_time);
             }
@@ -49,7 +50,7 @@ class DateFormat
             if (!empty($invoiced_at)) {
                 $invoiced_at = Date::parse($invoiced_at)->format('Y-m-d');
 
-                $date_time = $invoiced_at . ' ' . Date::now()->format('H:i:s');
+                $date_time = $invoiced_at.' '.Date::now()->format('H:i:s');
 
                 $request->request->set('invoiced_at', $date_time);
             }

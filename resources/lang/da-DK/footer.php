@@ -1,9 +1,7 @@
 <?php
 
 return [
-
-    'version'               => 'Version',
-    'powered'               => 'Drevet af Akaunting',
-    'software'              => 'Gratis regnskabs Software',
-
+    'version' => 'Version',
+    'powered' => 'Drevet af Akaunting',
+    'software' => 'Gratis regnskabs Software',
 ];

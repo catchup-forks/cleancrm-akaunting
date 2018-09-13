@@ -10,8 +10,7 @@ class Index
     /**
      * Bind data to the view.
      *
-     * @param  View  $view
-     * @return void
+     * @param View $view
      */
     public function compose(View $view)
     {
@@ -23,7 +22,7 @@ class Index
 
         $years = [];
         $y = $now->addYears(2);
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 10; ++$i) {
             $years[$y->year] = $y->year;
             $y->subYear();
         }

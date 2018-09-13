@@ -3,7 +3,8 @@
 @section('title', trans_choice('general.updates', 2))
 
 @section('new_button')
-<span class="new-button"><a href="{{ url('install/updates/check') }}" class="btn btn-warning btn-sm"><span class="fa fa-history"></span> &nbsp;{{ trans('updates.check') }}</a></span>
+<span class="new-button"><a href="{{ url('install/updates/check') }}" class="btn btn-warning btn-sm"><span class="fa fa-history"></span>
+        &nbsp;{{ trans('updates.check') }}</a></span>
 @endsection
 
 @section('content')
@@ -19,9 +20,12 @@
         @if (empty($core))
         {{ trans('updates.latest_core') }}
         @else
-            {{ trans('updates.new_core') }}
-            <a href="{{ url('install/updates/update', ['alias' => 'core', 'version' => $core]) }}" data-toggle="tooltip" title="{{ trans('updates.update', ['version' => $core]) }}" class="btn btn-warning btn-xs"><i class="fa fa-refresh"></i> &nbsp;{{ trans('updates.update', ['version' => $core]) }}</a>
-            <a href="{{ url('install/updates/changelog') }}" data-toggle="tooltip" title="{{ trans('updates.changelog') }}" class="btn btn-default btn-xs popup"><i class="fa fa-exchange"></i> &nbsp;{{ trans('updates.changelog') }}</a>
+        {{ trans('updates.new_core') }}
+        <a href="{{ url('install/updates/update', ['alias' => 'core', 'version' => $core]) }}" data-toggle="tooltip"
+            title="{{ trans('updates.update', ['version' => $core]) }}" class="btn btn-warning btn-xs"><i class="fa fa-refresh"></i>
+            &nbsp;{{ trans('updates.update', ['version' => $core]) }}</a>
+        <a href="{{ url('install/updates/changelog') }}" data-toggle="tooltip" title="{{ trans('updates.changelog') }}"
+            class="btn btn-default btn-xs popup"><i class="fa fa-exchange"></i> &nbsp;{{ trans('updates.changelog') }}</a>
         @endif
     </div>
     <!-- /.box-body -->
@@ -50,17 +54,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($modules as $module)
+                    @foreach($modules as $module)
                     <tr>
                         <td>{{ $module->name }}</td>
                         <td>{{ $module->category }}</td>
                         <td>{{ $module->installed }}</td>
                         <td>{{ $module->latest }}</td>
                         <td>
-                            <a href="{{ url('install/updates/update/' . $module->alias . '/' . $module->latest) }}" class="btn btn-warning btn-xs"><i class="fa fa-refresh" aria-hidden="true"></i> {{ trans_choice('general.updates', 1) }}</a>
+                            <a href="{{ url('install/updates/update/' . $module->alias . '/' . $module->latest) }}"
+                                class="btn btn-warning btn-xs"><i class="fa fa-refresh" aria-hidden="true"></i> {{
+                                trans_choice('general.updates', 1) }}</a>
                         </td>
                     </tr>
-                @endforeach
+                    @endforeach
                 </tbody>
             </table>
         </div>

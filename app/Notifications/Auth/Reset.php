@@ -17,7 +17,7 @@ class Reset extends Notification
     /**
      * Create a notification instance.
      *
-     * @param  string  $token
+     * @param string $token
      */
     public function __construct($token)
     {
@@ -27,7 +27,8 @@ class Reset extends Notification
     /**
      * Get the notification's channels.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
+     *
      * @return array|string
      */
     public function via($notifiable)
@@ -38,14 +39,15 @@ class Reset extends Notification
     /**
      * Build the mail representation of the notification.
      *
-     * @param  mixed  $notifiable
+     * @param mixed $notifiable
+     *
      * @return \Illuminate\Notifications\Messages\MailMessage
      */
     public function toMail($notifiable)
     {
         setting(['general.company_name' => config('app.name')]);
 
-        return (new MailMessage)
+        return (new MailMessage())
             ->line(trans('auth.notification.message_1'))
             ->action(trans('auth.notification.button'), url('auth/reset', $this->token, true))
             ->line(trans('auth.notification.message_2'));

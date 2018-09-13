@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Password Reset Language Lines
@@ -17,6 +16,5 @@ return [
     'reset' => 'Vaša lozinka je resetirana!',
     'sent' => 'Link za resetiranje lozinke je poslan na e-mail!',
     'token' => 'Token za resetiranje lozinke nije važeći.',
-    'user' => "Ne možemo pronaći korisnika s tom e-mail adresom.",
-
+    'user' => 'Ne možemo pronaći korisnika s tom e-mail adresom.',
 ];

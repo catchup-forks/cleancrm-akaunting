@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Password Reset Language Lines
@@ -17,6 +16,5 @@ return [
     'reset' => 'Din adgangskode er blevet nulstillet!',
     'sent' => 'Vi har sendt dig en e-mail med reset password link!',
     'token' => 'Denne adgangskodes nulstillings token er ugyldig.',
-    'user' => "Vi kan ikke finde en bruger med den e-mail adresse.",
-
+    'user' => 'Vi kan ikke finde en bruger med den e-mail adresse.',
 ];

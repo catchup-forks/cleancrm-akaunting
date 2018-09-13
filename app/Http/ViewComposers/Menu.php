@@ -3,15 +3,13 @@
 namespace App\Http\ViewComposers;
 
 use Illuminate\View\View;
-use anlutro\LaravelSettings\Facade as Settingg;
 
 class Menu
 {
     /**
      * Bind data to the view.
      *
-     * @param  View  $view
-     * @return void
+     * @param View $view
      */
     public function compose(View $view)
     {

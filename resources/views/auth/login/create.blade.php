@@ -9,24 +9,26 @@
 
     @stack('email_input_start')
     <div class="form-group has-feedback{{ $errors->has('email') ? ' has-error' : '' }}">
-        <input name="email" type="email" class="form-control" placeholder="{{ trans('general.email') }}" required autofocus>
+        <input name="email" type="email" class="form-control" placeholder="{{ trans('general.email') }}" required
+            autofocus>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         @if ($errors->has('email'))
-            <span class="help-block">
-                <strong>{{ $errors->first('email') }}</strong>
-            </span>
+        <span class="help-block">
+            <strong>{{ $errors->first('email') }}</strong>
+        </span>
         @endif
     </div>
     @stack('email_input_end')
 
     @stack('password_input_start')
     <div class="form-group has-feedback{{ $errors->has('password') ? ' has-error' : '' }}">
-        <input name="password" type="password" class="form-control" placeholder="{{ trans('auth.password.current') }}" required>
+        <input name="password" type="password" class="form-control" placeholder="{{ trans('auth.password.current') }}"
+            required>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         @if ($errors->has('password'))
-            <span class="help-block">
-                <strong>{{ $errors->first('password') }}</strong>
-            </span>
+        <span class="help-block">
+            <strong>{{ $errors->first('password') }}</strong>
+        </span>
         @endif
     </div>
     @stack('password_input_end')
@@ -36,7 +38,8 @@
         <div class="col-sm-8">
             <div class="checkbox icheck">
                 <label>
-                    <input name="remember" type="checkbox" {{ old('remember') ? 'checked' : '' }}> &nbsp;{{ trans('auth.remember_me') }}
+                    <input name="remember" type="checkbox" {{ old('remember') ? 'checked' : '' }}> &nbsp;{{
+                    trans('auth.remember_me') }}
                 </label>
             </div>
         </div>
@@ -55,12 +58,12 @@
 
 @push('js')
 <!-- iCheck -->
-<script src="{{ asset('vendor/almasaeed2010/adminlte/plugins/iCheck/icheck.min.js') }}"></script>
+<script src="{{ asset('vendor/iCheck/icheck.min.js') }}"></script>
 @endpush
 
 @push('css')
 <!-- iCheck -->
-<link rel="stylesheet" href="{{ asset('vendor/almasaeed2010/adminlte/plugins/iCheck/square/green.css') }}">
+<link rel="stylesheet" href="{{ asset('vendor/iCheck/square/green.css') }}">
 @endpush
 
 @push('scripts')

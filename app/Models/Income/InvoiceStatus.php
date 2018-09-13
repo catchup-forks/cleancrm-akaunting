@@ -6,7 +6,6 @@ use App\Models\Model;
 
 class InvoiceStatus extends Model
 {
-
     protected $table = 'invoice_statuses';
 
     /**

@@ -31,7 +31,7 @@ class Dashboard extends Controller
 
         $s = clone $start;
 
-        for ($j = $end_month; $j >= $start_month; $j--) {
+        for ($j = $end_month; $j >= $start_month; --$j) {
             $labels[$end_month - $j] = $s->format('M Y');
 
             $s->addMonth();

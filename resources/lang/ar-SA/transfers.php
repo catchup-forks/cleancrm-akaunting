@@ -1,12 +1,10 @@
 <?php
 
 return [
-
-    'from_account'          => 'من حساب',
-    'to_account'            => 'إلى حساب',
+    'from_account' => 'من حساب',
+    'to_account' => 'إلى حساب',
 
     'messages' => [
-        'delete'            => ':from إلى :to (:amount)',
+        'delete' => ':from إلى :to (:amount)',
     ],
-
 ];

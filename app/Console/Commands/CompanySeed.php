@@ -19,11 +19,9 @@ class CompanySeed extends Command
      * @var string
      */
     protected $description = 'Seed for specific company';
-    
+
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct()
     {
@@ -38,10 +36,9 @@ class CompanySeed extends Command
     public function handle()
     {
         $class = $this->laravel->make('CompanySeeder');
-        
+
         $seeder = $class->setContainer($this->laravel)->setCommand($this);
-        
+
         $seeder->__invoke();
     }
-
 }

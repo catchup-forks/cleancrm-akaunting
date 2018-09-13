@@ -1,25 +1,23 @@
 <?php
 
 return [
+    'name' => 'Akaunting',
 
-    'name'      =>  'Akaunting',
+    'code' => 'Recurring',
 
-    'code'      =>  'Recurring',
+    'major' => '1',
 
-    'major'     =>  '1',
+    'minor' => '2',
 
-    'minor'     =>  '2',
+    'patch' => '15',
 
-    'patch'     =>  '15',
+    'build' => '',
 
-    'build'     =>  '',
+    'status' => 'Stable',
 
-    'status'    =>  'Stable',
+    'date' => '6-September-2018',
 
-    'date'      =>  '6-September-2018',
+    'time' => '12:00',
 
-    'time'      =>  '12:00',
-
-    'zone'      =>  'GMT +3',
-
+    'zone' => 'GMT +3',
 ];

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Settings;
 use Akaunting\Money\Currency as MoneyCurrency;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Setting\Currency as Request;
-use App\Models\Banking\Account;
 use App\Models\Setting\Currency;
 
 class Currencies extends Controller
@@ -60,7 +59,7 @@ class Currencies extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param Request $request
      *
      * @return Response
      */
@@ -89,7 +88,7 @@ class Currencies extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Currency  $currency
+     * @param Currency $currency
      *
      * @return Response
      */
@@ -119,8 +118,8 @@ class Currencies extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Currency  $currency
-     * @param  Request  $request
+     * @param Currency $currency
+     * @param Request  $request
      *
      * @return Response
      */
@@ -166,14 +165,14 @@ class Currencies extends Controller
 
             flash($message)->warning();
 
-            return redirect('settings/currencies/' . $currency->id . '/edit');
+            return redirect('settings/currencies/'.$currency->id.'/edit');
         }
     }
 
     /**
      * Enable the specified resource.
      *
-     * @param  Currency  $currency
+     * @param Currency $currency
      *
      * @return Response
      */
@@ -192,7 +191,7 @@ class Currencies extends Controller
     /**
      * Disable the specified resource.
      *
-     * @param  Currency  $currency
+     * @param Currency $currency
      *
      * @return Response
      */
@@ -232,7 +231,7 @@ class Currencies extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Currency  $currency
+     * @param Currency $currency
      *
      * @return Response
      */
@@ -288,7 +287,7 @@ class Currencies extends Controller
         $code = request('code');
 
         if ($code) {
-            $currency = config('money.' . $code);
+            $currency = config('money.'.$code);
             $currency['symbol_first'] = $currency['symbol_first'] ? 1 : 0;
 
             $json = (object) $currency;

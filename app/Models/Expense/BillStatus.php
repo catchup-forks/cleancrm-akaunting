@@ -6,7 +6,6 @@ use App\Models\Model;
 
 class BillStatus extends Model
 {
-
     protected $table = 'bill_statuses';
 
     /**

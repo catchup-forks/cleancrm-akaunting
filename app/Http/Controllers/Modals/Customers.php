@@ -4,18 +4,8 @@ namespace App\Http\Controllers\Modals;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Income\Customer as Request;
-use App\Models\Auth\User;
 use App\Models\Income\Customer;
-use App\Models\Income\Invoice;
-use App\Models\Income\Revenue;
 use App\Models\Setting\Currency;
-use App\Utilities\Import;
-use App\Utilities\ImportFile;
-use Date;
-use Illuminate\Http\Request as FRequest;
-use Illuminate\Pagination\Paginator;
-use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Collection;
 
 class Customers extends Controller
 {
@@ -53,7 +43,7 @@ class Customers extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param Request $request
      *
      * @return Response
      */

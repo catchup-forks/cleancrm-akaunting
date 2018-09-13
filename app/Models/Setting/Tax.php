@@ -6,7 +6,6 @@ use App\Models\Model;
 
 class Tax extends Model
 {
-
     protected $table = 'taxes';
 
     /**
@@ -48,12 +47,11 @@ class Tax extends Model
     /**
      * Convert rate to double.
      *
-     * @param  string  $value
-     * @return void
+     * @param string $value
      */
     public function setRateAttribute($value)
     {
-        $this->attributes['rate'] = (double) $value;
+        $this->attributes['rate'] = (float) $value;
     }
 
     /**
@@ -63,12 +61,12 @@ class Tax extends Model
      */
     public function getTitleAttribute()
     {
-        $title = $this->name . ' (';
+        $title = $this->name.' (';
 
         if (setting('general.percent_position', 'after') == 'after') {
-            $title .= $this->rate . '%';
+            $title .= $this->rate.'%';
         } else {
-            $title .= '%' . $this->rate;
+            $title .= '%'.$this->rate;
         }
 
         $title .= ')';

@@ -11,9 +11,6 @@ use App\Traits\Incomes;
 use App\Utilities\Overrider;
 use Date;
 use Illuminate\Console\Command;
-use Recurr\Rule;
-use Recurr\Transformer\ArrayTransformer;
-use Recurr\Transformer\ArrayTransformerConfig;
 
 class RecurringCheck extends Command
 {
@@ -32,7 +29,7 @@ class RecurringCheck extends Command
      * @var string
      */
     protected $description = 'Check for recurring';
-    
+
     /**
      * Create a new command instance.
      */

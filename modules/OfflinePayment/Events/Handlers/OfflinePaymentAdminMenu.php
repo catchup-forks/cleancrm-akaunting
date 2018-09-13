@@ -10,8 +10,7 @@ class OfflinePaymentAdminMenu
     /**
      * Handle the event.
      *
-     * @param  AdminMenuCreated $event
-     * @return void
+     * @param AdminMenuCreated $event
      */
     public function handle(AdminMenuCreated $event)
     {

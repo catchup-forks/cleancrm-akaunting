@@ -1,8 +1,6 @@
 <?php
 
 return [
-
-    'rate'                  => 'المعدل',
-    'rate_percent'          => 'المعدل (%)',
-
+    'rate' => 'المعدل',
+    'rate_percent' => 'المعدل (%)',
 ];

@@ -16,7 +16,6 @@ class Version113 extends Listener
      * Handle the event.
      *
      * @param  $event
-     * @return void
      */
     public function handle(UpdateFinished $event)
     {
@@ -32,11 +31,11 @@ class Version113 extends Listener
         $currencies = Currency::all();
 
         foreach ($currencies as $currency) {
-            $currency->precision = config('money.' . $currency->code . '.precision');
-            $currency->symbol = config('money.' . $currency->code . '.symbol');
-            $currency->symbol_first = config('money.' . $currency->code . '.symbol_first') ? 1 : 0;
-            $currency->decimal_mark = config('money.' . $currency->code . '.decimal_mark');
-            $currency->thousands_separator = config('money.' . $currency->code . '.thousands_separator');
+            $currency->precision = config('money.'.$currency->code.'.precision');
+            $currency->symbol = config('money.'.$currency->code.'.symbol');
+            $currency->symbol_first = config('money.'.$currency->code.'.symbol_first') ? 1 : 0;
+            $currency->decimal_mark = config('money.'.$currency->code.'.decimal_mark');
+            $currency->thousands_separator = config('money.'.$currency->code.'.thousands_separator');
 
             $currency->save();
         }

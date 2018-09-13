@@ -2,22 +2,19 @@
 
 namespace Modules\OfflinePayment\Http\Controllers;
 
-use App\Events\InvoicePaid;
-
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-
 use App\Http\Requests\Customer\InvoicePayment as PaymentRequest;
-use App\Http\Requests\Customer\InvoiceConfirm as ConfirmRequest;
-
 use App\Models\Income\Invoice;
 
 class OfflinePayment extends Controller
 {
     /**
      * Show the form for editing the specified resource.
+     *
      * @param Invoice
      * @param PaymentRequest
+     *
      * @return Response
      */
     public function show(Invoice $invoice, PaymentRequest $request)

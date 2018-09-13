@@ -27,9 +27,9 @@ class Profile extends FormRequest
 
         return [
             'name' => 'required|string',
-            'email' => 'required|email|unique:users,email,' . $id . ',id,deleted_at,NULL',
+            'email' => 'required|email|unique:users,email,'.$id.',id,deleted_at,NULL',
             'password' => 'confirmed',
-            'picture' => 'mimes:' . setting('general.file_types') . '|between:0,' . setting('general.file_size') * 1024,
+            'picture' => 'mimes:'.setting('general.file_types').'|between:0,'.setting('general.file_size') * 1024,
         ];
     }
 }

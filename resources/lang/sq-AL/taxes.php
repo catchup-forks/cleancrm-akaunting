@@ -1,8 +1,6 @@
 <?php
 
 return [
-
-    'rate'                  => 'Normë',
-    'rate_percent'          => 'Normë (%)',
-
+    'rate' => 'Normë',
+    'rate_percent' => 'Normë (%)',
 ];

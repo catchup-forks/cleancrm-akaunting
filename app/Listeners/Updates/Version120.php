@@ -6,8 +6,6 @@ use App\Events\UpdateFinished;
 use App\Models\Auth\Role;
 use App\Models\Auth\Permission;
 use App\Models\Common\Company;
-use App\Models\Expense\Bill;
-use App\Models\Income\Invoice;
 use App\Models\Setting\Category;
 use DB;
 use Schema;
@@ -23,7 +21,6 @@ class Version120 extends Listener
      * Handle the event.
      *
      * @param  $event
-     * @return void
      */
     public function handle(UpdateFinished $event)
     {
@@ -87,7 +84,7 @@ class Version120 extends Listener
                 'name' => trans_choice('general.invoices', 2),
                 'type' => 'income',
                 'color' => '#00c0ef',
-                'enabled' => '1'
+                'enabled' => '1',
             ]);
 
             foreach ($company->invoices as $invoice) {
@@ -101,7 +98,7 @@ class Version120 extends Listener
                 'name' => trans_choice('general.bills', 2),
                 'type' => 'expense',
                 'color' => '#dd4b39',
-                'enabled' => '1'
+                'enabled' => '1',
             ]);
 
             foreach ($company->bills as $bill) {
@@ -117,8 +114,8 @@ class Version120 extends Listener
 
         if ($connection == 'mysql') {
             $tables = [
-                env('DB_PREFIX') . 'invoice_items',
-                env('DB_PREFIX') . 'bill_items'
+                env('DB_PREFIX').'invoice_items',
+                env('DB_PREFIX').'bill_items',
             ];
 
             foreach ($tables as $table) {

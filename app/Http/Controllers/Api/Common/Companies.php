@@ -31,7 +31,8 @@ class Companies extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param  Company  $company
+     * @param Company $company
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function show(Company $company)
@@ -51,6 +52,7 @@ class Companies extends ApiController
      * Store a newly created resource in storage.
      *
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function store(Request $request)
@@ -81,6 +83,7 @@ class Companies extends ApiController
      *
      * @param  $company
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function update(Company $company, Request $request)
@@ -115,7 +118,8 @@ class Companies extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Company  $company
+     * @param Company $company
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function destroy(Company $company)

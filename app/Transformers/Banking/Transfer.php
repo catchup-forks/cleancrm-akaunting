@@ -16,6 +16,7 @@ class Transfer extends TransformerAbstract
 
     /**
      * @param Model $model
+     *
      * @return array
      */
     public function transform(Model $model)
@@ -32,6 +33,7 @@ class Transfer extends TransformerAbstract
 
     /**
      * @param Model $model
+     *
      * @return \League\Fractal\Resource\Item
      */
     public function includePayment(Model $model)
@@ -41,6 +43,7 @@ class Transfer extends TransformerAbstract
 
     /**
      * @param Model $model
+     *
      * @return \League\Fractal\Resource\Item
      */
     public function includeRevenue(Model $model)

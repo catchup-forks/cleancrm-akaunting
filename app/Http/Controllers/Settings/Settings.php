@@ -96,7 +96,7 @@ class Settings extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request  $request
+     * @param Request $request
      *
      * @return Response
      */
@@ -115,7 +115,7 @@ class Settings extends Controller
         $file_keys = ['company_logo', 'invoice_logo'];
 
         $companies = Company::all()->count();
-        
+
         foreach ($fields as $key => $value) {
             // Don't process unwanted keys
             if (in_array($key, $skip_keys)) {
@@ -144,7 +144,7 @@ class Settings extends Controller
                 $this->oneCompany($key, $value);
             }
 
-            setting()->set('general.' . $key, $value);
+            setting()->set('general.'.$key, $value);
         }
 
         // Save all settings
@@ -163,13 +163,13 @@ class Settings extends Controller
             case 'default_locale':
                 // Change default locale
                 Installer::updateEnv([
-                    'APP_LOCALE' => $value
+                    'APP_LOCALE' => $value,
                 ]);
                 break;
             case 'session_handler':
                 // Change session handler
                 Installer::updateEnv([
-                    'SESSION_DRIVER' => $value
+                    'SESSION_DRIVER' => $value,
                 ]);
                 break;
         }

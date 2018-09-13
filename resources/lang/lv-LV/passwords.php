@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Password Reset Language Lines
@@ -17,6 +16,5 @@ return [
     'reset' => 'Jūsu parole ir atjaunota!',
     'sent' => 'Mēs jums uz e-pastu nosūtījām paroles atjaunošanas saiti!',
     'token' => 'Paroles atjaunošanas atslēga ir nederīga.',
-    'user' => "Mēs nevaram atrast lietotāju ar šadu e-pasta adresi.",
-
+    'user' => 'Mēs nevaram atrast lietotāju ar šadu e-pasta adresi.',
 ];

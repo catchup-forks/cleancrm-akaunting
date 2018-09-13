@@ -34,12 +34,11 @@ class InvoiceTotal extends Model
     /**
      * Convert amount to double.
      *
-     * @param  string  $value
-     * @return void
+     * @param string $value
      */
     public function setAmountAttribute($value)
     {
-        $this->attributes['amount'] = (double) $value;
+        $this->attributes['amount'] = (float) $value;
     }
 
     /**
@@ -73,9 +72,9 @@ class InvoiceTotal extends Model
             $title .= ' (';
 
             if (setting('general.percent_position', 'after') == 'after') {
-                $title .= $percent . '%';
+                $title .= $percent.'%';
             } else {
-                $title .= '%' . $percent;
+                $title .= '%'.$percent;
             }
 
             $title .= ')';

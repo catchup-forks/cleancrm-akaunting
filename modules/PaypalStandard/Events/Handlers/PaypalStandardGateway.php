@@ -9,8 +9,7 @@ class PaypalStandardGateway
     /**
      * Handle the event.
      *
-     * @param  PaymentGatewayListing $event
-     * @return void
+     * @param PaymentGatewayListing $event
      */
     public function handle(PaymentGatewayListing $event)
     {

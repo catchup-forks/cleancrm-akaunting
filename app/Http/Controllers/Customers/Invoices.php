@@ -41,7 +41,7 @@ class Invoices extends Controller
     /**
      * Show the form for viewing the specified resource.
      *
-     * @param  Invoice  $invoice
+     * @param Invoice $invoice
      *
      * @return Response
      */
@@ -81,7 +81,7 @@ class Invoices extends Controller
     /**
      * Show the form for viewing the specified resource.
      *
-     * @param  Invoice  $invoice
+     * @param Invoice $invoice
      *
      * @return Response
      */
@@ -97,7 +97,7 @@ class Invoices extends Controller
     /**
      * Show the form for viewing the specified resource.
      *
-     * @param  Invoice  $invoice
+     * @param Invoice $invoice
      *
      * @return Response
      */
@@ -114,7 +114,7 @@ class Invoices extends Controller
 
         //$pdf->setPaper('A4', 'portrait');
 
-        $file_name = 'invoice_' . time() . '.pdf';
+        $file_name = 'invoice_'.time().'.pdf';
 
         return $pdf->download($file_name);
     }
@@ -163,7 +163,7 @@ class Invoices extends Controller
                 return $logo;
             }
         } else {
-            $path = asset('public/img/company.png');
+            $path = asset('img/company.png');
         }
 
         $image = Image::make($path)->encode()->getEncoded();
@@ -174,7 +174,7 @@ class Invoices extends Controller
 
         $extension = File::extension($path);
 
-        $logo = 'data:image/' . $extension . ';base64,' . base64_encode($image);
+        $logo = 'data:image/'.$extension.';base64,'.base64_encode($image);
 
         return $logo;
     }

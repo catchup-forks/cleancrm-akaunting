@@ -27,7 +27,8 @@ class Taxes extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param  Tax  $tax
+     * @param Tax $tax
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function show(Tax $tax)
@@ -39,6 +40,7 @@ class Taxes extends ApiController
      * Store a newly created resource in storage.
      *
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function store(Request $request)
@@ -53,6 +55,7 @@ class Taxes extends ApiController
      *
      * @param  $tax
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function update(Tax $tax, Request $request)
@@ -65,7 +68,8 @@ class Taxes extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Tax  $tax
+     * @param Tax $tax
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function destroy(Tax $tax)

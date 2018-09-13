@@ -24,7 +24,7 @@ class BillReminder extends Command
      * @var string
      */
     protected $description = 'Send reminders for bills';
-    
+
     /**
      * Create a new command instance.
      */

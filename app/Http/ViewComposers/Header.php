@@ -14,8 +14,7 @@ class Header
     /**
      * Bind data to the view.
      *
-     * @param  View  $view
-     * @return void
+     * @param View $view
      */
     public function compose(View $view)
     {
@@ -29,7 +28,7 @@ class Header
 
         // Get customer company
         if ($user->customer()) {
-            $company = (object)[
+            $company = (object) [
                 'company_name' => setting('general.company_name'),
                 'company_email' => setting('general.company_email'),
                 'company_address' => setting('general.company_address'),
@@ -45,15 +44,15 @@ class Header
             switch ($underead->getAttribute('type')) {
                 case 'App\Notifications\Expense\Bill':
                     $bills[$data['bill_id']] = $data['amount'];
-                    $notifications++;
+                    ++$notifications;
                     break;
                 case 'App\Notifications\Income\Invoice':
                     $invoices[$data['invoice_id']] = $data['amount'];
-                    $notifications++;
+                    ++$notifications;
                     break;
                 case 'App\Notifications\Common\Item':
                     $items[$data['item_id']] = $data['name'];
-                    $notifications++;
+                    ++$notifications;
                     break;
             }
         }

@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
      |--------------------------------------------------------------------------
      | Eloquent Filter Settings
@@ -12,5 +11,4 @@ return [
      */
 
     'namespace' => 'App\\Filters\\',
-
 ];

@@ -17,7 +17,6 @@ class Version108 extends Listener
      * Handle the event.
      *
      * @param  $event
-     * @return void
      */
     public function handle(UpdateFinished $event)
     {

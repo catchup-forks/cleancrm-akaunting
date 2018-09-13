@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Setting extends Model
 {
-
     protected $table = 'settings';
 
     public $timestamps = false;
@@ -21,19 +20,17 @@ class Setting extends Model
 
     /**
      * The "booting" method of the model.
-     *
-     * @return void
      */
     protected static function boot()
     {
         parent::boot();
 
-        static::addGlobalScope(new Company);
+        static::addGlobalScope(new Company());
     }
 
     public static function all($code = 'general')
     {
-        return static::where('key', 'like', $code . '.%')->get();
+        return static::where('key', 'like', $code.'.%')->get();
     }
 
     /**
@@ -56,6 +53,6 @@ class Setting extends Model
      */
     public function scopeCompanyId($query, $company_id)
     {
-        return $query->where($this->table . '.company_id', '=', $company_id);
+        return $query->where($this->table.'.company_id', '=', $company_id);
     }
 }

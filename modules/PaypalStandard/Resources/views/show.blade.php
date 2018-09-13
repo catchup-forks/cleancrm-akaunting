@@ -1,7 +1,8 @@
 <h2>{{ $gateway['name'] }}</h2>
 
 @if($gateway['mode'] == 'sandbox')
-<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ trans('paypalstandard::paypalstandard.test_mode') }}</div>
+<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{
+    trans('paypalstandard::paypalstandard.test_mode') }}</div>
 @endif
 
 <div class="well well-sm">

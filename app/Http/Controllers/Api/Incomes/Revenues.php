@@ -27,7 +27,8 @@ class Revenues extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param  Revenue  $revenue
+     * @param Revenue $revenue
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function show(Revenue $revenue)
@@ -39,6 +40,7 @@ class Revenues extends ApiController
      * Store a newly created resource in storage.
      *
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function store(Request $request)
@@ -53,6 +55,7 @@ class Revenues extends ApiController
      *
      * @param  $revenue
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function update(Revenue $revenue, Request $request)
@@ -65,7 +68,8 @@ class Revenues extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Revenue  $revenue
+     * @param Revenue $revenue
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function destroy(Revenue $revenue)

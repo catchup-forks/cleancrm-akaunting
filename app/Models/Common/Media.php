@@ -10,5 +10,4 @@ class Media extends PMedia
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-
 }

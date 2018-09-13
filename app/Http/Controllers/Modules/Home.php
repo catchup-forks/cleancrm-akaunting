@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Modules;
 use App\Http\Controllers\Controller;
 use App\Traits\Modules;
 use App\Models\Module\Module;
-use Illuminate\Routing\Route;
 
 class Home extends Controller
 {
@@ -22,8 +21,8 @@ class Home extends Controller
 
         $data = [
             'query' => [
-                'limit' => 4
-            ]
+                'limit' => 4,
+            ],
         ];
 
         $paid = $this->getPaidModules($data);

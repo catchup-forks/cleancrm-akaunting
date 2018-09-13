@@ -3,26 +3,23 @@
 namespace Modules\PaypalStandard\Http\Controllers;
 
 use App\Events\InvoicePaid;
-
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
-
 use GuzzleHttp\Client;
-
 use Illuminate\Http\Request;
 use App\Http\Requests\Customer\InvoicePayment as PaymentRequest;
-
 use App\Models\Income\Invoice;
 
 class PaypalStandard extends Controller
 {
     /**
      * Show the form for editing the specified resource.
+     *
      * @param Invoice
      * @param PaymentRequest
+     *
      * @return Response
      */
     public function show(Invoice $invoice, PaymentRequest $request)
@@ -35,10 +32,10 @@ class PaypalStandard extends Controller
             $gateway['action'] = 'https://www.sandbox.paypal.com/cgi-bin/webscr';
         }
 
-        $customer = explode(" ", $invoice->customer_name);
+        $customer = explode(' ', $invoice->customer_name);
 
         $last_name = array_pop($customer);
-        $first_name = implode(" ", $customer);
+        $first_name = implode(' ', $customer);
 
         $invoice->first_name = $first_name;
         $invoice->last_name = $last_name;
@@ -84,7 +81,7 @@ class PaypalStandard extends Controller
             flash($message)->warning();
         }
 
-        $redirect = url('customers/invoices/' . $invoice->id);
+        $redirect = url('customers/invoices/'.$invoice->id);
 
         return redirect($redirect);
     }
@@ -130,18 +127,18 @@ class PaypalStandard extends Controller
                     case 'Completed':
                         $receiver_match = (strtolower($request['receiver_email']) == strtolower($gateway['email']));
 
-                        $total_paid_match = ((float)$request['mc_gross'] == $invoice->amount);
+                        $total_paid_match = ((float) $request['mc_gross'] == $invoice->amount);
 
                         if ($receiver_match && $total_paid_match) {
                             event(new InvoicePaid($invoice, $request->toArray()));
                         }
 
                         if (!$receiver_match) {
-                            $paypal_log->info('PAYPAL_STANDARD :: RECEIVER EMAIL MISMATCH! ' . strtolower($request['receiver_email']));
+                            $paypal_log->info('PAYPAL_STANDARD :: RECEIVER EMAIL MISMATCH! '.strtolower($request['receiver_email']));
                         }
 
                         if (!$total_paid_match) {
-                            $paypal_log->info('PAYPAL_STANDARD :: TOTAL PAID MISMATCH! ' . $request['mc_gross']);
+                            $paypal_log->info('PAYPAL_STANDARD :: TOTAL PAID MISMATCH! '.$request['mc_gross']);
                         }
                         break;
                     case 'Canceled_Reversal':
@@ -153,11 +150,11 @@ class PaypalStandard extends Controller
                     case 'Refunded':
                     case 'Reversed':
                     case 'Voided':
-                        $paypal_log->info('PAYPAL_STANDARD :: NOT COMPLETED ' . $request->toArray());
+                        $paypal_log->info('PAYPAL_STANDARD :: NOT COMPLETED '.$request->toArray());
                         break;
                 }
             } else {
-                $paypal_log->info('PAYPAL_STANDARD :: VERIFIED != 0 || UNVERIFIED != 0 ' . $request->toArray());
+                $paypal_log->info('PAYPAL_STANDARD :: VERIFIED != 0 || UNVERIFIED != 0 '.$request->toArray());
             }
         }
     }

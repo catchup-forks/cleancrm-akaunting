@@ -11,7 +11,6 @@ use Module;
 
 class Updates extends Controller
 {
-
     /**
      * Show the form for creating a new resource.
      *
@@ -76,6 +75,7 @@ class Updates extends Controller
      *
      * @param  $alias
      * @param  $version
+     *
      * @return Response
      */
     public function update($alias, $version)
@@ -83,7 +83,7 @@ class Updates extends Controller
         set_time_limit(600); // 10 minutes
 
         if (Updater::update($alias, $version)) {
-            return redirect('install/updates/post/' . $alias . '/' . version('short') . '/' . $version);
+            return redirect('install/updates/post/'.$alias.'/'.version('short').'/'.$version);
         }
 
         flash(trans('updates.error'))->error()->important();
@@ -97,6 +97,7 @@ class Updates extends Controller
      * @param  $alias
      * @param  $old
      * @param  $new
+     *
      * @return Response
      */
     public function post($alias, $old, $new)

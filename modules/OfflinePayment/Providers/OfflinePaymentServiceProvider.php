@@ -4,10 +4,8 @@ namespace Modules\OfflinePayment\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
-
 use App\Events\AdminMenuCreated;
 use Modules\OfflinePayment\Events\Handlers\OfflinePaymentAdminMenu;
-
 use App\Events\PaymentGatewayListing;
 use Modules\OfflinePayment\Events\Handlers\OfflinePaymentGateway;
 
@@ -22,8 +20,6 @@ class OfflinePaymentServiceProvider extends ServiceProvider
 
     /**
      * Boot the application events.
-     *
-     * @return void
      */
     public function boot()
     {
@@ -32,7 +28,7 @@ class OfflinePaymentServiceProvider extends ServiceProvider
         $this->registerViews();
         $this->registerFactories();
 
-        $this->loadMigrationsFrom(__DIR__ . '/../Database/Migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../Database/Migrations');
 
         $this->app['events']->listen(AdminMenuCreated::class, OfflinePaymentAdminMenu::class);
         $this->app['events']->listen(PaymentGatewayListing::class, OfflinePaymentGateway::class);
@@ -40,18 +36,13 @@ class OfflinePaymentServiceProvider extends ServiceProvider
 
     /**
      * Register the service provider.
-     *
-     * @return void
      */
     public function register()
     {
-        //
     }
 
     /**
      * Register config.
-     *
-     * @return void
      */
     protected function registerConfig()
     {
@@ -65,8 +56,6 @@ class OfflinePaymentServiceProvider extends ServiceProvider
 
     /**
      * Register views.
-     *
-     * @return void
      */
     public function registerViews()
     {
@@ -75,18 +64,16 @@ class OfflinePaymentServiceProvider extends ServiceProvider
         $sourcePath = __DIR__.'/../Resources/views';
 
         $this->publishes([
-            $sourcePath => $viewPath
+            $sourcePath => $viewPath,
         ]);
 
         $this->loadViewsFrom(array_merge(array_map(function ($path) {
-            return $path . '/modules/offlinepayment';
+            return $path.'/modules/offlinepayment';
         }, \Config::get('view.paths')), [$sourcePath]), 'offlinepayment');
     }
 
     /**
      * Register translations.
-     *
-     * @return void
      */
     public function registerTranslations()
     {
@@ -95,18 +82,19 @@ class OfflinePaymentServiceProvider extends ServiceProvider
         if (is_dir($langPath)) {
             $this->loadTranslationsFrom($langPath, 'offlinepayment');
         } else {
-            $this->loadTranslationsFrom(__DIR__ .'/../Resources/lang', 'offlinepayment');
+            $this->loadTranslationsFrom(__DIR__.'/../Resources/lang', 'offlinepayment');
         }
     }
 
     /**
      * Register an additional directory of factories.
+     *
      * @source https://github.com/sebastiaanluca/laravel-resource-flow/blob/develop/src/Modules/ModuleServiceProvider.php#L66
      */
     public function registerFactories()
     {
-        if (! app()->environment('production')) {
-            app(Factory::class)->load(__DIR__ . '/Database/factories');
+        if (!app()->environment('production')) {
+            app(Factory::class)->load(__DIR__.'/Database/factories');
         }
     }
 

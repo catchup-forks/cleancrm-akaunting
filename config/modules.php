@@ -21,7 +21,7 @@ return [
     */
     'stubs' => [
         'enabled' => true,
-        'path' => base_path() . '/app/Console/Stubs/Modules',
+        'path' => base_path().'/app/Console/Stubs/Modules',
         'files' => [
             'start' => 'start.php',
             'routes' => 'Http/routes.php',

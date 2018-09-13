@@ -6,7 +6,6 @@ use App\Models\Model;
 
 class ModuleHistory extends Model
 {
-
     protected $table = 'module_histories';
 
     /**

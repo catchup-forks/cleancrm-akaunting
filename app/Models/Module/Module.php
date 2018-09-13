@@ -22,7 +22,8 @@ class Module extends Model
      * Scope alias.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param string $alias
+     * @param string                                $alias
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeAlias($query, $alias)

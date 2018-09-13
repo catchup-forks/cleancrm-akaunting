@@ -5,10 +5,8 @@ namespace App\Http\Controllers\Common;
 use App\Http\Controllers\Controller;
 use App\Models\Banking\Account;
 use App\Models\Expense\Bill;
-use App\Models\Expense\BillPayment;
 use App\Models\Expense\Payment;
 use App\Models\Income\Invoice;
-use App\Models\Income\InvoicePayment;
 use App\Models\Income\Revenue;
 use App\Models\Setting\Category;
 use App\Traits\Currencies;
@@ -82,10 +80,10 @@ class Dashboard extends Controller
 
         // Totals
         $total_incomes = array(
-            'total'             => $incomes_amount,
-            'open_invoice'      => money($open_invoice, setting('general.default_currency'), true),
-            'overdue_invoice'   => money($overdue_invoice, setting('general.default_currency'), true),
-            'progress'          => $incomes_progress
+            'total' => $incomes_amount,
+            'open_invoice' => money($open_invoice, setting('general.default_currency'), true),
+            'overdue_invoice' => money($overdue_invoice, setting('general.default_currency'), true),
+            'progress' => $incomes_progress,
         );
 
         $expenses_progress = 100;
@@ -95,10 +93,10 @@ class Dashboard extends Controller
         }
 
         $total_expenses = array(
-            'total'         => $expenses_amount,
-            'open_bill'     => money($open_bill, setting('general.default_currency'), true),
-            'overdue_bill'  => money($overdue_bill, setting('general.default_currency'), true),
-            'progress'      => $expenses_progress
+            'total' => $expenses_amount,
+            'open_bill' => money($open_bill, setting('general.default_currency'), true),
+            'overdue_bill' => money($overdue_bill, setting('general.default_currency'), true),
+            'progress' => $expenses_progress,
         );
 
         $amount_profit = $incomes_amount - $expenses_amount;
@@ -112,10 +110,10 @@ class Dashboard extends Controller
         }
 
         $total_profit = array(
-            'total'         => $amount_profit,
-            'open'          => money($open_profit, setting('general.default_currency'), true),
-            'overdue'       => money($overdue_profit, setting('general.default_currency'), true),
-            'progress'      => $total_progress
+            'total' => $amount_profit,
+            'open' => money($open_profit, setting('general.default_currency'), true),
+            'overdue' => money($overdue_profit, setting('general.default_currency'), true),
+            'progress' => $total_progress,
         );
 
         return array($total_incomes, $total_expenses, $total_profit);
@@ -135,7 +133,7 @@ class Dashboard extends Controller
 
         $s = clone $start;
 
-        for ($j = $end_month; $j >= $start_month; $j--) {
+        for ($j = $end_month; $j >= $start_month; --$j) {
             $labels[$end_month - $j] = $s->format('M Y');
 
             if ($period == 'month') {
@@ -401,7 +399,7 @@ class Dashboard extends Controller
 
         $paid += $item->getConvertedAmount();
 
-        $code_field = $type . '_status_code';
+        $code_field = $type.'_status_code';
 
         if ($item->$code_field != 'paid') {
             $payments = 0;
@@ -426,14 +424,14 @@ class Dashboard extends Controller
     private function addToIncomeDonut($color, $amount, $text)
     {
         $this->income_donut['colors'][] = $color;
-        $this->income_donut['labels'][] = money($amount, setting('general.default_currency'), true)->format() . ' - ' . $text;
+        $this->income_donut['labels'][] = money($amount, setting('general.default_currency'), true)->format().' - '.$text;
         $this->income_donut['values'][] = (int) $amount;
     }
 
     private function addToExpenseDonut($color, $amount, $text)
     {
         $this->expense_donut['colors'][] = $color;
-        $this->expense_donut['labels'][] = money($amount, setting('general.default_currency'), true)->format() . ' - ' . $text;
+        $this->expense_donut['labels'][] = money($amount, setting('general.default_currency'), true)->format().' - '.$text;
         $this->expense_donut['values'][] = (int) $amount;
     }
 }

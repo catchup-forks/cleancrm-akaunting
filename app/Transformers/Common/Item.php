@@ -15,7 +15,8 @@ class Item extends TransformerAbstract
     protected $defaultIncludes = ['tax', 'category'];
 
     /**
-     * @param  Model $model
+     * @param Model $model
+     *
      * @return array
      */
     public function transform(Model $model)
@@ -39,7 +40,8 @@ class Item extends TransformerAbstract
     }
 
     /**
-     * @param  Model $model
+     * @param Model $model
+     *
      * @return mixed
      */
     public function includeTax(Model $model)
@@ -52,7 +54,8 @@ class Item extends TransformerAbstract
     }
 
     /**
-     * @param  Model $model
+     * @param Model $model
+     *
      * @return mixed
      */
     public function includeCategory(Model $model)

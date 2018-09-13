@@ -27,7 +27,8 @@ class Items extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param  int|string  $id
+     * @param int|string $id
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function show($id)
@@ -46,6 +47,7 @@ class Items extends ApiController
      * Store a newly created resource in storage.
      *
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function store(Request $request)
@@ -60,6 +62,7 @@ class Items extends ApiController
      *
      * @param  $item
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function update(Item $item, Request $request)
@@ -72,7 +75,8 @@ class Items extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Item  $item
+     * @param Item $item
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function destroy(Item $item)

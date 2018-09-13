@@ -3,7 +3,7 @@
 @section('title', trans('general.title.new', ['type' => trans_choice('general.items', 1)]))
 
 @section('content')
-        <!-- Default box -->
+<!-- Default box -->
 <div class="box box-success">
     {!! Form::open(['route' => 'items.store', 'files' => true, 'role' => 'form']) !!}
 
@@ -18,16 +18,20 @@
 
         {{ Form::textGroup('purchase_price', trans('items.purchase_price'), 'money') }}
 
-        {{ Form::textGroup('quantity', trans_choice('items.quantities', 1), 'cubes', ['required' => 'required'], '1') }}
+        {{ Form::textGroup('quantity', trans_choice('items.quantities', 1), 'cubes', ['required' => 'required'], '1')
+        }}
 
-        {{ Form::selectGroup('tax_id', trans_choice('general.taxes', 1), 'percent', $taxes, setting('general.default_tax'), []) }}
+        {{ Form::selectGroup('tax_id', trans_choice('general.taxes', 1), 'percent', $taxes,
+        setting('general.default_tax'), []) }}
 
         @stack('category_id_input_start')
         <div class="form-group col-md-6 required {{ $errors->has('category_id') ? 'has-error' : ''}}">
             {!! Form::label('category_id', trans_choice('general.categories', 1), ['class' => 'control-label']) !!}
             <div class="input-group">
                 <div class="input-group-addon"><i class="fa fa-folder-open-o"></i></div>
-                {!! Form::select('category_id', $categories, null, array_merge(['class' => 'form-control', 'placeholder' => trans('general.form.select.field', ['field' => trans_choice('general.categories', 1)])])) !!}
+                {!! Form::select('category_id', $categories, null, array_merge(['class' => 'form-control',
+                'placeholder' => trans('general.form.select.field', ['field' => trans_choice('general.categories',
+                1)])])) !!}
                 <div class="input-group-btn">
                     <button type="button" id="button-category" class="btn btn-default btn-icon"><i class="fa fa-plus"></i></button>
                 </div>
@@ -52,21 +56,23 @@
 @endsection
 
 @push('js')
-<script src="{{ asset('public/js/bootstrap-fancyfile.js') }}"></script>
-<script src="{{ asset('vendor/almasaeed2010/adminlte/plugins/colorpicker/bootstrap-colorpicker.js') }}"></script>
+<script src="{{ asset('js/bootstrap-fancyfile.js') }}"></script>
+<script src="{{ asset('vendor/colorpicker/bootstrap-colorpicker.js') }}"></script>
 @endpush
 
 @push('css')
-<link rel="stylesheet" href="{{ asset('public/css/bootstrap-fancyfile.css') }}">
-<link rel="stylesheet" href="{{ asset('vendor/almasaeed2010/adminlte/plugins/colorpicker/bootstrap-colorpicker.css') }}">
+<link rel="stylesheet" href="{{ asset('css/bootstrap-fancyfile.css') }}">
+<link rel="stylesheet" href="{{ asset('vendor/colorpicker/bootstrap-colorpicker.css') }}">
 @endpush
 
 @push('scripts')
 <script type="text/javascript">
-    var text_yes = '{{ trans('general.yes') }}';
-    var text_no = '{{ trans('general.no') }}';
+    var text_yes = '{{ trans('
+    general.yes ') }}';
+    var text_no = '{{ trans('
+    general.no ') }}';
 
-    $(document).ready(function(){
+    $(document).ready(function () {
         /*$("#sale_price").maskMoney({
             thousands : '{{ $currency->thousands_separator }}',
             decimal : '{{ $currency->decimal_mark }}',
@@ -110,9 +116,11 @@
         });
 
         $('#picture').fancyfile({
-            text  : '{{ trans('general.form.select.file') }}',
-            style : 'btn-default',
-            placeholder : '{{ trans('general.form.no_file_selected') }}'
+            text: '{{ trans('
+            general.form.select.file ') }}',
+            style: 'btn-default',
+            placeholder: '{{ trans('
+            general.form.no_file_selected ') }}'
         });
     });
 
@@ -123,8 +131,10 @@
             url: '{{ url("modals/categories/create") }}',
             type: 'GET',
             dataType: 'JSON',
-            data: {type: 'item'},
-            success: function(json) {
+            data: {
+                type: 'item'
+            },
+            success: function (json) {
                 if (json['success']) {
                     $('body').append(json['html']);
                 }

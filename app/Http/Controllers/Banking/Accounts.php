@@ -9,7 +9,6 @@ use App\Models\Setting\Currency;
 
 class Accounts extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -49,7 +48,7 @@ class Accounts extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param Request $request
      *
      * @return Response
      */
@@ -73,7 +72,7 @@ class Accounts extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Account  $account
+     * @param Account $account
      *
      * @return Response
      */
@@ -91,8 +90,8 @@ class Accounts extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Account  $account
-     * @param  Request  $request
+     * @param Account $account
+     * @param Request $request
      *
      * @return Response
      */
@@ -124,14 +123,14 @@ class Accounts extends Controller
 
             flash($message)->warning();
 
-            return redirect('banking/accounts/' . $account->id . '/edit');
+            return redirect('banking/accounts/'.$account->id.'/edit');
         }
     }
 
     /**
      * Enable the specified resource.
      *
-     * @param  Account  $account
+     * @param Account $account
      *
      * @return Response
      */
@@ -150,7 +149,7 @@ class Accounts extends Controller
     /**
      * Disable the specified resource.
      *
-     * @param  Account  $account
+     * @param Account $account
      *
      * @return Response
      */
@@ -181,7 +180,7 @@ class Accounts extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Account  $account
+     * @param Account $account
      *
      * @return Response
      */

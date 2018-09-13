@@ -37,6 +37,7 @@ class Invoices extends ApiController
      * Display the specified resource.
      *
      * @param  $id
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function show($id)
@@ -55,6 +56,7 @@ class Invoices extends ApiController
      * Store a newly created resource in storage.
      *
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function store(Request $request)
@@ -133,7 +135,7 @@ class Invoices extends ApiController
                     } else {
                         $taxes[$tax_object->id] = [
                             'name' => $tax_object->name,
-                            'amount' => $tax
+                            'amount' => $tax,
                         ];
                     }
                 }
@@ -178,6 +180,7 @@ class Invoices extends ApiController
      *
      * @param  $invoice
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function update(Invoice $invoice, Request $request)
@@ -239,7 +242,7 @@ class Invoices extends ApiController
                     } else {
                         $taxes[$tax_object->id] = [
                             'name' => $tax_object->name,
-                            'amount' => $tax
+                            'amount' => $tax,
                         ];
                     }
                 }
@@ -272,7 +275,8 @@ class Invoices extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Invoice  $invoice
+     * @param Invoice $invoice
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function destroy(Invoice $invoice)
@@ -286,7 +290,8 @@ class Invoices extends ApiController
         return $this->response->noContent();
     }
 
-    protected function addTotals($invoice, $request, $taxes, $sub_total, $tax_total) {
+    protected function addTotals($invoice, $request, $taxes, $sub_total, $tax_total)
+    {
         // Add invoice total taxes
         if ($request['totals']) {
             $sort_order = 1;
@@ -308,7 +313,7 @@ class Invoices extends ApiController
                 InvoiceTotal::create($invoice_total);
 
                 if (empty($total['sort_order'])) {
-                    $sort_order++;
+                    ++$sort_order;
                 }
             }
         } else {
@@ -340,7 +345,7 @@ class Invoices extends ApiController
 
                     InvoiceTotal::create($invoice_tax_total);
 
-                    $sort_order++;
+                    ++$sort_order;
                 }
             }
 

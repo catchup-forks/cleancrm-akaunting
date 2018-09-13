@@ -7,7 +7,6 @@ use App\Http\Requests\Module\Module as Request;
 
 class Token extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +20,7 @@ class Token extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param Request $request
      *
      * @return Response
      */

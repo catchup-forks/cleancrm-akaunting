@@ -10,8 +10,9 @@ class ApiController extends Controller
     /**
      * Create the response for when a request fails validation.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  array $errors
+     * @param \Illuminate\Http\Request $request
+     * @param array                    $errors
+     *
      * @return \Symfony\Component\HttpFoundation\Response
      */
     protected function buildFailedValidationResponse(Request $request, array $errors)

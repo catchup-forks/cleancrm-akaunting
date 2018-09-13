@@ -10,15 +10,12 @@ use DB;
 use File;
 
 /**
- * Class Installer
+ * Class Installer.
  *
  * Contains all of the Business logic to install the app. Either through the CLI or the `/install` web UI.
- *
- * @package App\Utilities
  */
 class Installer
 {
-
     public static function checkServerRequirements()
     {
         $requirements = array();
@@ -92,11 +89,9 @@ class Installer
 
     /**
      * Create a default .env file.
-     *
-     * @return void
      */
-	public static function createDefaultEnvFile()
-	{
+    public static function createDefaultEnvFile()
+    {
         // Rename file
         if (is_file(base_path('.env.example'))) {
             File::move(base_path('.env.example'), base_path('.env'));
@@ -104,10 +99,10 @@ class Installer
 
         // Update .env file
         static::updateEnv([
-            'APP_KEY'   =>  'base64:'.base64_encode(random_bytes(32)),
-            'APP_URL'   =>  url('/'),
+            'APP_KEY' => 'base64:'.base64_encode(random_bytes(32)),
+            'APP_URL' => url('/'),
         ]);
-	}
+    }
 
     public static function createDbTables($host, $port, $database, $username, $password)
     {
@@ -146,18 +141,18 @@ class Installer
     public static function isDbValid($host, $port, $database, $username, $password)
     {
         Config::set('database.connections.install_test', [
-            'host'      => $host,
-            'port'      => $port,
-            'database'  => $database,
-            'username'  => $username,
-            'password'  => $password,
-            'driver'    => env('DB_CONNECTION', 'mysql'),
-            'charset'   => env('DB_CHARSET', 'utf8mb4'),
+            'host' => $host,
+            'port' => $port,
+            'database' => $database,
+            'username' => $username,
+            'password' => $password,
+            'driver' => env('DB_CONNECTION', 'mysql'),
+            'charset' => env('DB_CHARSET', 'utf8mb4'),
         ]);
 
         try {
             DB::connection('install_test')->getPdo();
-        } catch (\Exception $e) {;
+        } catch (\Exception $e) {
             return false;
         }
 
@@ -169,22 +164,22 @@ class Installer
 
     public static function saveDbVariables($host, $port, $database, $username, $password)
     {
-        $prefix = strtolower(str_random(3) . '_');
+        $prefix = strtolower(str_random(3).'_');
 
         // Update .env file
         static::updateEnv([
-            'DB_HOST'       =>  $host,
-            'DB_PORT'       =>  $port,
-            'DB_DATABASE'   =>  $database,
-            'DB_USERNAME'   =>  $username,
-            'DB_PASSWORD'   =>  $password,
-            'DB_PREFIX'     =>  $prefix,
+            'DB_HOST' => $host,
+            'DB_PORT' => $port,
+            'DB_DATABASE' => $database,
+            'DB_USERNAME' => $username,
+            'DB_PASSWORD' => $password,
+            'DB_PREFIX' => $prefix,
         ]);
 
         $con = env('DB_CONNECTION', 'mysql');
 
         // Change current connection
-        $db = Config::get('database.connections.' . $con);
+        $db = Config::get('database.connections.'.$con);
 
         $db['host'] = $host;
         $db['database'] = $database;
@@ -192,7 +187,7 @@ class Installer
         $db['password'] = $password;
         $db['prefix'] = $prefix;
 
-        Config::set('database.connections.' . $con, $db);
+        Config::set('database.connections.'.$con, $db);
 
         DB::purge($con);
         DB::reconnect($con);
@@ -207,10 +202,10 @@ class Installer
 
         // Set settings
         setting()->set([
-            'general.company_name'          => $name,
-            'general.company_email'         => $email,
-            'general.default_currency'      => 'USD',
-            'general.default_locale'        => $locale,
+            'general.company_name' => $name,
+            'general.company_email' => $email,
+            'general.default_currency' => 'USD',
+            'general.default_locale' => $locale,
         ]);
         setting()->setExtraColumns(['company_id' => $company->id]);
         setting()->save();
@@ -237,9 +232,9 @@ class Installer
     {
         // Update .env file
         static::updateEnv([
-            'APP_LOCALE'    =>  session('locale'),
-            'APP_INSTALLED' =>  'true',
-            'APP_DEBUG'     =>  'false',
+            'APP_LOCALE' => session('locale'),
+            'APP_INSTALLED' => 'true',
+            'APP_DEBUG' => 'false',
         ]);
 
         // Rename the robots.txt file
@@ -266,7 +261,7 @@ class Installer
 
                 // Check if new or old key
                 if ($entry[0] == $data_key) {
-                    $env[$env_key] = $data_key . '=' . $data_value;
+                    $env[$env_key] = $data_key.'='.$data_value;
                 } else {
                     $env[$env_key] = $env_value;
                 }

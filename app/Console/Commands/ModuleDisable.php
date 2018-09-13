@@ -37,6 +37,7 @@ class ModuleDisable extends Command
 
         if (!$model) {
             $this->info("Module [{$alias}] not found.");
+
             return;
         }
 
@@ -64,10 +65,10 @@ class ModuleDisable extends Command
     }
 
     /**
-    * Get the console command arguments.
-    *
-    * @return array
-    */
+     * Get the console command arguments.
+     *
+     * @return array
+     */
     protected function getArguments()
     {
         return array(

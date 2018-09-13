@@ -1,11 +1,10 @@
 <?php
 
 return [
-
-    'allow_login'           => 'Lejo Identifikimin?',
-    'user_created'          => 'Përdoruesi u Krijua',
+    'allow_login' => 'Lejo Identifikimin?',
+    'user_created' => 'Përdoruesi u Krijua',
 
     'error' => [
-        'email'             => 'Emaili tashmë është marrë.'
-    ]
+        'email' => 'Emaili tashmë është marrë.',
+    ],
 ];

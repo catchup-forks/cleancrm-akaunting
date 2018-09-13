@@ -1,8 +1,6 @@
 <?php
 
 return [
-
-    'rate'                  => 'Данък',
-    'rate_percent'          => 'Ставка (%)',
-
+    'rate' => 'Данък',
+    'rate_percent' => 'Ставка (%)',
 ];

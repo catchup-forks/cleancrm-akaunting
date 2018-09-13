@@ -12,7 +12,8 @@ class Listener
      * Check if should listen.
      *
      * @param  $event
-     * @return boolean
+     *
+     * @return bool
      */
     protected function check($event)
     {

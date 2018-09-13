@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Password Reset Language Lines
@@ -17,6 +16,5 @@ return [
     'reset' => 'Uw wachtwoord is opnieuw ingesteld!',
     'sent' => 'Wij hebben uw wachtwoord reset link per e-mail naar u verstuurd!',
     'token' => 'Dit wachtwoord reset-token is ongeldig.',
-    'user' => "Wij kunnen geen gebruiker met dat e-mail adres vinden.",
-
+    'user' => 'Wij kunnen geen gebruiker met dat e-mail adres vinden.',
 ];

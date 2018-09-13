@@ -27,7 +27,8 @@ class Settings extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param  int|string  $id
+     * @param int|string $id
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function show($id)
@@ -46,6 +47,7 @@ class Settings extends ApiController
      * Store a newly created resource in storage.
      *
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function store(Request $request)
@@ -60,6 +62,7 @@ class Settings extends ApiController
      *
      * @param  $setting
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function update(Setting $setting, Request $request)
@@ -72,7 +75,8 @@ class Settings extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Setting  $setting
+     * @param Setting $setting
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function destroy(Setting $setting)

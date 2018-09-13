@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Password Reset Language Lines
@@ -17,6 +16,5 @@ return [
     'reset' => 'Fjalëkalimi juaj është rivendosur!',
     'sent' => 'Kemi dërguar e-mail linkun tuaj të rivendosjes së fjalëkalimit!',
     'token' => 'Ky shenjë e rivendosjes së fjalëkalimit është e pavlefshme.',
-    'user' => "Ne nuk mund të gjejmë një përdorues me atë adresë e-mail.",
-
+    'user' => 'Ne nuk mund të gjejmë një përdorues me atë adresë e-mail.',
 ];

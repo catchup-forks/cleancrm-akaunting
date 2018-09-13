@@ -41,8 +41,8 @@ class Item extends Model
      * @var array
      */
     protected $searchableColumns = [
-        'name'        => 10,
-        'sku'         => 5,
+        'name' => 10,
+        'sku' => 5,
         'description' => 2,
     ];
 
@@ -69,23 +69,21 @@ class Item extends Model
     /**
      * Convert sale price to double.
      *
-     * @param  string  $value
-     * @return void
+     * @param string $value
      */
     public function setSalePriceAttribute($value)
     {
-        $this->attributes['sale_price'] = (double) $value;
+        $this->attributes['sale_price'] = (float) $value;
     }
 
     /**
      * Convert purchase price to double.
      *
-     * @param  string  $value
-     * @return void
+     * @param string $value
      */
     public function setPurchasePriceAttribute($value)
     {
-        $this->attributes['purchase_price'] = (double) $value;
+        $this->attributes['purchase_price'] = (float) $value;
     }
 
     /**
@@ -102,14 +100,15 @@ class Item extends Model
      * Scope autocomplete.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
-     * @param array $filter
+     * @param array                                 $filter
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeAutocomplete($query, $filter)
     {
         return $query->where(function ($query) use ($filter) {
             foreach ($filter as $key => $value) {
-                $query->orWhere($key, 'LIKE', "%" . $value  . "%");
+                $query->orWhere($key, 'LIKE', '%'.$value.'%');
             }
         });
     }
@@ -118,6 +117,7 @@ class Item extends Model
      * Scope quantity.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeQuantity($query)
@@ -126,7 +126,7 @@ class Item extends Model
     }
 
     /**
-     * Sort by category name
+     * Sort by category name.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
      * @param $direction

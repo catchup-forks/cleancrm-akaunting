@@ -1,18 +1,16 @@
 <?php
 
 return [
-
-    'code'                  => 'كود',
-    'rate'                  => 'القيمة',
-    'default'               => 'العملة الافتراضية',
-    'decimal_mark'          => 'علامة عشرية',
-    'thousands_separator'   => 'فاصل الآلاف',
-    'precision'             => 'الدقة',
+    'code' => 'كود',
+    'rate' => 'القيمة',
+    'default' => 'العملة الافتراضية',
+    'decimal_mark' => 'علامة عشرية',
+    'thousands_separator' => 'فاصل الآلاف',
+    'precision' => 'الدقة',
     'symbol' => [
-        'symbol'            => 'الرمز',
-        'position'          => 'مكان الرمز',
-        'before'            => 'قبل القيمة',
-        'after'             => 'بعد القيمة',
-    ]
-
+        'symbol' => 'الرمز',
+        'position' => 'مكان الرمز',
+        'before' => 'قبل القيمة',
+        'after' => 'بعد القيمة',
+    ],
 ];

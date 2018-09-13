@@ -12,7 +12,6 @@ class Module extends Request
 
     public function __construct(ValidationFactory $validation)
     {
-
         $validation->extend(
             'check',
             function ($attribute, $value, $parameters) {
@@ -20,7 +19,6 @@ class Module extends Request
             },
             trans('messages.error.invalid_token')
         );
-
     }
 
     /**

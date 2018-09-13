@@ -27,7 +27,8 @@ class Vendors extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param  int|string  $id
+     * @param int|string $id
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function show($id)
@@ -46,6 +47,7 @@ class Vendors extends ApiController
      * Store a newly created resource in storage.
      *
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function store(Request $request)
@@ -60,6 +62,7 @@ class Vendors extends ApiController
      *
      * @param  $vendor
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function update(Vendor $vendor, Request $request)
@@ -72,7 +75,8 @@ class Vendors extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Vendor  $vendor
+     * @param Vendor $vendor
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function destroy(Vendor $vendor)

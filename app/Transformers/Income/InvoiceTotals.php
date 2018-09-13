@@ -7,9 +7,9 @@ use League\Fractal\TransformerAbstract;
 
 class InvoiceTotals extends TransformerAbstract
 {
-
     /**
      * @param Model $model
+     *
      * @return array
      */
     public function transform(Model $model)

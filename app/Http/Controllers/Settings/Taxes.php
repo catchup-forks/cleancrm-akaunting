@@ -8,7 +8,6 @@ use App\Models\Setting\Tax;
 
 class Taxes extends Controller
 {
-
     /**
      * Display a listing of the resource.
      *
@@ -44,7 +43,7 @@ class Taxes extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param Request $request
      *
      * @return Response
      */
@@ -62,7 +61,7 @@ class Taxes extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Tax  $tax
+     * @param Tax $tax
      *
      * @return Response
      */
@@ -74,8 +73,8 @@ class Taxes extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Tax  $tax
-     * @param  Request  $request
+     * @param Tax     $tax
+     * @param Request $request
      *
      * @return Response
      */
@@ -100,14 +99,14 @@ class Taxes extends Controller
 
             flash($message)->warning();
 
-            return redirect('settings/taxes/' . $tax->id . '/edit');
+            return redirect('settings/taxes/'.$tax->id.'/edit');
         }
     }
 
     /**
      * Enable the specified resource.
      *
-     * @param  Tax  $tax
+     * @param Tax $tax
      *
      * @return Response
      */
@@ -126,7 +125,7 @@ class Taxes extends Controller
     /**
      * Disable the specified resource.
      *
-     * @param  Tax  $tax
+     * @param Tax $tax
      *
      * @return Response
      */
@@ -159,7 +158,7 @@ class Taxes extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Tax  $tax
+     * @param Tax $tax
      *
      * @return Response
      */

@@ -61,7 +61,7 @@ class Items extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param Request $request
      *
      * @return Response
      */
@@ -86,7 +86,7 @@ class Items extends Controller
     /**
      * Duplicate the specified resource.
      *
-     * @param  Item  $item
+     * @param Item $item
      *
      * @return Response
      */
@@ -104,7 +104,7 @@ class Items extends Controller
     /**
      * Import the specified resource.
      *
-     * @param  ImportFile  $import
+     * @param ImportFile $import
      *
      * @return Response
      */
@@ -124,7 +124,7 @@ class Items extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Item  $item
+     * @param Item $item
      *
      * @return Response
      */
@@ -142,8 +142,8 @@ class Items extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Item  $item
-     * @param  Request  $request
+     * @param Item    $item
+     * @param Request $request
      *
      * @return Response
      */
@@ -168,7 +168,7 @@ class Items extends Controller
     /**
      * Enable the specified resource.
      *
-     * @param  Item  $item
+     * @param Item $item
      *
      * @return Response
      */
@@ -187,7 +187,7 @@ class Items extends Controller
     /**
      * Disable the specified resource.
      *
-     * @param  Item  $item
+     * @param Item $item
      *
      * @return Response
      */
@@ -206,7 +206,7 @@ class Items extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Item  $item
+     * @param Item $item
      *
      * @return Response
      */
@@ -239,10 +239,10 @@ class Items extends Controller
      */
     public function export()
     {
-        \Excel::create('items', function($excel) {
-            $excel->sheet('items', function($sheet) {
+        \Excel::create('items', function ($excel) {
+            $excel->sheet('items', function ($sheet) {
                 $sheet->fromModel(Item::filter(request()->input())->get()->makeHidden([
-                    'id', 'company_id', 'item_id', 'created_at', 'updated_at', 'deleted_at'
+                    'id', 'company_id', 'item_id', 'created_at', 'updated_at', 'deleted_at',
                 ]));
             });
         })->download('xlsx');
@@ -254,7 +254,7 @@ class Items extends Controller
         $query = request('query');
         $currency_code = request('currency_code');
 
-        if (empty($currency_code) || (strtolower($currency_code)  == 'null')) {
+        if (empty($currency_code) || (strtolower($currency_code) == 'null')) {
             $currency_code = setting('general.default_currency');
         }
 
@@ -311,7 +311,7 @@ class Items extends Controller
             $currency_code = setting('general.default_currency');
         }
 
-        $json = new \stdClass;
+        $json = new \stdClass();
 
         $sub_total = 0;
         $tax_total = 0;
@@ -320,10 +320,10 @@ class Items extends Controller
 
         if ($input_items) {
             foreach ($input_items as $key => $item) {
-                $price = (double) $item['price'];
-                $quantity = (double) $item['quantity'];
+                $price = (float) $item['price'];
+                $quantity = (float) $item['quantity'];
 
-                $item_tax_total= 0;
+                $item_tax_total = 0;
                 $item_sub_total = ($price * $quantity);
 
                 if (!empty($item['tax_id'])) {
@@ -349,14 +349,14 @@ class Items extends Controller
 
         $json->sub_total = money($sub_total, $currency_code, true)->format();
 
-        $json->discount_text= trans('invoices.add_discount');
+        $json->discount_text = trans('invoices.add_discount');
         $json->discount_total = '';
 
         $json->tax_total = money($tax_total, $currency_code, true)->format();
 
         // Apply discount to total
         if ($discount) {
-            $json->discount_text= trans('invoices.show_discount', ['discount' => $discount]);
+            $json->discount_text = trans('invoices.show_discount', ['discount' => $discount]);
             $json->discount_total = money($sub_total * ($discount / 100), $currency_code, true)->format();
 
             $sub_total = $sub_total - ($sub_total * ($discount / 100));

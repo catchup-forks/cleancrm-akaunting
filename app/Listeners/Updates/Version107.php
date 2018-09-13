@@ -15,7 +15,6 @@ class Version107 extends Listener
      * Handle the event.
      *
      * @param  $event
-     * @return void
      */
     public function handle(UpdateFinished $event)
     {
@@ -24,7 +23,7 @@ class Version107 extends Listener
             return;
         }
 
-        $table = env('DB_PREFIX') . 'taxes';
+        $table = env('DB_PREFIX').'taxes';
 
         DB::statement("ALTER TABLE `$table` MODIFY `rate` DOUBLE(15,4) NOT NULL");
     }

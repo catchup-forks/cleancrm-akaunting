@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Password Reset Language Lines
@@ -17,6 +16,5 @@ return [
     'reset' => 'Şifreniz sıfırlandı!',
     'sent' => 'Şifre sıfırlama bağlantınızı size e-posta ile gönderdik!',
     'token' => 'Şifre sıfırlama adresi/kodu geçersiz.',
-    'user' => "Bu e-posta adresi ile kayıtlı bir üye bulunmuyor.",
-
+    'user' => 'Bu e-posta adresi ile kayıtlı bir üye bulunmuyor.',
 ];

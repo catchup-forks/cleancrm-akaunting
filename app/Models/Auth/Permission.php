@@ -15,7 +15,6 @@ class Permission extends LaratrustPermission
     use Filterable;
     use Sortable;
 
-
     protected $table = 'permissions';
 
     /**
@@ -45,7 +44,7 @@ class Permission extends LaratrustPermission
             return $this->provideFilter();
         }
 
-        $class = '\App\Filters\\' . ucfirst($folder) .'\\' . ucfirst($file);
+        $class = '\App\Filters\\'.ucfirst($folder).'\\'.ucfirst($file);
 
         return $this->provideFilter($class);
     }

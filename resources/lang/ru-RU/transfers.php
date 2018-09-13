@@ -1,8 +1,6 @@
 <?php
 
 return [
-
-    'from_account'          => 'Из аккаунта',
-    'to_account'            => 'В аккаунт',
-
+    'from_account' => 'Из аккаунта',
+    'to_account' => 'В аккаунт',
 ];

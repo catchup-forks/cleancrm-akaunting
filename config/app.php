@@ -1,7 +1,6 @@
 <?php
 
 return [
-
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -136,7 +135,6 @@ return [
     */
 
     'providers' => [
-
         /*
          * Laravel Framework Service Providers...
          */
@@ -205,7 +203,6 @@ return [
         Nwidart\Modules\LaravelModulesServiceProvider::class,
         Sofa\Eloquence\ServiceProvider::class,
         Plank\Mediable\MediableServiceProvider::class,
-
     ],
 
     /*
@@ -220,7 +217,6 @@ return [
     */
 
     'aliases' => [
-
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
@@ -255,7 +251,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        
+
         /*
          * Vendor Aliases...
          */
@@ -274,7 +270,5 @@ return [
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Setting' => Akaunting\Setting\Facade::class,
         'Version' => Akaunting\Version\Facade::class,
-
     ],
-
 ];

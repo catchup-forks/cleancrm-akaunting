@@ -9,7 +9,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Income\Invoice as Request;
 use App\Http\Requests\Income\InvoicePayment as PaymentRequest;
 use App\Models\Banking\Account;
-use App\Models\Common\Media;
 use App\Models\Income\Customer;
 use App\Models\Income\Invoice;
 use App\Models\Income\InvoiceHistory;
@@ -33,7 +32,6 @@ use App\Utilities\Modules;
 use Date;
 use File;
 use Illuminate\Http\Request as ItemRequest;
-use Image;
 use Storage;
 
 class Invoices extends Controller
@@ -47,7 +45,7 @@ class Invoices extends Controller
      */
     public function index()
     {
-        $invoices = Invoice::with(['customer', 'status', 'items', 'payments', 'histories'])->collect(['invoice_number'=> 'desc']);
+        $invoices = Invoice::with(['customer', 'status', 'items', 'payments', 'histories'])->collect(['invoice_number' => 'desc']);
 
         $customers = collect(Customer::enabled()->orderBy('name')->pluck('name', 'id'))
             ->prepend(trans('general.all_type', ['type' => trans_choice('general.customers', 2)]), '');
@@ -61,7 +59,7 @@ class Invoices extends Controller
     /**
      * Show the form for viewing the specified resource.
      *
-     * @param  Invoice  $invoice
+     * @param Invoice $invoice
      *
      * @return Response
      */
@@ -77,7 +75,7 @@ class Invoices extends Controller
                 $default_amount = $item->amount;
 
                 if ($invoice->currency_code == $item->currency_code) {
-                    $amount = (double)$default_amount;
+                    $amount = (float) $default_amount;
                 } else {
                     $default_amount_model = new InvoicePayment();
 
@@ -86,7 +84,7 @@ class Invoices extends Controller
                     $default_amount_model->currency_code = $item->currency_code;
                     $default_amount_model->currency_rate = $_currencies[$item->currency_code];
 
-                    $default_amount = (double) $default_amount_model->getDivideConvertedAmount();
+                    $default_amount = (float) $default_amount_model->getDivideConvertedAmount();
 
                     $convert_amount = new InvoicePayment();
 
@@ -95,7 +93,7 @@ class Invoices extends Controller
                     $convert_amount->currency_code = $invoice->currency_code;
                     $convert_amount->currency_rate = $_currencies[$invoice->currency_code];
 
-                    $amount = (double) $convert_amount->getDynamicConvertedAmount();
+                    $amount = (float) $convert_amount->getDynamicConvertedAmount();
                 }
 
                 $paid += $amount;
@@ -146,7 +144,7 @@ class Invoices extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param Request $request
      *
      * @return Response
      */
@@ -205,7 +203,7 @@ class Invoices extends Controller
 
                     $tax_id = $item['tax_id'];
 
-                    $tax = (((double) $item['price'] * (double) $item['quantity']) / 100) * $tax_object->rate;
+                    $tax = (((float) $item['price'] * (float) $item['quantity']) / 100) * $tax_object->rate;
 
                     // Apply discount to tax
                     if ($discount) {
@@ -216,11 +214,11 @@ class Invoices extends Controller
                 $invoice_item['item_id'] = $item['item_id'];
                 $invoice_item['name'] = str_limit($item['name'], 180, '');
                 $invoice_item['sku'] = $item_sku;
-                $invoice_item['quantity'] = (double) $item['quantity'];
-                $invoice_item['price'] = (double) $item['price'];
+                $invoice_item['quantity'] = (float) $item['quantity'];
+                $invoice_item['price'] = (float) $item['price'];
                 $invoice_item['tax'] = $tax;
                 $invoice_item['tax_id'] = $tax_id;
-                $invoice_item['total'] = (double) $item['price'] * (double) $item['quantity'];
+                $invoice_item['total'] = (float) $item['price'] * (float) $item['quantity'];
 
                 InvoiceItem::create($invoice_item);
 
@@ -231,7 +229,7 @@ class Invoices extends Controller
                     } else {
                         $taxes[$tax_object->id] = [
                             'name' => $tax_object->name,
-                            'amount' => $tax
+                            'amount' => $tax,
                         ];
                     }
                 }
@@ -284,13 +282,13 @@ class Invoices extends Controller
 
         flash($message)->success();
 
-        return redirect('incomes/invoices/' . $invoice->id);
+        return redirect('incomes/invoices/'.$invoice->id);
     }
 
     /**
      * Duplicate the specified resource.
      *
-     * @param  Invoice  $invoice
+     * @param Invoice $invoice
      *
      * @return Response
      */
@@ -314,13 +312,13 @@ class Invoices extends Controller
 
         flash($message)->success();
 
-        return redirect('incomes/invoices/' . $clone->id . '/edit');
+        return redirect('incomes/invoices/'.$clone->id.'/edit');
     }
 
     /**
      * Import the specified resource.
      *
-     * @param  ImportFile  $import
+     * @param ImportFile $import
      *
      * @return Response
      */
@@ -342,7 +340,7 @@ class Invoices extends Controller
                 return false;
             }
 
-            $slug = 'Income\\' . str_singular(studly_case($sheet_title));
+            $slug = 'Income\\'.str_singular(studly_case($sheet_title));
 
             if (!$success = Import::createFromSheet($sheet, $slug)) {
                 return false;
@@ -363,7 +361,7 @@ class Invoices extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Invoice  $invoice
+     * @param Invoice $invoice
      *
      * @return Response
      */
@@ -387,8 +385,8 @@ class Invoices extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Invoice  $invoice
-     * @param  Request  $request
+     * @param Invoice $invoice
+     * @param Request $request
      *
      * @return Response
      */
@@ -425,7 +423,7 @@ class Invoices extends Controller
 
                     $tax_id = $item['tax_id'];
 
-                    $tax = (((double) $item['price'] * (double) $item['quantity']) / 100) * $tax_object->rate;
+                    $tax = (((float) $item['price'] * (float) $item['quantity']) / 100) * $tax_object->rate;
 
                     // Apply discount to tax
                     if ($discount) {
@@ -436,11 +434,11 @@ class Invoices extends Controller
                 $invoice_item['item_id'] = $item['item_id'];
                 $invoice_item['name'] = str_limit($item['name'], 180, '');
                 $invoice_item['sku'] = $item_sku;
-                $invoice_item['quantity'] = (double) $item['quantity'];
-                $invoice_item['price'] = (double) $item['price'];
+                $invoice_item['quantity'] = (float) $item['quantity'];
+                $invoice_item['price'] = (float) $item['price'];
                 $invoice_item['tax'] = $tax;
                 $invoice_item['tax_id'] = $tax_id;
-                $invoice_item['total'] = (double) $item['price'] * (double) $item['quantity'];
+                $invoice_item['total'] = (float) $item['price'] * (float) $item['quantity'];
 
                 if (isset($tax_object)) {
                     if (array_key_exists($tax_object->id, $taxes)) {
@@ -448,7 +446,7 @@ class Invoices extends Controller
                     } else {
                         $taxes[$tax_object->id] = [
                             'name' => $tax_object->name,
-                            'amount' => $tax
+                            'amount' => $tax,
                         ];
                     }
                 }
@@ -498,13 +496,13 @@ class Invoices extends Controller
 
         flash($message)->success();
 
-        return redirect('incomes/invoices/' . $invoice->id);
+        return redirect('incomes/invoices/'.$invoice->id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Invoice  $invoice
+     * @param Invoice $invoice
      *
      * @return Response
      */
@@ -532,13 +530,13 @@ class Invoices extends Controller
 
             $excel->sheet('invoices', function ($sheet) use ($invoices) {
                 $sheet->fromModel($invoices->makeHidden([
-                    'company_id', 'parent_id', 'created_at', 'updated_at', 'deleted_at', 'attachment', 'discount', 'items', 'histories', 'payments', 'totals', 'media'
+                    'company_id', 'parent_id', 'created_at', 'updated_at', 'deleted_at', 'attachment', 'discount', 'items', 'histories', 'payments', 'totals', 'media',
                 ]));
             });
 
             $tables = ['items', 'histories', 'payments', 'totals'];
             foreach ($tables as $table) {
-                $excel->sheet('invoice_' . $table, function ($sheet) use ($invoices, $table) {
+                $excel->sheet('invoice_'.$table, function ($sheet) use ($invoices, $table) {
                     $hidden_fields = ['id', 'company_id', 'created_at', 'updated_at', 'deleted_at', 'title'];
 
                     $i = 1;
@@ -553,7 +551,7 @@ class Invoices extends Controller
                             $sheet->fromModel($model, null, 'A1', false, false);
                         }
 
-                        $i++;
+                        ++$i;
                     }
                 });
             }
@@ -563,7 +561,7 @@ class Invoices extends Controller
     /**
      * Mark the invoice as sent.
      *
-     * @param  Invoice $invoice
+     * @param Invoice $invoice
      *
      * @return Response
      */
@@ -590,7 +588,7 @@ class Invoices extends Controller
     /**
      * Download the PDF file of invoice.
      *
-     * @param  Invoice $invoice
+     * @param Invoice $invoice
      *
      * @return Response
      */
@@ -648,7 +646,7 @@ class Invoices extends Controller
     /**
      * Print the invoice.
      *
-     * @param  Invoice $invoice
+     * @param Invoice $invoice
      *
      * @return Response
      */
@@ -662,7 +660,7 @@ class Invoices extends Controller
     /**
      * Download the PDF file of invoice.
      *
-     * @param  Invoice $invoice
+     * @param Invoice $invoice
      *
      * @return Response
      */
@@ -685,7 +683,7 @@ class Invoices extends Controller
     /**
      * Mark the invoice as paid.
      *
-     * @param  Invoice $invoice
+     * @param Invoice $invoice
      *
      * @return Response
      */
@@ -731,7 +729,7 @@ class Invoices extends Controller
     /**
      * Add payment to the invoice.
      *
-     * @param  PaymentRequest  $request
+     * @param PaymentRequest $request
      *
      * @return Response
      */
@@ -747,7 +745,7 @@ class Invoices extends Controller
 
         $total_amount = $invoice->amount;
 
-        $amount = (double) $request['amount'];
+        $amount = (float) $request['amount'];
 
         if ($request['currency_code'] != $invoice->currency_code) {
             $request_invoice = new Invoice();
@@ -766,12 +764,12 @@ class Invoices extends Controller
         // For amount cover integer
         $multiplier = 1;
 
-        for ($i = 0; $i < $currency->precision; $i++) {
+        for ($i = 0; $i < $currency->precision; ++$i) {
             $multiplier *= 10;
         }
 
-        $amount *=  $multiplier;
-        $total_amount *=  $multiplier;
+        $amount *= $multiplier;
+        $total_amount *= $multiplier;
 
         if ($amount > $total_amount) {
             $message = trans('messages.error.over_payment');
@@ -790,16 +788,16 @@ class Invoices extends Controller
         $invoice->save();
 
         $invoice_payment_request = [
-            'company_id'     => $request['company_id'],
-            'invoice_id'     => $request['invoice_id'],
-            'account_id'     => $request['account_id'],
-            'paid_at'        => $request['paid_at'],
-            'amount'         => $request['amount'],
-            'currency_code'  => $request['currency_code'],
-            'currency_rate'  => $request['currency_rate'],
-            'description'    => $request['description'],
+            'company_id' => $request['company_id'],
+            'invoice_id' => $request['invoice_id'],
+            'account_id' => $request['account_id'],
+            'paid_at' => $request['paid_at'],
+            'amount' => $request['amount'],
+            'currency_code' => $request['currency_code'],
+            'currency_rate' => $request['currency_rate'],
+            'description' => $request['description'],
             'payment_method' => $request['payment_method'],
-            'reference'      => $request['reference']
+            'reference' => $request['reference'],
         ];
 
         $invoice_payment = InvoicePayment::create($invoice_payment_request);
@@ -816,7 +814,7 @@ class Invoices extends Controller
 
         $desc_amount = money((float) $request['amount'], (string) $request['currency_code'], true)->format();
 
-        $request['description'] = $desc_amount . ' ' . trans_choice('general.payments', 1);
+        $request['description'] = $desc_amount.' '.trans_choice('general.payments', 1);
 
         InvoiceHistory::create($request->input());
 
@@ -832,7 +830,7 @@ class Invoices extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  InvoicePayment  $payment
+     * @param InvoicePayment $payment
      *
      * @return Response
      */
@@ -850,7 +848,7 @@ class Invoices extends Controller
 
         $desc_amount = money((float) $payment->amount, (string) $payment->currency_code, true)->format();
 
-        $description = $desc_amount . ' ' . trans_choice('general.payments', 1);
+        $description = $desc_amount.' '.trans_choice('general.payments', 1);
 
         // Add invoice history
         InvoiceHistory::create([
@@ -886,21 +884,21 @@ class Invoices extends Controller
 
             return response()->json([
                 'success' => true,
-                'error'   => false,
-                'data'    => [
-                    'currency' => $currency
+                'error' => false,
+                'data' => [
+                    'currency' => $currency,
                 ],
                 'message' => 'null',
-                'html'    => $html,
+                'html' => $html,
             ]);
         }
 
         return response()->json([
             'success' => false,
-            'error'   => true,
-            'data'    => 'null',
+            'error' => true,
+            'data' => 'null',
             'message' => trans('issue'),
-            'html'    => 'null',
+            'html' => 'null',
         ]);
     }
 
@@ -943,7 +941,7 @@ class Invoices extends Controller
             'sort_order' => $sort_order,
         ]);
 
-        $sort_order++;
+        ++$sort_order;
 
         // Added invoice discount
         if ($discount_total) {
@@ -960,7 +958,7 @@ class Invoices extends Controller
             $sub_total = $sub_total - $discount_total;
         }
 
-        $sort_order++;
+        ++$sort_order;
 
         // Added invoice taxes
         if ($taxes) {
@@ -974,7 +972,7 @@ class Invoices extends Controller
                     'sort_order' => $sort_order,
                 ]);
 
-                $sort_order++;
+                ++$sort_order;
             }
         }
 

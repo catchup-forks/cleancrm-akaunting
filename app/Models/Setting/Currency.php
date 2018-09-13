@@ -6,7 +6,6 @@ use App\Models\Model;
 
 class Currency extends Model
 {
-
     protected $table = 'currencies';
 
     /**
@@ -66,12 +65,11 @@ class Currency extends Model
     /**
      * Convert rate to double.
      *
-     * @param  string  $value
-     * @return void
+     * @param string $value
      */
     public function setRateAttribute($value)
     {
-        $this->attributes['rate'] = (double) $value;
+        $this->attributes['rate'] = (float) $value;
     }
 
     /**
@@ -82,7 +80,7 @@ class Currency extends Model
     public function getPrecisionAttribute($value)
     {
         if (empty($value)) {
-            return config('money.' . $this->code . '.precision');
+            return config('money.'.$this->code.'.precision');
         }
 
         return $value;
@@ -96,7 +94,7 @@ class Currency extends Model
     public function getSymbolAttribute($value)
     {
         if (empty($value)) {
-            return config('money.' . $this->code . '.symbol');
+            return config('money.'.$this->code.'.symbol');
         }
 
         return $value;
@@ -110,7 +108,7 @@ class Currency extends Model
     public function getSymbolFirstAttribute($value)
     {
         if (empty($value)) {
-            return config('money.' . $this->code . '.symbol_first');
+            return config('money.'.$this->code.'.symbol_first');
         }
 
         return $value;
@@ -124,7 +122,7 @@ class Currency extends Model
     public function getDecimalMarkAttribute($value)
     {
         if (empty($value)) {
-            return config('money.' . $this->code . '.decimal_mark');
+            return config('money.'.$this->code.'.decimal_mark');
         }
 
         return $value;
@@ -138,7 +136,7 @@ class Currency extends Model
     public function getThousandsSeparatorAttribute($value)
     {
         if (empty($value)) {
-            return config('money.' . $this->code . '.thousands_separator');
+            return config('money.'.$this->code.'.thousands_separator');
         }
 
         return $value;

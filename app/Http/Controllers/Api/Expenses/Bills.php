@@ -10,7 +10,6 @@ use App\Models\Expense\Bill;
 use App\Models\Expense\BillHistory;
 use App\Models\Expense\BillItem;
 use App\Models\Expense\BillPayment;
-use App\Models\Expense\BillStatus;
 use App\Models\Common\Item;
 use App\Models\Setting\Tax;
 use App\Transformers\Expense\Bill as Transformer;
@@ -35,7 +34,8 @@ class Bills extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param  Bill  $bill
+     * @param Bill $bill
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function show(Bill $bill)
@@ -47,6 +47,7 @@ class Bills extends ApiController
      * Store a newly created resource in storage.
      *
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function store(Request $request)
@@ -124,6 +125,7 @@ class Bills extends ApiController
      *
      * @param  $bill
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function update(Bill $bill, Request $request)
@@ -188,7 +190,8 @@ class Bills extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Bill  $bill
+     * @param Bill $bill
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function destroy(Bill $bill)

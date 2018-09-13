@@ -14,6 +14,7 @@ class Uploads extends Controller
      * Get the specified resource.
      *
      * @param  $id
+     *
      * @return mixed
      */
     public function get($id)
@@ -32,6 +33,7 @@ class Uploads extends Controller
      * Download the specified resource.
      *
      * @param  $id
+     *
      * @return mixed
      */
     public function download($id)
@@ -50,6 +52,7 @@ class Uploads extends Controller
      * Destroy the specified resource.
      *
      * @param  $id
+     *
      * @return callable
      */
     public function destroy($id, Request $request)
@@ -76,7 +79,7 @@ class Uploads extends Controller
 
                     setting()->save();
                     break;
-                default;
+                default:
             }
         }
 
@@ -87,7 +90,8 @@ class Uploads extends Controller
      * Get the full path of resource.
      *
      * @param  $media
-     * @return boolean|string
+     *
+     * @return bool|string
      */
     protected function getPath($media)
     {
@@ -101,7 +105,7 @@ class Uploads extends Controller
                 return false;
             }
 
-            $path = $media->directory . '/' . $media->basename;
+            $path = $media->directory.'/'.$media->basename;
         }
 
         if (!Storage::exists($path)) {

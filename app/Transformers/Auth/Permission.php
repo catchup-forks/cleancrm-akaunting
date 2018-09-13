@@ -9,6 +9,7 @@ class Permission extends TransformerAbstract
 {
     /**
      * @param Model $model
+     *
      * @return array
      */
     public function transform(Model $model)

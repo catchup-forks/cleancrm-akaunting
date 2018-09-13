@@ -80,12 +80,12 @@ class Install extends Command
         if (!empty($missingOptions) && $this->option(self::OPT_NO_INTERACTION)) {
             $this->line('❌ Some options are missing and --no-interaction is present. Please run the following command for more informations :');
             $this->line('❌   php artisan help install');
-            $this->line('❌ Missing options are : ' . join(', ', $missingOptions));
+            $this->line('❌ Missing options are : '.join(', ', $missingOptions));
 
             return self::CMD_ERROR;
         }
 
-        $this->line('Setting locale ' . $this->locale);
+        $this->line('Setting locale '.$this->locale);
         Session::put(self::OPT_LOCALE, $this->locale);
 
         $this->prompt();
@@ -111,7 +111,7 @@ class Install extends Command
     }
 
     /**
-     * Check that all options are presents. otherwise returns an array of the missing options
+     * Check that all options are presents. otherwise returns an array of the missing options.
      */
     private function checkOptions()
     {
@@ -212,14 +212,15 @@ class Install extends Command
         }
     }
 
-    private function createDatabaseTables() {
-        $this->dbHost     = $this->option(self::OPT_DB_HOST);
-        $this->dbPort     = $this->option(self::OPT_DB_PORT);
-        $this->dbName     = $this->option(self::OPT_DB_NAME);
+    private function createDatabaseTables()
+    {
+        $this->dbHost = $this->option(self::OPT_DB_HOST);
+        $this->dbPort = $this->option(self::OPT_DB_PORT);
+        $this->dbName = $this->option(self::OPT_DB_NAME);
         $this->dbUsername = $this->option(self::OPT_DB_USERNAME);
         $this->dbPassword = $this->option(self::OPT_DB_PASSWORD);
 
-        $this->line('Connecting to database ' . $this->dbName . '@' . $this->dbHost . ':' . $this->dbPort);
+        $this->line('Connecting to database '.$this->dbName.'@'.$this->dbHost.':'.$this->dbPort);
 
         if (!Installer::createDbTables($this->dbHost, $this->dbPort, $this->dbName, $this->dbUsername, $this->dbPassword)) {
             $this->error('Error: Could not connect to the database! Please, make sure the details are correct.');

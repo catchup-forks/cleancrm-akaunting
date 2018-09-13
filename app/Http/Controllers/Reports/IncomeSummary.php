@@ -32,16 +32,16 @@ class IncomeSummary extends Controller
         }
 
         // Dates
-        for ($j = 1; $j <= 12; $j++) {
-            $dates[$j] = Date::parse($year . '-' . $j)->format('F');
+        for ($j = 1; $j <= 12; ++$j) {
+            $dates[$j] = Date::parse($year.'-'.$j)->format('F');
 
-            $incomes_graph[Date::parse($year . '-' . $j)->format('F-Y')] = 0;
+            $incomes_graph[Date::parse($year.'-'.$j)->format('F-Y')] = 0;
 
             // Totals
             $totals[$dates[$j]] = array(
                 'amount' => 0,
                 'currency_code' => setting('general.default_currency'),
-                'currency_rate' => 1
+                'currency_rate' => 1,
             );
 
             foreach ($categories as $category_id => $category_name) {
@@ -50,7 +50,7 @@ class IncomeSummary extends Controller
                     'name' => $category_name,
                     'amount' => 0,
                     'currency_code' => setting('general.default_currency'),
-                    'currency_rate' => 1
+                    'currency_rate' => 1,
                 );
             }
         }

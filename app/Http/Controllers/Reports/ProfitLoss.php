@@ -10,7 +10,6 @@ use App\Models\Expense\Bill;
 use App\Models\Expense\BillPayment;
 use App\Models\Expense\Payment;
 use App\Models\Setting\Category;
-use Charts;
 use Date;
 
 class ProfitLoss extends Controller
@@ -37,14 +36,14 @@ class ProfitLoss extends Controller
         }
 
         // Dates
-        for ($j = 1; $j <= 12; $j++) {
-            $dates[$j] = Date::parse($year . '-' . $j)->quarter;
+        for ($j = 1; $j <= 12; ++$j) {
+            $dates[$j] = Date::parse($year.'-'.$j)->quarter;
 
             // Totals
             $totals[$dates[$j]] = array(
                 'amount' => 0,
                 'currency_code' => setting('general.default_currency'),
-                'currency_rate' => 1
+                'currency_rate' => 1,
             );
 
             foreach ($income_categories as $category_id => $category_name) {
@@ -53,7 +52,7 @@ class ProfitLoss extends Controller
                     'name' => $category_name,
                     'amount' => 0,
                     'currency_code' => setting('general.default_currency'),
-                    'currency_rate' => 1
+                    'currency_rate' => 1,
                 ];
             }
 
@@ -63,7 +62,7 @@ class ProfitLoss extends Controller
                     'name' => $category_name,
                     'amount' => 0,
                     'currency_code' => setting('general.default_currency'),
-                    'currency_rate' => 1
+                    'currency_rate' => 1,
                 ];
             }
 
@@ -73,7 +72,7 @@ class ProfitLoss extends Controller
         $totals['total'] = [
             'amount' => 0,
             'currency_code' => setting('general.default_currency'),
-            'currency_rate' => 1
+            'currency_rate' => 1,
         ];
 
         $gross['income'] = $gross['expense'] = [1 => 0, 2 => 0, 3 => 0, 4 => 0, 'total' => 0];
@@ -84,7 +83,7 @@ class ProfitLoss extends Controller
                 'name' => trans_choice('general.totals', 1),
                 'amount' => 0,
                 'currency_code' => setting('general.default_currency'),
-                'currency_rate' => 1
+                'currency_rate' => 1,
             ];
         }
 
@@ -94,7 +93,7 @@ class ProfitLoss extends Controller
                 'name' => trans_choice('general.totals', 1),
                 'amount' => 0,
                 'currency_code' => setting('general.default_currency'),
-                'currency_rate' => 1
+                'currency_rate' => 1,
             ];
         }
 
@@ -135,7 +134,7 @@ class ProfitLoss extends Controller
                 $this->setAmount($totals, $compares, $bills, 'bill', 'billed_at');
                 break;
         }
-        
+
         // Payments
         if ($status != 'upcoming') {
             $payments = Payment::monthsOfYear('paid_at')->isNotTransfer()->get();

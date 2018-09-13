@@ -31,7 +31,7 @@ class Permission extends FormRequest
         }
 
         return [
-            'name' => 'required|string|unique:permissions,name,' . $id,
+            'name' => 'required|string|unique:permissions,name,'.$id,
             'display_name' => 'required|string',
         ];
     }

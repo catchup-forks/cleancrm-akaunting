@@ -27,7 +27,7 @@ class Revenues extends Controller
      */
     public function index()
     {
-        $revenues = Revenue::with(['account', 'category', 'customer'])->isNotTransfer()->collect(['paid_at'=> 'desc']);
+        $revenues = Revenue::with(['account', 'category', 'customer'])->isNotTransfer()->collect(['paid_at' => 'desc']);
 
         $customers = collect(Customer::enabled()->orderBy('name')->pluck('name', 'id'))
             ->prepend(trans('general.all_type', ['type' => trans_choice('general.customers', 2)]), '');
@@ -80,7 +80,7 @@ class Revenues extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param Request $request
      *
      * @return Response
      */
@@ -108,7 +108,7 @@ class Revenues extends Controller
     /**
      * Duplicate the specified resource.
      *
-     * @param  Revenue  $revenue
+     * @param Revenue $revenue
      *
      * @return Response
      */
@@ -120,13 +120,13 @@ class Revenues extends Controller
 
         flash($message)->success();
 
-        return redirect('incomes/revenues/' . $clone->id . '/edit');
+        return redirect('incomes/revenues/'.$clone->id.'/edit');
     }
 
     /**
      * Import the specified resource.
      *
-     * @param  ImportFile  $import
+     * @param ImportFile $import
      *
      * @return Response
      */
@@ -146,7 +146,7 @@ class Revenues extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Revenue  $revenue
+     * @param Revenue $revenue
      *
      * @return Response
      */
@@ -172,8 +172,8 @@ class Revenues extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Revenue  $revenue
-     * @param  Request  $request
+     * @param Revenue $revenue
+     * @param Request $request
      *
      * @return Response
      */
@@ -201,7 +201,7 @@ class Revenues extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Revenue  $revenue
+     * @param Revenue $revenue
      *
      * @return Response
      */
@@ -229,10 +229,10 @@ class Revenues extends Controller
      */
     public function export()
     {
-        \Excel::create('revenues', function($excel) {
-            $excel->sheet('revenues', function($sheet) {
+        \Excel::create('revenues', function ($excel) {
+            $excel->sheet('revenues', function ($sheet) {
                 $sheet->fromModel(Revenue::filter(request()->input())->get()->makeHidden([
-                    'id', 'company_id', 'parent_id', 'created_at', 'updated_at', 'deleted_at'
+                    'id', 'company_id', 'parent_id', 'created_at', 'updated_at', 'deleted_at',
                 ]));
             });
         })->download('xlsx');

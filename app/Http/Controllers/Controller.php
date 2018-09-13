@@ -32,12 +32,12 @@ class Controller extends BaseController
 
         // Add folder
         if (strtolower($arr[1]) != 'controllers') {
-            $controller .= kebab_case($arr[1]) . '-';
+            $controller .= kebab_case($arr[1]).'-';
         }
 
         // Add module
         if (isset($arr[3]) && isset($arr[4]) && (strtolower($arr[4]) == 'modules')) {
-            $controller .= kebab_case($arr[3]) . '-';
+            $controller .= kebab_case($arr[3]).'-';
         }
 
         // Add file
@@ -50,10 +50,10 @@ class Controller extends BaseController
         }
 
         // Add CRUD permission check
-        $this->middleware('permission:create-' . $controller)->only(['create', 'store', 'duplicate', 'import']);
-        $this->middleware('permission:read-' . $controller)->only(['index', 'show', 'edit', 'export']);
-        $this->middleware('permission:update-' . $controller)->only(['update', 'enable', 'disable']);
-        $this->middleware('permission:delete-' . $controller)->only('destroy');
+        $this->middleware('permission:create-'.$controller)->only(['create', 'store', 'duplicate', 'import']);
+        $this->middleware('permission:read-'.$controller)->only(['index', 'show', 'edit', 'export']);
+        $this->middleware('permission:update-'.$controller)->only(['update', 'enable', 'disable']);
+        $this->middleware('permission:delete-'.$controller)->only('destroy');
     }
 
     public function countRelationships($model, $relationships)
@@ -62,7 +62,7 @@ class Controller extends BaseController
 
         foreach ($relationships as $relationship => $text) {
             if ($c = $model->$relationship()->count()) {
-                $counter[] = $c . ' ' . strtolower(trans_choice('general.' . $text, ($c > 1) ? 2 : 1));
+                $counter[] = $c.' '.strtolower(trans_choice('general.'.$text, ($c > 1) ? 2 : 1));
             }
         }
 
@@ -88,8 +88,6 @@ class Controller extends BaseController
      *
      * @param  $model
      * @param  $relationships
-     *
-     * @return void
      */
     public function deleteRelationships($model, $relationships)
     {

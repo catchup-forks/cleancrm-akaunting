@@ -6,12 +6,10 @@ use Illuminate\View\View;
 
 class Recurring
 {
-
     /**
      * Bind data to the view.
      *
-     * @param  View  $view
-     * @return void
+     * @param View $view
      */
     public function compose(View $view)
     {

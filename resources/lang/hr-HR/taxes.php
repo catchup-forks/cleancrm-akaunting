@@ -1,8 +1,6 @@
 <?php
 
 return [
-
-    'rate'                  => 'Stopa',
-    'rate_percent'          => 'Stopa (%)',
-
+    'rate' => 'Stopa',
+    'rate_percent' => 'Stopa (%)',
 ];

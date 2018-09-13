@@ -10,7 +10,6 @@ use App\Traits\Media;
 use App\Traits\Recurring;
 use Bkwld\Cloner\Cloneable;
 use Sofa\Eloquence\Eloquence;
-use Date;
 
 class Revenue extends Model
 {
@@ -32,7 +31,7 @@ class Revenue extends Model
      *
      * @var array
      */
-    public $sortable = ['paid_at', 'amount','category_id', 'account', 'payment_method'];
+    public $sortable = ['paid_at', 'amount', 'category_id', 'account', 'payment_method'];
 
     /**
      * Searchable rules.
@@ -41,10 +40,10 @@ class Revenue extends Model
      */
     protected $searchableColumns = [
         'invoice_number' => 10,
-        'order_number'   => 10,
-        'customer_name'  => 10,
+        'order_number' => 10,
+        'customer_name' => 10,
         'customer_email' => 5,
-        'notes'          => 2,
+        'notes' => 2,
     ];
 
     /**
@@ -93,6 +92,7 @@ class Revenue extends Model
      * Get only transfers.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeIsTransfer($query)
@@ -104,6 +104,7 @@ class Revenue extends Model
      * Skip transfers.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeIsNotTransfer($query)
@@ -114,23 +115,21 @@ class Revenue extends Model
     /**
      * Convert amount to double.
      *
-     * @param  string  $value
-     * @return void
+     * @param string $value
      */
     public function setAmountAttribute($value)
     {
-        $this->attributes['amount'] = (double) $value;
+        $this->attributes['amount'] = (float) $value;
     }
 
     /**
      * Convert currency rate to double.
      *
-     * @param  string  $value
-     * @return void
+     * @param string $value
      */
     public function setCurrencyRateAttribute($value)
     {
-        $this->attributes['currency_rate'] = (double) $value;
+        $this->attributes['currency_rate'] = (float) $value;
     }
 
     public function scopeLatest($query)

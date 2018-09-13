@@ -6,7 +6,6 @@ use MediaUploader;
 
 trait Uploads
 {
-
     public function getUploadedFilePath($file, $folder = 'settings', $company_id = null)
     {
         $path = '';
@@ -22,10 +21,10 @@ trait Uploads
         $file_name = $file->getClientOriginalName();
 
         // Upload file
-        $file->storeAs($company_id . '/' . $folder, $file_name);
+        $file->storeAs($company_id.'/'.$folder, $file_name);
 
         // Prepare db path
-        $path = $folder . '/' . $file_name;
+        $path = $folder.'/'.$file_name;
 
         return $path;
     }
@@ -42,7 +41,7 @@ trait Uploads
             $company_id = session('company_id');
         }
 
-        $path = $company_id . '/' . $folder;
+        $path = $company_id.'/'.$folder;
 
         return MediaUploader::fromSource($file)->toDirectory($path)->upload();
     }

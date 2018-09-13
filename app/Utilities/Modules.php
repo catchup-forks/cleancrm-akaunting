@@ -4,19 +4,16 @@ namespace App\Utilities;
 
 use Cache;
 use Date;
-use Module;
-
 use App\Events\PaymentGatewayListing;
 
 class Modules
 {
-
     public static function getPaymentMethods($type = null)
     {
         $company_id = session('company_id');
 
-        $cache_admin = 'payment_methods.' . $company_id . '.admin';
-        $cache_customer = 'payment_methods.' . $company_id . '.customer';
+        $cache_admin = 'payment_methods.'.$company_id.'.admin';
+        $cache_customer = 'payment_methods.'.$company_id.'.customer';
 
         $payment_methods = Cache::get($cache_admin);
 

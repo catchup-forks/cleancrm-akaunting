@@ -16,6 +16,7 @@ class BillPayments extends TransformerAbstract
 
     /**
      * @param Model $model
+     *
      * @return array
      */
     public function transform(Model $model)
@@ -40,6 +41,7 @@ class BillPayments extends TransformerAbstract
 
     /**
      * @param Model $model
+     *
      * @return \League\Fractal\Resource\Item
      */
     public function includeAccount(Model $model)
@@ -48,7 +50,8 @@ class BillPayments extends TransformerAbstract
     }
 
     /**
-     * @param  Model $model
+     * @param Model $model
+     *
      * @return \League\Fractal\Resource\Item
      */
     public function includeCurrency(Model $model)

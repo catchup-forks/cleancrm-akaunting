@@ -10,7 +10,6 @@ use App\Traits\Media;
 use App\Traits\Recurring;
 use Bkwld\Cloner\Cloneable;
 use Sofa\Eloquence\Eloquence;
-use Date;
 
 class Payment extends Model
 {
@@ -42,8 +41,8 @@ class Payment extends Model
     protected $searchableColumns = [
         'accounts.name',
         'categories.name',
-        'vendors.name' ,
-        'description'  ,
+        'vendors.name',
+        'description',
     ];
 
     /**
@@ -87,6 +86,7 @@ class Payment extends Model
      * Get only transfers.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeIsTransfer($query)
@@ -98,6 +98,7 @@ class Payment extends Model
      * Skip transfers.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeIsNotTransfer($query)
@@ -108,23 +109,21 @@ class Payment extends Model
     /**
      * Convert amount to double.
      *
-     * @param  string  $value
-     * @return void
+     * @param string $value
      */
     public function setAmountAttribute($value)
     {
-        $this->attributes['amount'] = (double) $value;
+        $this->attributes['amount'] = (float) $value;
     }
 
     /**
      * Convert currency rate to double.
      *
-     * @param  string  $value
-     * @return void
+     * @param string $value
      */
     public function setCurrencyRateAttribute($value)
     {
-        $this->attributes['currency_rate'] = (double) $value;
+        $this->attributes['currency_rate'] = (float) $value;
     }
 
     public static function scopeLatest($query)

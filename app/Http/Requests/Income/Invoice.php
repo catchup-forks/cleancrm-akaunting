@@ -35,7 +35,7 @@ class Invoice extends Request
         $company_id = $this->request->get('company_id');
 
         return [
-            'invoice_number' => 'required|string|unique:invoices,NULL,' . $id . ',id,company_id,' . $company_id . ',deleted_at,NULL',
+            'invoice_number' => 'required|string|unique:invoices,NULL,'.$id.',id,company_id,'.$company_id.',deleted_at,NULL',
             'invoice_status_code' => 'required|string',
             'invoiced_at' => 'required|date_format:Y-m-d H:i:s',
             'due_at' => 'required|date_format:Y-m-d H:i:s',
@@ -49,7 +49,7 @@ class Invoice extends Request
             'customer_id' => 'required|integer',
             'customer_name' => 'required|string',
             'category_id' => 'required|integer',
-            'attachment' => 'mimes:' . setting('general.file_types') . '|between:0,' . setting('general.file_size') * 1024,
+            'attachment' => 'mimes:'.setting('general.file_types').'|between:0,'.setting('general.file_size') * 1024,
         ];
     }
 

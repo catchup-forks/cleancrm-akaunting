@@ -7,7 +7,6 @@ use App\Traits\Currencies;
 
 class BillItem extends Model
 {
-
     use Currencies;
 
     protected $table = 'bill_items';
@@ -37,33 +36,30 @@ class BillItem extends Model
     /**
      * Convert price to double.
      *
-     * @param  string  $value
-     * @return void
+     * @param string $value
      */
     public function setPriceAttribute($value)
     {
-        $this->attributes['price'] = (double) $value;
+        $this->attributes['price'] = (float) $value;
     }
 
     /**
      * Convert total to double.
      *
-     * @param  string  $value
-     * @return void
+     * @param string $value
      */
     public function setTotalAttribute($value)
     {
-        $this->attributes['total'] = (double) $value;
+        $this->attributes['total'] = (float) $value;
     }
 
     /**
      * Convert tax to double.
      *
-     * @param  string  $value
-     * @return void
+     * @param string $value
      */
     public function setTaxAttribute($value)
     {
-        $this->attributes['tax'] = (double) $value;
+        $this->attributes['tax'] = (float) $value;
     }
 }

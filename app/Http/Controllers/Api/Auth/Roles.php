@@ -27,7 +27,8 @@ class Roles extends ApiController
     /**
      * Display the specified resource.
      *
-     * @param  Role  $role
+     * @param Role $role
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function show(Role $role)
@@ -39,6 +40,7 @@ class Roles extends ApiController
      * Store a newly created resource in storage.
      *
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function store(Request $request)
@@ -57,6 +59,7 @@ class Roles extends ApiController
      *
      * @param  $role
      * @param  $request
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function update(Role $role, Request $request)
@@ -73,7 +76,8 @@ class Roles extends ApiController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Role  $role
+     * @param Role $role
+     *
      * @return \Dingo\Api\Http\Response
      */
     public function destroy(Role $role)

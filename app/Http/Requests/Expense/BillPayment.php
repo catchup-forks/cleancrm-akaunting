@@ -30,7 +30,7 @@ class BillPayment extends Request
             'amount' => 'required|amount',
             'currency_code' => 'required|string|currency',
             'payment_method' => 'required|string',
-            'attachment' => 'mimes:' . setting('general.file_types', 'pdf,jpeg,jpg,png'),
+            'attachment' => 'mimes:'.setting('general.file_types', 'pdf,jpeg,jpg,png'),
         ];
     }
 

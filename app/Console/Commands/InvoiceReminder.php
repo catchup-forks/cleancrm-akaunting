@@ -24,7 +24,7 @@ class InvoiceReminder extends Command
      * @var string
      */
     protected $description = 'Send reminders for invoices';
-    
+
     /**
      * Create a new command instance.
      */

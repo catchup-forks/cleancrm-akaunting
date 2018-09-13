@@ -60,7 +60,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Always capitalize the name when we retrieve it
+     * Always capitalize the name when we retrieve it.
      */
     public function getNameAttribute($value)
     {
@@ -68,7 +68,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Always return a valid picture when we retrieve it
+     * Always return a valid picture when we retrieve it.
      */
     public function getPictureAttribute($value)
     {
@@ -76,7 +76,7 @@ class User extends Authenticatable
         if (setting('general.use_gravatar', '0') == '1') {
             try {
                 // Check for gravatar
-                $url = 'https://www.gravatar.com/avatar/' . md5(strtolower($this->getAttribute('email'))).'?size=90&d=404';
+                $url = 'https://www.gravatar.com/avatar/'.md5(strtolower($this->getAttribute('email'))).'?size=90&d=404';
 
                 $client = new \GuzzleHttp\Client(['verify' => false]);
 
@@ -98,7 +98,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Always return a valid picture when we retrieve it
+     * Always return a valid picture when we retrieve it.
      */
     public function getLastLoggedInAtAttribute($value)
     {
@@ -112,7 +112,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Send reset link to user via email
+     * Send reset link to user via email.
      */
     public function sendPasswordResetNotification($token)
     {
@@ -120,7 +120,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Always capitalize the name when we save it to the database
+     * Always capitalize the name when we save it to the database.
      */
     public function setNameAttribute($value)
     {
@@ -128,7 +128,7 @@ class User extends Authenticatable
     }
 
     /**
-     * Always hash the password when we save it to the database
+     * Always hash the password when we save it to the database.
      */
     public function setPasswordAttribute($value)
     {
@@ -157,7 +157,7 @@ class User extends Authenticatable
 
         //$class = '\App\Filters\Auth\Users';
 
-        $class = '\App\Filters\\' . ucfirst($folder) . '\\' . ucfirst($file);
+        $class = '\App\Filters\\'.ucfirst($folder).'\\'.ucfirst($file);
 
         return $this->provideFilter($class);
     }
@@ -184,6 +184,7 @@ class User extends Authenticatable
      * Scope to only include active currencies.
      *
      * @param \Illuminate\Database\Eloquent\Builder $query
+     *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeEnabled($query)

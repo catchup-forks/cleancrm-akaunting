@@ -16,7 +16,6 @@ class Version127 extends Listener
      * Handle the event.
      *
      * @param  $event
-     * @return void
      */
     public function handle(UpdateFinished $event)
     {
@@ -42,10 +41,10 @@ class Version127 extends Listener
         // Delete folders
         $dirs = ['dashboard', 'search', 'companies', 'items'];
         foreach ($dirs as $dir) {
-            File::deleteDirectory(app_path('Filters/' . ucfirst($dir)));
-            File::deleteDirectory(app_path('Http/Controllers/' . ucfirst($dir)));
-            File::deleteDirectory(app_path('Http/Requests/' . ucfirst(str_singular($dir))));
-            File::deleteDirectory(resource_path('views/' . $dir));
+            File::deleteDirectory(app_path('Filters/'.ucfirst($dir)));
+            File::deleteDirectory(app_path('Http/Controllers/'.ucfirst($dir)));
+            File::deleteDirectory(app_path('Http/Requests/'.ucfirst(str_singular($dir))));
+            File::deleteDirectory(resource_path('views/'.$dir));
         }
     }
 }

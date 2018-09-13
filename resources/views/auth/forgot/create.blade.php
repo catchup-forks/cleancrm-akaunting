@@ -13,9 +13,9 @@
         <input name="email" type="email" class="form-control" placeholder="{{ trans('auth.enter_email') }}" required>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         @if ($errors->has('email'))
-            <span class="help-block">
-                <strong>{{ $errors->first('email') }}</strong>
-            </span>
+        <span class="help-block">
+            <strong>{{ $errors->first('email') }}</strong>
+        </span>
         @endif
     </div>
 
